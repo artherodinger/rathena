@@ -10,4 +10,4 @@ OnInit:
 	end;
 }
 
-prontera,98,232,5	duplicate(ลบ Item ทุกอย่างในตัว)	ลบ Item ทุกอย่างในตัว#2	496
+prontera,106,269,5	duplicate(ลบ Item ทุกอย่างในตัว)	ลบ Item ทุกอย่างในตัว#2	496

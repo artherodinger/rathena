@@ -1,4 +1,4 @@
-prontera,116,232,1	script	ขายของเร็ว	10389,{
+prontera,125,250,3	script	ขายของเร็ว	10389,{
 	mes "๐ จะไม่ขาย Item ที่สวมใส่อยู่";
 	mes "๐ จะไม่ขาย Item ที่ Favourite อยู่";
 	next;

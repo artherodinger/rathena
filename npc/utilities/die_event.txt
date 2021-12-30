@@ -1,6 +1,0 @@
--	script	DieEvent	-1,{
-	end;
-	
-OnPCDieEvent:
-	end;
-}
