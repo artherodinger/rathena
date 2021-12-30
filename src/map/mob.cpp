@@ -2874,6 +2874,20 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 		}
 
 		if(sd) {
+			// MvP Refine [Start]
+			if (md->get_bosstype() == BOSSTYPE_MVP) {
+				drop_rate = 0;
+				drop_modifier = 100;
+				drop_rate = mob_getdroprate(src, md->db, 1, drop_modifier); // 0.01%
+				if (rnd() % 10000 < drop_rate)
+				{
+					struct s_mob_drop mobdrop;
+					memset(&mobdrop, 0, sizeof(struct s_mob_drop));
+					mobdrop.nameid = 40016;
+					mob_item_drop(md, dlist, mob_setdropitem(&mobdrop, 1, md->mob_id), 0, drop_rate, homkillonly || merckillonly);
+				}
+			}
+
 			// process script-granted extra drop bonuses
 			t_itemid dropid = 0;
 
@@ -2904,74 +2918,6 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 
 					mob_item_drop(md, dlist, mob_setdropitem(&mobdrop,1,md->mob_id), 0, drop_rate, homkillonly || merckillonly);
 				}
-			}
-
-			// All Keys [Start]
-			// Weapon Key
-			drop_rate = 0;
-			drop_modifier = 100;
-			drop_rate = mob_getdroprate(src, md->db, 1000 * (md->level / 2), drop_modifier); // 10 * (Monster Level / 2)%
-			if (rnd() % 10000 < drop_rate)
-			{
-				struct s_mob_drop mobdrop;
-				memset(&mobdrop, 0, sizeof(struct s_mob_drop));
-				mobdrop.nameid = 40004;
-				mob_item_drop(md, dlist, mob_setdropitem(&mobdrop, 1, md->mob_id), 0, drop_rate, homkillonly || merckillonly);
-			}
-			// Equipment Key
-			drop_rate = 0;
-			drop_modifier = 100;
-			drop_rate = mob_getdroprate(src, md->db, 1000 * (md->level / 2), drop_modifier); // 10 * (Monster Level / 2)%
-			if (rnd() % 10000 < drop_rate)
-			{
-				struct s_mob_drop mobdrop;
-				memset(&mobdrop, 0, sizeof(struct s_mob_drop));
-				mobdrop.nameid = 40005;
-				mob_item_drop(md, dlist, mob_setdropitem(&mobdrop, 1, md->mob_id), 0, drop_rate, homkillonly || merckillonly);
-			}
-			// Costume Key
-			drop_rate = 0;
-			drop_modifier = 100;
-			drop_rate = mob_getdroprate(src, md->db, 500 * (md->level / 2), drop_modifier); // 5 * (Monster Level / 2)%
-			if (rnd() % 10000 < drop_rate)
-			{
-				struct s_mob_drop mobdrop;
-				memset(&mobdrop, 0, sizeof(struct s_mob_drop));
-				mobdrop.nameid = 40006;
-				mob_item_drop(md, dlist, mob_setdropitem(&mobdrop, 1, md->mob_id), 0, drop_rate, homkillonly || merckillonly);
-			}
-			// Card Key
-			drop_rate = 0;
-			drop_modifier = 100;
-			drop_rate = mob_getdroprate(src, md->db, 500 * (md->level / 2), drop_modifier); // 5 * (Monster Level / 2)%
-			if (rnd() % 10000 < drop_rate)
-			{
-				struct s_mob_drop mobdrop;
-				memset(&mobdrop, 0, sizeof(struct s_mob_drop));
-				mobdrop.nameid = 40007;
-				mob_item_drop(md, dlist, mob_setdropitem(&mobdrop, 1, md->mob_id), 0, drop_rate, homkillonly || merckillonly);
-			}
-			// Random Option Key
-			drop_rate = 0;
-			drop_modifier = 100;
-			drop_rate = mob_getdroprate(src, md->db, 100 * (md->level / 2), drop_modifier); // 1 * (Monster Level / 2)%
-			if (rnd() % 10000 < drop_rate)
-			{
-				struct s_mob_drop mobdrop;
-				memset(&mobdrop, 0, sizeof(struct s_mob_drop));
-				mobdrop.nameid = 40014;
-				mob_item_drop(md, dlist, mob_setdropitem(&mobdrop, 1, md->mob_id), 0, drop_rate, homkillonly || merckillonly);
-			}
-			// Random Enchant Key
-			drop_rate = 0;
-			drop_modifier = 100;
-			drop_rate = mob_getdroprate(src, md->db, 100 * (md->level / 2), drop_modifier); // 1 * (Monster Level / 2)%
-			if (rnd() % 10000 < drop_rate)
-			{
-				struct s_mob_drop mobdrop;
-				memset(&mobdrop, 0, sizeof(struct s_mob_drop));
-				mobdrop.nameid = 40015;
-				mob_item_drop(md, dlist, mob_setdropitem(&mobdrop, 1, md->mob_id), 0, drop_rate, homkillonly || merckillonly);
 			}
 
 			// process script-granted zeny bonus (get_zeny_num) [Skotlex]
@@ -4953,13 +4899,13 @@ uint64 MobDatabase::parseBodyNode(const YAML::Node &node) {
 		}
 	}
 
-	if (this->nodeExists(node, "MvpDropsNoUse")) { // [Start]
-		if (!this->parseDropNode("MvpDropsNoUse", node, MAX_MVP_DROP, mob->mvpitem))
+	if (this->nodeExists(node, "MvpDrops")) {
+		if (!this->parseDropNode("MvpDrops", node, MAX_MVP_DROP, mob->mvpitem))
 			return 0;
 	}
 
-	if (this->nodeExists(node, "DropsNoUse")) { // [Start]
-		if (!this->parseDropNode("DropsNoUse", node, MAX_MOB_DROP, mob->dropitem))
+	if (this->nodeExists(node, "Drops")) {
+		if (!this->parseDropNode("Drops", node, MAX_MOB_DROP, mob->dropitem))
 			return 0;
 	}
 
