@@ -1,4 +1,8 @@
 prontera,137,258,3	script	Enchantment	10111,{
+	if(target_enchantment > 0){
+		mes "ตอนนี้คุณต้องการจะฝัง: " + getitemname(target_enchantment);
+		next;
+	}
 	menu "เลือก Enchantment ที่จะฝัง",L_Select,"เริ่มกระบวนการฝัง Enchantment",-;
 	if(target_enchantment <= 0){
 		mes "คุณยังไม่ได้เลือก Enchantment ที่จะฝัง";
@@ -65,11 +69,11 @@ prontera,137,258,3	script	Enchantment	10111,{
 
 	.@slot = select(.@menu$) + .@itemSlotCount - 1;
 	
-	if(random_enchant_key_storage < 1) {
-		mes getitemname(.itemId) + " ในคลังไม่เพียงพอ";
+	if(countitem(target_enchantment) < 1) {
+		mes getitemname(target_enchantment) + " ไม่เพียงพอ";
 		close;
 	}
-	random_enchant_key_storage--;
+	delitem target_enchantment,1;
 
 	if (callfunc("F_IsEquipIDHack", .@part, .@selectedItemId)) {
 		mes "เหมือนว่าเจ้าจะสลับอุปกรณ์ ระหว่างข้าดำเนินการอยู่นะ";
@@ -77,13 +81,13 @@ prontera,137,258,3	script	Enchantment	10111,{
 	}
 	delequip .@part;
 	if(.@slot == 0)
-	.@cardSlot1 = $enchantIds[rand(0,getarraysize($enchantIds) - 1)];
+	.@cardSlot1 = target_enchantment;
 	else if(.@slot == 1)
-	.@cardSlot2 = $enchantIds[rand(0,getarraysize($enchantIds) - 1)];
+	.@cardSlot2 = target_enchantment;
 	else if(.@slot == 2)
-	.@cardSlot3 = $enchantIds[rand(0,getarraysize($enchantIds) - 1)];
+	.@cardSlot3 = target_enchantment;
 	else if(.@slot == 3)
-	.@cardSlot4 = $enchantIds[rand(0,getarraysize($enchantIds) - 1)];
+	.@cardSlot4 = target_enchantment;
 	if(.@randomOptionId1 > 0){
 		setarray .@OptID[0],.@randomOptionId1,.@randomOptionId2,.@randomOptionId3,.@randomOptionId4,.@randomOptionId5;
 		setarray .@OptVal[0],.@randomOptionValue1,.@randomOptionValue2,.@randomOptionValue3,.@randomOptionValue4,.@randomOptionValue5;
@@ -101,9 +105,15 @@ prontera,137,258,3	script	Enchantment	10111,{
 	npcshopattach "EnchantmentSelector";
 	end;
 	
-OnBuyItem:
-	end;
-	
+OnSellItem:
+	for (.@i = 0; .@i < getarraysize(@sold_nameid); .@i++){
+		if(getiteminfo(@sold_nameid[.@i],ITEMINFO_TYPE) == 6 && getiteminfo(@sold_nameid[.@i],ITEMINFO_SUBTYPE) == 1){
+			mes "คุณต้องการจะฝัง: " + getitemname(@sold_nameid[.@i]);
+			target_enchantment = @sold_nameid[.@i];
+			close;
+		}
+	}
+	mes "ไม่พบ Enchantment ที่คุณต้องการฝัง";
 	close;
 
 OnInit:
@@ -111,6 +121,4 @@ OnInit:
 	end;
 }
 
-
 -	shop	EnchantmentSelector	-1,no,501:-1
-

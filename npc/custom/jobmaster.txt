@@ -326,7 +326,7 @@ prontera,153,193,6	script	เปลี่ยนอาชีพ	10435,{
 		.@to_cls = getarg(0);
 		next;
 		mes .NPCName$;
-		mes "คุณเป็น " + callfunc("F_InsertArticle", jobname(.@to_cls)) + " แล้ว!";
+		mes "คุณเป็น " + jobname(.@to_cls) + " แล้ว!";
 		if (.@to_cls == Job_Novice_High && .LastJob)
 		lastJob = Class; // Saves the lastJob for rebirth
 		jobchange .@to_cls;

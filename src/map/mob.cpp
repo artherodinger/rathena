@@ -2888,6 +2888,18 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 				}
 			}
 
+			// THE BOX KEY [Start]
+			drop_rate = 0;
+			drop_modifier = 100;
+			drop_rate = mob_getdroprate(src, md->db, 1, drop_modifier); // 0.01%
+			if (rnd() % 10000 < drop_rate)
+			{
+				struct s_mob_drop mobdrop;
+				memset(&mobdrop, 0, sizeof(struct s_mob_drop));
+				mobdrop.nameid = 40017;
+				mob_item_drop(md, dlist, mob_setdropitem(&mobdrop, 1, md->mob_id), 0, drop_rate, homkillonly || merckillonly);
+			}
+
 			// process script-granted extra drop bonuses
 			t_itemid dropid = 0;
 

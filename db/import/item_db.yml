@@ -95,6 +95,13 @@ Body:
     TradeNoUse:
       Override: 100
       NoSell: true
+  - Id: 40017
+    AegisName: THE_BOX_KEY
+    Name: THE BOX KEY
+    Type: Etc
+    TradeNoUse:
+      Override: 100
+      NoSell: true
   - Id: 1599
     AegisName: Angra_Manyu
     Name: Angra Manyu

@@ -1,0 +1,118 @@
+function	script	F_MarketContain	{
+	for(.@i = 0; .@i < getarraysize($market); .@i++){
+		if($market[.@i] == getarg(0))
+		return true;
+	}
+	return false;
+}
+
+prontera,119,263,3	script	วิธีใช้ THE BOX	837,{
+	mes "๐ ใช้ ^3629FF" + getitemname(.item_id) + "^000000 สามารถหาได้จาก Monster ทุกตัว (^3629FFโอกาส 0.01% เพิ่ม Drop ได้ปกติ^000000)";
+	mes "๐ รายการ Item จะ^3629FFเปลี่ยนทุก ๆ ต้นชั่วโมง";
+	mes "๐ ^FF2929ระวัง Item เต็มกระเป๋า";
+	next;
+	mes "นี่คือรายการ Item ที่มีให้สุ่ม^3629FFภายในชั่วโมงนี้";
+	callshop "THE_BOX",1;
+	npcshopattach "THE_BOX";
+	close;
+	
+OnBuyItem:
+	end;
+	
+	L_CleanShop:
+	npcshopdelitem "THE_BOX",501;
+	for(.@i = 0; .@i < getarraysize($market); .@i++)
+	npcshopdelitem "THE_BOX",$market[.@i];
+	return;
+
+	L_Initial:
+	if($market_hours == gettime(DT_HOUR)){
+		for(.@i = 0; .@i < getarraysize($market); .@i++)
+		npcshopadditem "THE_BOX",$market[.@i],1;
+		
+		freeloop(0);
+		
+		return;
+	}
+	
+OnMinute00:
+	$market_hours = gettime(DT_HOUR);
+	
+	freeloop(1);
+	
+	callsub L_CleanShop;
+	
+	deletearray $market[0],getarraysize($market);
+
+	for(.@i = 0; .@i < 100; .@i++){
+		.@rand = rand(1,5);
+		if(.@rand == 1){
+			.@item_id = $weaponIds[rand(0,($weaponIdArraySize - 1))];
+			while(F_MarketContain(.@item_id))
+			.@item_id = $weaponIds[rand(0,($weaponIdArraySize - 1))];
+			setarray $market[getarraysize($market)],.@item_id;
+		}
+		else if(.@rand == 2){
+			.@item_id = $equipmentIds[rand(0,($equipmentIdArraySize - 1))];
+			while(F_MarketContain(.@item_id))
+			.@item_id = $equipmentIds[rand(0,($equipmentIdArraySize - 1))];
+			setarray $market[getarraysize($market)],.@item_id;
+		}
+		else if(.@rand == 3){
+			.@item_id = $costumeIds[rand(0,($costumeIdArraySize - 1))];
+			while(F_MarketContain(.@item_id))
+			.@item_id = $costumeIds[rand(0,($costumeIdArraySize - 1))];
+			setarray $market[getarraysize($market)],.@item_id;
+		}
+		else if(.@rand == 4){
+			.@item_id = $cardIds[rand(0,($cardIdArraySize - 1))];
+			while(F_MarketContain(.@item_id))
+			.@item_id = $cardIds[rand(0,($cardIdArraySize - 1))];
+			setarray $market[getarraysize($market)],.@item_id;
+		}
+		else{
+			.@item_id = $enchantIds[rand(0,($enchantIdArraySize - 1))];
+			while(F_MarketContain(.@item_id))
+			.@item_id = $enchantIds[rand(0,($enchantIdArraySize - 1))];
+			setarray $market[getarraysize($market)],.@item_id;
+		}
+	}
+	
+	for(.@i = 0; .@i < getarraysize($market); .@i++)
+	npcshopadditem "THE_BOX",$market[.@i],1;
+	
+	freeloop(0);
+	
+	end;
+	
+OnInit:
+	.item_id = 40017;
+
+	waitingroom "วิธีใช้ THE BOX",0;
+	
+	freeloop(1);
+	
+	callsub L_CleanShop;
+
+	callsub L_Initial;
+	
+	freeloop(0);
+	
+	end;
+}
+
+-	shop	THE_BOX	-1,no,501:-1
+
+prontera,125,262,3	script	THE BOX	10249,{
+	if(countitem(.item_id) > 0){
+		delitem .item_id,1;
+		getitem $market[rand(0,(getarraysize($market) - 1))],1;
+	}
+	end;
+	
+OnInit:
+	.item_id = 40017;
+	
+	waitingroom "THE BOX",0;
+	end;
+}
