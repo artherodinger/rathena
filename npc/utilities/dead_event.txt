@@ -1,0 +1,10 @@
+-	script	DeadEvent	-1,{
+	end;
+	
+OnPCDieEvent:
+	exp_multiplier = 0;
+	drop_multiplier = 0;
+	sc_end SC_EXPBOOST;
+	sc_end SC_ITEMBOOST;
+	end;
+}

@@ -1,0 +1,11 @@
+function	script	F_ExpMultiplier	{
+	sc_end SC_EXPBOOST;
+	sc_start SC_EXPBOOST,86400000,100 * exp_multiplier;
+	return;
+}
+
+function	script	F_DropMultiplier	{
+	sc_end SC_ITEMBOOST;
+	sc_start SC_ITEMBOOST,86400000,100 * drop_multiplier;
+	return;
+}

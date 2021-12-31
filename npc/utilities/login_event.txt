@@ -3,6 +3,7 @@
 	
 OnPCLoginEvent:
 	bonus_script_clear 1;
-	
+	F_ExpMultiplier();
+	F_DropMultiplier();
 	end;
 }

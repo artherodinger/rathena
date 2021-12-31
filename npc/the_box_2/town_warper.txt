@@ -14,12 +14,12 @@ prontera,200,240,5	duplicate(backToCenter)	กลับกลางเมือง#4	10081
 force_1-1,100,98,5	duplicate(backToCenter)	กลับกลางเมือง#5	10081
 force_1-2,173,156,5	duplicate(backToCenter)	กลับกลางเมือง#6	10081
 
-prontera,145,193,5	script	Zone อุปกรณ์ฯ	10081,{
+prontera,145,193,5	script	Zone พัฒนาตัวละคร	10081,{
 	warp "prontera",115,247;
 	end;
 	
 OnInit:
-	waitingroom "Zone - อุปกรณ์ฯ",0;
+	waitingroom "Zone - พัฒนาตัวละคร",0;
 	end;
 }
 
