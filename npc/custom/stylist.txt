@@ -35,7 +35,7 @@
 	}
 	
 	L_Class3Suit:
-	if(Class == 4190 || Class == 4191 || Class == 4239 || Class == 4240)
+	if(Class == 4190 || Class == 4191 || Class == 4239 || Class == 4240 || eaclass()&EAJL_FOURTH)
 	end;
 	menu "Ẻ 1",-,"Ẻ 2",L_1;
 	atcommand "@bodystyle 0";
