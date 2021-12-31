@@ -1,5 +1,7 @@
-prontera,131,261,5	script	Random Option	10267,{
-	mes "^3F28FFค่าที่ได้รับ:^000000 1~5";
+prontera,131,260,3	script	Random Option	10127,{
+	mes "๐ ราคาต่อรอบ: " + F_InsertComma(.price) + "z";
+	mes "^3F28FF๐ แถวที่ได้รับ:^000000 5 แถว";
+	mes "^3F28FF๐ ค่าที่ได้รับ:^000000 1~5";
 	next;
 	
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_HEAD_MID, EQI_HEAD_LOW, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_COSTUME_HEAD_TOP, EQI_COSTUME_HEAD_MID, EQI_COSTUME_HEAD_LOW, EQI_SHADOW_ARMOR, EQI_SHADOW_WEAPON, EQI_SHADOW_SHIELD, EQI_COSTUME_GARMENT, EQI_SHADOW_SHOES, EQI_SHADOW_ACC_L, EQI_SHADOW_ACC_R;
@@ -25,58 +27,50 @@ prontera,131,261,5	script	Random Option	10267,{
 	}
 	
 	.@selectedItemId = getequipid(.@part);
-
-	mes "โปรดเลือกช่องที่ต้องการ";
-	next;
-
-	.@menu$ = "ช่องที่ 1:";
 	
-	for(.@i = 1; .@i < 5; ++.@i) {
-		if(getequiprandomoption(.@part,.@i - 1,ROA_ID) > 0)
-		.@menu$ += "ช่องที่ " + (.@i + 1);
-		else
-		break;
-		.@menu$ = .@menu$ + ":";
-	}
-	
-	.@slot = select(.@menu$);
-
-	.@maxRandomize = 5;
-
-	if(random_option_key_storage < 1) {
-		mes getitemname(.itemId) + " ในคลังไม่เพียงพอ";
+	if(Zeny < .price){
+		mes "Zeny ไม่เพียงพอ";
 		close;
 	}
-	random_option_key_storage--;
+	Zeny -= .price;
 
 	if (callfunc("F_IsEquipIDHack", .@part, .@selectedItemId)) {
 		mes "เหมือนว่าเจ้าจะสลับอุปกรณ์ ระหว่างข้าดำเนินการอยู่นะ";
 		close;
 	}
 	
-	setrandomoption(.@part,.@slot - 1,callfunc("GetRandomOptionId"),rand(1,.@maxRandomize),0);
+	setrandomoption(.@part,0,callfunc("GetRandomOptionId"),rand(1,5),0);
+	setrandomoption(.@part,1,callfunc("GetRandomOptionId"),rand(1,5),0);
+	setrandomoption(.@part,2,callfunc("GetRandomOptionId"),rand(1,5),0);
+	setrandomoption(.@part,3,callfunc("GetRandomOptionId"),rand(1,5),0);
+	setrandomoption(.@part,4,callfunc("GetRandomOptionId"),rand(1,5),0);
 
 	mes "เรียบร้อยแล้ว!";
 	close;
 
 OnInit:
-	.itemId = 40014;
-	waitingroom "(สุ่ม) Option",0;
+	.price = 3000000;
+	waitingroom "เสริมแกร่งด้วย Random Option",0;
 	end;
 }
 
 function	script	GetRandomOptionId	{
 	.@optId = rand(1,242);
+	
 	freeloop(1);
 	while((.@optId >= 76 && .@optId <= 85) || (.@optId >= 175 && .@optId <= 184) || .@optId == 203 || .@optId == 204)
 	.@optId = rand(1,242);
+
 	freeloop(0);
+	
 	return .@optId;
 }
 
 function	script	IsHadRandomOptionId	{
 	.@optId = getarg(0,0);
+	
 	if(.@optId < 1 || .@optId > 242)
 	return 0;
+	else
 	return 1;
 }

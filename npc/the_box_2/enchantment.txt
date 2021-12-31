@@ -1,5 +1,10 @@
-prontera,138,261,5	script	Random Enchantment	10267,{
-	mes "^3F28FFEnchant ได้เฉพาะ:^000000 อุปกรณ์สวมใส่ที่มี Slot ไม่ครบ 4 Slot";
+prontera,137,258,3	script	Enchantment	10111,{
+	menu "เลือก Enchantment ที่จะฝัง",L_Select,"เริ่มกระบวนการฝัง Enchantment",-;
+	if(target_enchantment <= 0){
+		mes "คุณยังไม่ได้เลือก Enchantment ที่จะฝัง";
+		close;
+	}
+	mes "^3F28FF๐ Enchant ได้เฉพาะ:^000000 อุปกรณ์สวมใส่ที่มี Slot ไม่ครบ 4 Slot";
 	next;
 	
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_HEAD_MID, EQI_HEAD_LOW, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_COSTUME_HEAD_TOP, EQI_COSTUME_HEAD_MID, EQI_COSTUME_HEAD_LOW, EQI_SHADOW_ARMOR, EQI_SHADOW_WEAPON, EQI_SHADOW_SHIELD, EQI_COSTUME_GARMENT, EQI_SHADOW_SHOES, EQI_SHADOW_ACC_L, EQI_SHADOW_ACC_R;
@@ -91,8 +96,21 @@ prontera,138,261,5	script	Random Enchantment	10267,{
 	mes "เรียบร้อยแล้ว!";
 	close;
 
+	L_Select:
+	callshop "EnchantmentSelector",2;
+	npcshopattach "EnchantmentSelector";
+	end;
+	
+OnBuyItem:
+	end;
+	
+	close;
+
 OnInit:
-	.itemId = 40015;
-	waitingroom "(สุ่ม) Enchantment",0;
+	waitingroom "เสริมแกร่งด้วย Enchantment",0;
 	end;
 }
+
+
+-	shop	EnchantmentSelector	-1,no,501:-1
+
