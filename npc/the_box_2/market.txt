@@ -10,11 +10,9 @@ prontera,119,263,3	script	วิธีใช้ THE BOX	837,{
 	mes "๐ ใช้ ^3629FF" + getitemname(.item_id) + "^000000 สามารถหาได้จาก Monster ทุกตัว (^3629FFโอกาส 0.01% เพิ่ม Drop ได้ปกติ^000000)";
 	mes "๐ รายการ Item จะ^3629FFเปลี่ยนทุก ๆ ต้นชั่วโมง";
 	mes "๐ ^FF2929ระวัง Item เต็มกระเป๋า";
-	next;
-	mes "นี่คือรายการ Item ที่มีให้สุ่ม^3629FFภายในชั่วโมงนี้";
+	close2;
 	callshop "THE_BOX",1;
 	npcshopattach "THE_BOX";
-	close;
 	
 OnBuyItem:
 	end;
