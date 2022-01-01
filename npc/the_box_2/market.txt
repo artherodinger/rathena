@@ -142,7 +142,6 @@ OnMinute00:
 OnMinute10:
 OnMinute20:
 OnMinute30:
-OnMinute36:
 OnMinute40:
 OnMinute50:
 	$market_hours_v2 = gettime(DT_HOUR);
