@@ -34,6 +34,11 @@ OnBuyItem:
 	}
 	
 OnMinute00:
+OnMinute10:
+OnMinute20:
+OnMinute30:
+OnMinute40:
+OnMinute50:
 	$market_hours = gettime(DT_HOUR);
 	
 	freeloop(1);
