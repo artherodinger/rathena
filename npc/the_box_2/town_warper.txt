@@ -7,15 +7,15 @@ OnInit:
 	end;
 }
 
-prontera,110,246,5	duplicate(backToCenter)	กลับกลางเมือง#1	10081
-prontera,101,168,5	duplicate(backToCenter)	กลับกลางเมือง#2	10081
-prontera,237,62,5	duplicate(backToCenter)	กลับกลางเมือง#3	10081
-prontera,200,240,5	duplicate(backToCenter)	กลับกลางเมือง#4	10081
-force_1-1,100,98,5	duplicate(backToCenter)	กลับกลางเมือง#5	10081
-force_1-2,173,156,5	duplicate(backToCenter)	กลับกลางเมือง#6	10081
+prontera,115,250,5	duplicate(backToCenter)	กลับกลางเมือง#Upg	10081
+prontera,101,168,5	duplicate(backToCenter)	กลับกลางเมือง#Itm	10081
+prontera,237,62,5	duplicate(backToCenter)	กลับกลางเมือง#Tst	10081
+prontera,200,240,5	duplicate(backToCenter)	กลับกลางเมือง#Pet	10081
+force_1-1,100,98,5	duplicate(backToCenter)	กลับกลางเมือง#Btg	10081
+force_1-2,173,156,5	duplicate(backToCenter)	กลับกลางเมือง#Gvg	10081
 
 prontera,145,193,5	script	Zone พัฒนาตัวละคร	10081,{
-	warp "prontera",115,247;
+	warp "prontera",102,234;
 	end;
 	
 OnInit:

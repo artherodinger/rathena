@@ -23,5 +23,12 @@ OnInit:
 		$cardIdArraySize = getarraysize($cardIds);
 		$enchantIdArraySize = getarraysize($enchantIds);
 	}
+	
+	/*debugmes "$weaponIdArraySize:" + $weaponIdArraySize;
+	debugmes "$equipmentIdArraySize:" + $equipmentIdArraySize;
+	debugmes "$costumeIdArraySize:" + $costumeIdArraySize;
+	debugmes "$cardIdArraySize:" + $cardIdArraySize;
+	debugmes "$enchantIdArraySize:" + $enchantIdArraySize;*/
+	
 	end;
 }

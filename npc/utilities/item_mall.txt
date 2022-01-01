@@ -1,4 +1,4 @@
-prontera,115,235,5	script	เช็คว่ามี Item ไหม	566,{
+prontera,132,262,5	script	เช็คว่ามี Item ไหม	566,{
 	mes "โปรดระบุเลข Item ID เพื่อเช็ค";
 	input .@i;
 	atcommand "@ii " + .@i;
@@ -9,7 +9,7 @@ OnInit:
 	end;
 }
 
-prontera,107,235,5	script	ดู Item ทั้งหมด	566,{
+prontera,139,262,3	script	ดู Item ทั้งหมด	566,{
 	mes "โปรดระบุเลข 1~" + .max_page + " เพื่อดู";
 	input .@i;
 	if(.@i <= 0 || .@i > .max_page){

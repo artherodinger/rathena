@@ -1,4 +1,4 @@
-prontera,131,260,3	script	Random Option	10127,{
+prontera,120,263,3	script	Random Option	10127,{
 	mes "๐ ราคาต่อรอบ: " + F_InsertComma(.price) + "z";
 	mes "^3F28FF๐ แถวที่ได้รับ:^000000 5 แถว";
 	mes "^3F28FF๐ ค่าที่ได้รับ:^000000 1~5";

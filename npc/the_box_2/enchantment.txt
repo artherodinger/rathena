@@ -1,4 +1,4 @@
-prontera,137,258,3	script	Enchantment	10111,{
+prontera,125,261,3	script	Enchantment	10111,{
 	if(target_enchantment > 0){
 		mes "ตอนนี้คุณต้องการจะฝัง: " + getitemname(target_enchantment);
 		next;
