@@ -150,12 +150,12 @@ OnMinute50:
 	
 	callsub L_CleanShop;
 	
-	/*deletearray $market[0],getarraysize($market);
+	deletearray $market[0],getarraysize($market);
 	deletearray $weapon_market[0],getarraysize($weapon_market);
 	deletearray $equipment_market[0],getarraysize($equipment_market);
 	deletearray $costume_market[0],getarraysize($costume_market);
 	deletearray $card_market[0],getarraysize($card_market);
-	deletearray $enchantment_market[0],getarraysize($enchantment_market);*/
+	deletearray $enchantment_market[0],getarraysize($enchantment_market);
 
 	// Market
 	for(.@i = 0; .@i < 100; .@i++){
