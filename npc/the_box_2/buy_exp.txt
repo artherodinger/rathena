@@ -30,6 +30,11 @@ prontera,101,257,5	script	ซื้อ x EXP	10364,{
 		else
 		.@price = .base_price_below_11 * .@i;
 		
+		mes "x" + .@i;
+		mes "ราคา: " + F_InsertComma(.@price) + "z";
+		next;
+		menu "จ่าย",-;
+		
 		if(Zeny < .@price){
 			mes "ต้องการ " + F_InsertComma(.@price) + "z";
 			close;

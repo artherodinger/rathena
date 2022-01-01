@@ -261,7 +261,7 @@ prontera,108,236,5	script	THE BOX	10249,{
 OnInit:
 	.item_id = 40017;
 	.amount = 1;
-	waitingroom strnpcinfo(0),0;
+	waitingroom "("+ .amount +" ´Í¡)" + strnpcinfo(0),0;
 	end;
 }
 
@@ -277,7 +277,7 @@ prontera,99,239,5	script	THE BOX WEAPON	10249,{
 OnInit:
 	.item_id = 40017;
 	.amount = 9;
-	waitingroom strnpcinfo(0),0;
+	waitingroom "("+ .amount +" ´Í¡)" + strnpcinfo(0),0;
 	end;
 }
 
@@ -293,7 +293,7 @@ prontera,103,241,5	script	THE BOX EQUIPMENT	10249,{
 OnInit:
 	.item_id = 40017;
 	.amount = 9;
-	waitingroom strnpcinfo(0),0;
+	waitingroom "("+ .amount +" ´Í¡)" + strnpcinfo(0),0;
 	end;
 }
 
@@ -309,7 +309,7 @@ prontera,108,243,5	script	THE BOX COSTUME	10249,{
 OnInit:
 	.item_id = 40017;
 	.amount = 7;
-	waitingroom strnpcinfo(0),0;
+	waitingroom "("+ .amount +" ´Í¡)" + strnpcinfo(0),0;
 	end;
 }
 
@@ -325,7 +325,7 @@ prontera,113,241,5	script	THE BOX CARD	10249,{
 OnInit:
 	.item_id = 40017;
 	.amount = 30;
-	waitingroom strnpcinfo(0),0;
+	waitingroom "("+ .amount +" ´Í¡)" + strnpcinfo(0),0;
 	end;
 }
 
@@ -341,7 +341,7 @@ prontera,117,239,5	script	THE BOX ENCHANTMENT	10249,{
 OnInit:
 	.item_id = 40017;
 	.amount = 50;
-	waitingroom strnpcinfo(0),0;
+	waitingroom "("+ .amount +" ´Í¡)" + strnpcinfo(0),0;
 	end;
 }
 
