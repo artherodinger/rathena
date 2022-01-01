@@ -142,6 +142,7 @@ OnMinute00:
 OnMinute10:
 OnMinute20:
 OnMinute30:
+OnMinute36:
 OnMinute40:
 OnMinute50:
 	$market_hours_v2 = gettime(DT_HOUR);
@@ -227,8 +228,7 @@ OnMinute50:
 		setarray $enchantment_market[getarraysize($enchantment_market)],.@item_id;
 	}
 	
-	for(.@i = 0; .@i < getarraysize($market); .@i++)
-	npcshopadditem "THE_BOX",$market[.@i],1;
+	callsub L_Initial;
 	
 	freeloop(0);
 	
