@@ -67,7 +67,7 @@
 		$key_dropper_monster_id_10 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
 	}
 	
-	// Add additional THE BOX KEY drop (0.1%, Steal protected)
+	// Add additional THE BOX KEY drop (0.1 ~ 1%, Steal protected)
 	$key_dropper_rate_1 = rand(10,100);
 	$key_dropper_rate_2 = rand(10,100);
 	$key_dropper_rate_3 = rand(10,100);
@@ -104,15 +104,17 @@
 		announce "๐ " + getmonsterinfo($key_dropper_monster_id_10,MOB_NAME) + " (" + $key_dropper_monster_id_10 + ") (" + F_PercentBase10000($key_dropper_rate_10) + ")",bc_all|bc_blue;
 		announce "หากต้องการตรวจสอบพิมพ์ @mi เลข",bc_all;
 	}
-	
 	return;
 	
+//OnTest:
 OnMinute00:
 OnMinute30:
 	callsub L_Assign,1;
+	end;
 	
 OnInit:
 	callsub L_Assign,0;
+	//bindatcmd "kdt",strnpcinfo(3) + "::OnTest",99,99;
 	end;
 }
 
