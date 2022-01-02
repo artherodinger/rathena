@@ -575,7 +575,7 @@ nameless_n,259,213,4	duplicate(Warper)	วาร์ป#nam	10007
 niflheim,205,179,4	duplicate(Warper)	วาร์ป#nif	10007
 pay_arche,42,134,4	duplicate(Warper)	วาร์ป#arc	10007
 payon,182,108,4	duplicate(Warper)	วาร์ป#pay	10007
-prontera,159,200,4	duplicate(Warper)	วาร์ป#prt	10007
+prontera,163,200,4	duplicate(Warper)	วาร์ป#prt	10007
 prt_fild05,279,223,6	duplicate(Warper)	วาร์ป#cul	10007
 rachel,135,116,4	duplicate(Warper)	วาร์ป#rac	10007
 splendide,205,153,4	duplicate(Warper)	วาร์ป#spl	10007

@@ -1,0 +1,138 @@
+-	script	KeyDropper	-1,{
+	end;
+	
+	L_Assign:
+	// Remove additonal THE BOX KEY drop
+	delmonsterdrop $key_dropper_monster_id_1,40017;
+	delmonsterdrop $key_dropper_monster_id_2,40017;
+	delmonsterdrop $key_dropper_monster_id_3,40017;
+	delmonsterdrop $key_dropper_monster_id_4,40017;
+	delmonsterdrop $key_dropper_monster_id_5,40017;
+	delmonsterdrop $key_dropper_monster_id_6,40017;
+	delmonsterdrop $key_dropper_monster_id_7,40017;
+	delmonsterdrop $key_dropper_monster_id_8,40017;
+	delmonsterdrop $key_dropper_monster_id_9,40017;
+	delmonsterdrop $key_dropper_monster_id_10,40017;
+	
+	// Assign monster
+	.is_force = getarg(0);
+	if(!$key_dropper_monster_id_1 || .is_force){
+		$key_dropper_monster_id_1 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+		while(!isspawn($key_dropper_monster_id_1))
+		$key_dropper_monster_id_1 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+	}
+	if(!$key_dropper_monster_id_2 || .is_force){
+		$key_dropper_monster_id_2 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+		while(!isspawn($key_dropper_monster_id_2) || ($key_dropper_monster_id_2 == $key_dropper_monster_id_1))
+		$key_dropper_monster_id_2 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+	}
+	if(!$key_dropper_monster_id_3 || .is_force){
+		$key_dropper_monster_id_3 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+		while(!isspawn($key_dropper_monster_id_3) || ($key_dropper_monster_id_3 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_3 == $key_dropper_monster_id_2))
+		$key_dropper_monster_id_3 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+	}
+	if(!$key_dropper_monster_id_4 || .is_force){
+		$key_dropper_monster_id_4 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+		while(!isspawn($key_dropper_monster_id_4) || ($key_dropper_monster_id_4 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_4 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_4 == $key_dropper_monster_id_3))
+		$key_dropper_monster_id_4 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+	}
+	if(!$key_dropper_monster_id_5 || .is_force){
+		$key_dropper_monster_id_5 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+		while(!isspawn($key_dropper_monster_id_5) || ($key_dropper_monster_id_5 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_5 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_5 == $key_dropper_monster_id_3) || ($key_dropper_monster_id_5 == $key_dropper_monster_id_4))
+		$key_dropper_monster_id_5 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+	}
+	if(!$key_dropper_monster_id_6 || .is_force){
+		$key_dropper_monster_id_6 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+		while(!isspawn($key_dropper_monster_id_6) || ($key_dropper_monster_id_6 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_6 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_6 == $key_dropper_monster_id_3) || ($key_dropper_monster_id_6 == $key_dropper_monster_id_4))
+		$key_dropper_monster_id_6 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+	}
+	if(!$key_dropper_monster_id_7 || .is_force){
+		$key_dropper_monster_id_7 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+		while(!isspawn($key_dropper_monster_id_7) || ($key_dropper_monster_id_7 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_7 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_7 == $key_dropper_monster_id_3) || ($key_dropper_monster_id_7 == $key_dropper_monster_id_4))
+		$key_dropper_monster_id_7 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+	}
+	if(!$key_dropper_monster_id_8 || .is_force){
+		$key_dropper_monster_id_8 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+		while(!isspawn($key_dropper_monster_id_8) || ($key_dropper_monster_id_8 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_8 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_8 == $key_dropper_monster_id_3) || ($key_dropper_monster_id_8 == $key_dropper_monster_id_4))
+		$key_dropper_monster_id_8 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+	}
+	if(!$key_dropper_monster_id_9 || .is_force){
+		$key_dropper_monster_id_9 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+		while(!isspawn($key_dropper_monster_id_9) || ($key_dropper_monster_id_9 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_9 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_9 == $key_dropper_monster_id_3) || ($key_dropper_monster_id_9 == $key_dropper_monster_id_4))
+		$key_dropper_monster_id_9 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+	}
+	if(!$key_dropper_monster_id_10 || .is_force){
+		$key_dropper_monster_id_10 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+		while(!isspawn($key_dropper_monster_id_10) || ($key_dropper_monster_id_10 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_10 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_10 == $key_dropper_monster_id_3) || ($key_dropper_monster_id_10 == $key_dropper_monster_id_4))
+		$key_dropper_monster_id_10 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+	}
+	
+	// Add additional THE BOX KEY drop (0.1%, Steal protected)
+	addmonsterdrop $key_dropper_monster_id_1,40017,10,true;
+	addmonsterdrop $key_dropper_monster_id_2,40017,10,true;
+	addmonsterdrop $key_dropper_monster_id_3,40017,10,true;
+	addmonsterdrop $key_dropper_monster_id_4,40017,10,true;
+	addmonsterdrop $key_dropper_monster_id_5,40017,10,true;
+	addmonsterdrop $key_dropper_monster_id_6,40017,10,true;
+	addmonsterdrop $key_dropper_monster_id_7,40017,10,true;
+	addmonsterdrop $key_dropper_monster_id_8,40017,10,true;
+	addmonsterdrop $key_dropper_monster_id_9,40017,10,true;
+	addmonsterdrop $key_dropper_monster_id_10,40017,10,true;
+	
+	// Information
+	if(.is_force){
+		announce "ขณะนี้ " + getitemname(40017) + " จะ Drop มากขึ้นกับ Monster ตามนี้",bc_all;
+		announce "๐ " + getmonsterinfo($key_dropper_monster_id_1,MOB_NAME) + " (" + $key_dropper_monster_id_1 + ")",bc_all|bc_blue;
+		announce "๐ " + getmonsterinfo($key_dropper_monster_id_2,MOB_NAME) + " (" + $key_dropper_monster_id_2 + ")",bc_all|bc_blue;
+		announce "๐ " + getmonsterinfo($key_dropper_monster_id_3,MOB_NAME) + " (" + $key_dropper_monster_id_3 + ")",bc_all|bc_blue;
+		announce "๐ " + getmonsterinfo($key_dropper_monster_id_4,MOB_NAME) + " (" + $key_dropper_monster_id_4 + ")",bc_all|bc_blue;
+		announce "๐ " + getmonsterinfo($key_dropper_monster_id_5,MOB_NAME) + " (" + $key_dropper_monster_id_5 + ")",bc_all|bc_blue;
+		announce "๐ " + getmonsterinfo($key_dropper_monster_id_6,MOB_NAME) + " (" + $key_dropper_monster_id_6 + ")",bc_all|bc_blue;
+		announce "๐ " + getmonsterinfo($key_dropper_monster_id_7,MOB_NAME) + " (" + $key_dropper_monster_id_7 + ")",bc_all|bc_blue;
+		announce "๐ " + getmonsterinfo($key_dropper_monster_id_8,MOB_NAME) + " (" + $key_dropper_monster_id_8 + ")",bc_all|bc_blue;
+		announce "๐ " + getmonsterinfo($key_dropper_monster_id_9,MOB_NAME) + " (" + $key_dropper_monster_id_9 + ")",bc_all|bc_blue;
+		announce "๐ " + getmonsterinfo($key_dropper_monster_id_10,MOB_NAME) + " (" + $key_dropper_monster_id_10 + ")",bc_all|bc_blue;
+		announce "หากต้องการตรวจสอบพิมพ์ @mi เลข",bc_all;
+	}
+	
+	return;
+	
+OnMinute00:
+OnMinute30:
+	callsub L_Assign,1;
+	
+OnInit:
+	callsub L_Assign,0;
+	end;
+}
+
+prontera,148,200,5	script	หา THE BOX KEY	973,{
+	mes "ขณะนี้ " + getitemname(40017) + " จะ Drop มากขึ้นกับ Monster ตามนี้";
+	mes "๐ ^3629FF" + getmonsterinfo($key_dropper_monster_id_1,MOB_NAME) + " (" + $key_dropper_monster_id_1 + ")";
+	mes "๐ ^3629FF" + getmonsterinfo($key_dropper_monster_id_2,MOB_NAME) + " (" + $key_dropper_monster_id_2 + ")";
+	mes "๐ ^3629FF" + getmonsterinfo($key_dropper_monster_id_3,MOB_NAME) + " (" + $key_dropper_monster_id_3 + ")";
+	mes "๐ ^3629FF" + getmonsterinfo($key_dropper_monster_id_4,MOB_NAME) + " (" + $key_dropper_monster_id_4 + ")";
+	mes "๐ ^3629FF" + getmonsterinfo($key_dropper_monster_id_5,MOB_NAME) + " (" + $key_dropper_monster_id_5 + ")";
+	mes "๐ ^3629FF" + getmonsterinfo($key_dropper_monster_id_6,MOB_NAME) + " (" + $key_dropper_monster_id_6 + ")";
+	mes "๐ ^3629FF" + getmonsterinfo($key_dropper_monster_id_7,MOB_NAME) + " (" + $key_dropper_monster_id_7 + ")";
+	mes "๐ ^3629FF" + getmonsterinfo($key_dropper_monster_id_8,MOB_NAME) + " (" + $key_dropper_monster_id_8 + ")";
+	mes "๐ ^3629FF" + getmonsterinfo($key_dropper_monster_id_9,MOB_NAME) + " (" + $key_dropper_monster_id_9 + ")";
+	mes "๐ ^3629FF" + getmonsterinfo($key_dropper_monster_id_10,MOB_NAME) + " (" + $key_dropper_monster_id_10 + ")";
+	mes "หากต้องการตรวจสอบพิมพ์ @mi เลข";
+	.@s = select(getmonsterinfo($key_dropper_monster_id_1,MOB_NAME) + " อยู่ Map ไหน?"
+	+ ":" + getmonsterinfo($key_dropper_monster_id_2,MOB_NAME) + " อยู่ Map ไหน?"
+	+ ":" + getmonsterinfo($key_dropper_monster_id_3,MOB_NAME) + " อยู่ Map ไหน?"
+	+ ":" + getmonsterinfo($key_dropper_monster_id_4,MOB_NAME) + " อยู่ Map ไหน?"
+	+ ":" + getmonsterinfo($key_dropper_monster_id_5,MOB_NAME) + " อยู่ Map ไหน?"
+	+ ":" + getmonsterinfo($key_dropper_monster_id_6,MOB_NAME) + " อยู่ Map ไหน?"
+	+ ":" + getmonsterinfo($key_dropper_monster_id_7,MOB_NAME) + " อยู่ Map ไหน?"
+	+ ":" + getmonsterinfo($key_dropper_monster_id_8,MOB_NAME) + " อยู่ Map ไหน?"
+	+ ":" + getmonsterinfo($key_dropper_monster_id_9,MOB_NAME) + " อยู่ Map ไหน?"
+	+ ":" + getmonsterinfo($key_dropper_monster_id_10,MOB_NAME) + " อยู่ Map ไหน?");
+	atcommand "@whereis " + getd("$key_dropper_monster_id_" + .@s);
+	close;
+	
+OnInit:
+	waitingroom strnpcinfo(0),0;
+	end;
+}

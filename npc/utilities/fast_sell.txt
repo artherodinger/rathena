@@ -17,7 +17,7 @@ prontera,125,250,3	script	ขายของเร็ว	10389,{
 		if(.@sell_price){
 			if(.@oc_rate)
 			.@sell_price += (.@sell_price * .@oc_rate) / 100;
-			.@sum += .@sell_price;
+			.@sum += .@sell_price * @inventorylist_amount[.@i];
 			Zeny += .@sell_price;
 		}
 		delitem @inventorylist_id[.@i],@inventorylist_amount[.@i];
@@ -30,3 +30,5 @@ OnInit:
 	waitingroom "ขายของเร็ว",0;
 	end;
 }
+
+prontera,138,172,5	duplicate(ขายของเร็ว)	ขายของเร็ว#1	10389
