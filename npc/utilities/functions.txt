@@ -9,3 +9,26 @@ function	script	F_DropMultiplier	{
 	sc_start SC_ITEMBOOST,86400000,100 * drop_multiplier;
 	return;
 }
+
+function	script	F_PercentBase10000	{
+	.@v = getarg(0,0);
+	if(.@v < 10)
+	return "0.0" + .@v + "%";
+	else if(.@v < 100)
+	return "0." + .@v + "%";
+	else
+	return (.@v / 100) + "%";
+	return;
+}
+
+function	script	F_IsDummyMonster	{
+	.@v = getarg(0,0);
+	if((.@v == 2408)
+			|| (.@v == 2409)
+			|| (.@v == 2410)
+			|| (.@v == 2411)
+			|| (.@v == 2413))
+	return true;
+	else
+	return false;
+}
