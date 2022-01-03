@@ -4156,6 +4156,8 @@ ACMD_FUNC(reload) {
 		battle_config_read(BATTLE_CONF_FILENAME);
 
 		if( prev_config.item_rate_mvp          != battle_config.item_rate_mvp
+		||  prev_config.item_rate_mvp_refine   != battle_config.item_rate_mvp_refine
+		||  prev_config.item_rate_the_box_key  != battle_config.item_rate_the_box_key
 		||  prev_config.item_rate_common       != battle_config.item_rate_common
 		||  prev_config.item_rate_common_boss  != battle_config.item_rate_common_boss
 		||  prev_config.item_rate_common_mvp   != battle_config.item_rate_common_mvp

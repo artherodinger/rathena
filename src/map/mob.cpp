@@ -2878,7 +2878,8 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 			if (md->get_bosstype() == BOSSTYPE_MVP) {
 				drop_rate = 0;
 				drop_modifier = 100;
-				drop_rate = mob_getdroprate(src, md->db, 1, drop_modifier); // 0.01%
+				drop_rate = mob_getdroprate(src, md->db, battle_config.item_rate_mvp_refine, drop_modifier);
+				//ShowDebug("MvP Refine drop_rate:%d\n", drop_rate);
 				if (rnd() % 10000 < drop_rate)
 				{
 					struct s_mob_drop mobdrop;
@@ -2891,7 +2892,8 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 			// THE BOX KEY [Start]
 			drop_rate = 0;
 			drop_modifier = 100;
-			drop_rate = mob_getdroprate(src, md->db, 1, drop_modifier); // 0.01%
+			drop_rate = mob_getdroprate(src, md->db, battle_config.item_rate_the_box_key, drop_modifier);
+			//ShowDebug("THE BOX KEY drop_rate:%d\n", drop_rate);
 			if (rnd() % 10000 < drop_rate)
 			{
 				struct s_mob_drop mobdrop;

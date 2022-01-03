@@ -16,6 +16,9 @@
 	
 	// Assign monster
 	.is_force = getarg(0);
+	
+	freeloop(1);
+	
 	if(!$key_dropper_monster_id_1 || .is_force){
 		$key_dropper_monster_id_1 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
 		while(!isspawn($key_dropper_monster_id_1) || F_IsDummyMonster($key_dropper_monster_id_1))
@@ -66,6 +69,8 @@
 		while(!isspawn($key_dropper_monster_id_10) || F_IsDummyMonster($key_dropper_monster_id_1) || ($key_dropper_monster_id_10 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_10 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_10 == $key_dropper_monster_id_3) || ($key_dropper_monster_id_10 == $key_dropper_monster_id_4))
 		$key_dropper_monster_id_10 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
 	}
+	
+	freeloop(0);
 	
 	// Add additional THE BOX KEY drop (0.1 ~ 1%, Steal protected)
 	$key_dropper_rate_1 = rand(10,100);
