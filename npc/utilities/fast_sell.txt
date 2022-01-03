@@ -6,24 +6,36 @@ prontera,125,250,3	script	ขายของเร็ว	10389,{
 	close;
 	
 	L_FastSell:
+	// Check OC skill
 	if(getskilllv(38) > 0)
 	.@oc_rate = 4 + (2 * getskilllv(38));
+
 	getinventorylist;
+	
 	freeloop(1);
 	for(.@i = @inventorylist_count - 1; .@i >= 0; .@i--){
+		// Equipped or Favourite will skip
 		if(@inventorylist_equip[.@i] || @inventorylist_favorite[.@i])
 		continue;
+		
+		// Get sell price
 		.@sell_price = getiteminfo(@inventorylist_id[.@i],ITEMINFO_SELL);
+		
 		if(.@sell_price){
+			// OC
 			if(.@oc_rate)
 			.@sell_price += (.@sell_price * .@oc_rate) / 100;
+			
 			.@sum += .@sell_price * @inventorylist_amount[.@i];
-			Zeny += .@sell_price;
 		}
+		
 		delitem @inventorylist_id[.@i],@inventorylist_amount[.@i];
 	}
 	freeloop(0);
+	
 	message strcharinfo(0),"ได้รับ " + .@sum + "z";
+	Zeny += .@sum;
+	
 	close;
 	
 OnInit:
