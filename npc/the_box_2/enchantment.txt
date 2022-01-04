@@ -101,13 +101,15 @@ prontera,125,261,3	script	Enchantment	10111,{
 	close;
 
 	L_Select:
+	close2;
 	callshop "EnchantmentSelector",2;
 	npcshopattach "EnchantmentSelector";
 	end;
 	
 OnSellItem:
 	for (.@i = 0; .@i < getarraysize(@sold_nameid); .@i++){
-		if(getiteminfo(@sold_nameid[.@i],ITEMINFO_TYPE) == 6 && getiteminfo(@sold_nameid[.@i],ITEMINFO_SUBTYPE) == 1){
+		if((getiteminfo(@sold_nameid[.@i],ITEMINFO_TYPE) == 6)
+			&& ((getiteminfo(@sold_nameid[.@i],ITEMINFO_SUBTYPE) == 1) || !compare(getitemname(@sold_nameid[.@i])," Card"))){
 			mes "คุณต้องการจะฝัง: " + getitemname(@sold_nameid[.@i]);
 			target_enchantment = @sold_nameid[.@i];
 			close;

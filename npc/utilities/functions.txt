@@ -23,11 +23,12 @@ function	script	F_PercentBase10000	{
 
 function	script	F_IsDummyMonster	{
 	.@v = getarg(0,0);
-	if((.@v == 2408)
-			|| (.@v == 2409)
-			|| (.@v == 2410)
-			|| (.@v == 2411)
-			|| (.@v == 2413))
+	if((.@v == 2408)			// Dummy
+			|| (.@v == 2409)	// Dummy
+			|| (.@v == 2410)	// Dummy
+			|| (.@v == 2411)	// Dummy
+			|| (.@v == 2413)	// Dummy
+			|| (.@v == 2401))	// Poring Initial Land Map
 	return true;
 	else
 	return false;
