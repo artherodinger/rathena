@@ -1,9 +1,9 @@
--	script	GlobalSpawnedBossId	-1,{
+-	script	GlobalBossId	-1,{
 	end;
 	
 OnInit:
-	if($global_boss_id_version != 1){
-		$global_boss_id_version = 1;
+	if($global_boss_id_version != 2){
+		$global_boss_id_version = 2;
 		
 		deletearray $all_boss_ids[0],getarraysize($all_boss_ids);
 

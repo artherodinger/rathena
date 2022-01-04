@@ -26,47 +26,92 @@
 	}
 	if(!$key_dropper_monster_id_2 || .is_force){
 		$key_dropper_monster_id_2 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
-		while(!isspawn($key_dropper_monster_id_2) || F_IsDummyMonster($key_dropper_monster_id_1) || ($key_dropper_monster_id_2 == $key_dropper_monster_id_1))
+		while(!isspawn($key_dropper_monster_id_2) || F_IsDummyMonster($key_dropper_monster_id_2)
+		|| ($key_dropper_monster_id_2 == $key_dropper_monster_id_1))
 		$key_dropper_monster_id_2 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
 	}
 	if(!$key_dropper_monster_id_3 || .is_force){
 		$key_dropper_monster_id_3 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
-		while(!isspawn($key_dropper_monster_id_3) || F_IsDummyMonster($key_dropper_monster_id_1) || ($key_dropper_monster_id_3 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_3 == $key_dropper_monster_id_2))
+		while(!isspawn($key_dropper_monster_id_3) || F_IsDummyMonster($key_dropper_monster_id_3)
+		|| ($key_dropper_monster_id_3 == $key_dropper_monster_id_1)
+		|| ($key_dropper_monster_id_3 == $key_dropper_monster_id_2))
 		$key_dropper_monster_id_3 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
 	}
 	if(!$key_dropper_monster_id_4 || .is_force){
 		$key_dropper_monster_id_4 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
-		while(!isspawn($key_dropper_monster_id_4) || F_IsDummyMonster($key_dropper_monster_id_1) || ($key_dropper_monster_id_4 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_4 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_4 == $key_dropper_monster_id_3))
+		while(!isspawn($key_dropper_monster_id_4) || F_IsDummyMonster($key_dropper_monster_id_4)
+		|| ($key_dropper_monster_id_4 == $key_dropper_monster_id_1)
+		|| ($key_dropper_monster_id_4 == $key_dropper_monster_id_2)
+		|| ($key_dropper_monster_id_4 == $key_dropper_monster_id_3))
 		$key_dropper_monster_id_4 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
 	}
 	if(!$key_dropper_monster_id_5 || .is_force){
 		$key_dropper_monster_id_5 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
-		while(!isspawn($key_dropper_monster_id_5) || F_IsDummyMonster($key_dropper_monster_id_1) || ($key_dropper_monster_id_5 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_5 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_5 == $key_dropper_monster_id_3) || ($key_dropper_monster_id_5 == $key_dropper_monster_id_4))
+		while(!isspawn($key_dropper_monster_id_5) || F_IsDummyMonster($key_dropper_monster_id_5)
+		|| ($key_dropper_monster_id_5 == $key_dropper_monster_id_1)
+		|| ($key_dropper_monster_id_5 == $key_dropper_monster_id_2)
+		|| ($key_dropper_monster_id_5 == $key_dropper_monster_id_3)
+		|| ($key_dropper_monster_id_5 == $key_dropper_monster_id_4))
 		$key_dropper_monster_id_5 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
 	}
 	if(!$key_dropper_monster_id_6 || .is_force){
 		$key_dropper_monster_id_6 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
-		while(!isspawn($key_dropper_monster_id_6) || F_IsDummyMonster($key_dropper_monster_id_1) || ($key_dropper_monster_id_6 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_6 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_6 == $key_dropper_monster_id_3) || ($key_dropper_monster_id_6 == $key_dropper_monster_id_4))
+		while(!isspawn($key_dropper_monster_id_6) || F_IsDummyMonster($key_dropper_monster_id_6)
+		|| ($key_dropper_monster_id_6 == $key_dropper_monster_id_1)
+		|| ($key_dropper_monster_id_6 == $key_dropper_monster_id_2)
+		|| ($key_dropper_monster_id_6 == $key_dropper_monster_id_3)
+		|| ($key_dropper_monster_id_6 == $key_dropper_monster_id_4)
+		|| ($key_dropper_monster_id_6 == $key_dropper_monster_id_5))
 		$key_dropper_monster_id_6 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
 	}
 	if(!$key_dropper_monster_id_7 || .is_force){
 		$key_dropper_monster_id_7 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
-		while(!isspawn($key_dropper_monster_id_7) || F_IsDummyMonster($key_dropper_monster_id_1) || ($key_dropper_monster_id_7 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_7 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_7 == $key_dropper_monster_id_3) || ($key_dropper_monster_id_7 == $key_dropper_monster_id_4))
+		while(!isspawn($key_dropper_monster_id_7) || F_IsDummyMonster($key_dropper_monster_id_7)
+		|| ($key_dropper_monster_id_7 == $key_dropper_monster_id_1)
+		|| ($key_dropper_monster_id_7 == $key_dropper_monster_id_2)
+		|| ($key_dropper_monster_id_7 == $key_dropper_monster_id_3)
+		|| ($key_dropper_monster_id_7 == $key_dropper_monster_id_4)
+		|| ($key_dropper_monster_id_7 == $key_dropper_monster_id_5)
+		|| ($key_dropper_monster_id_7 == $key_dropper_monster_id_6))
 		$key_dropper_monster_id_7 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
 	}
 	if(!$key_dropper_monster_id_8 || .is_force){
 		$key_dropper_monster_id_8 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
-		while(!isspawn($key_dropper_monster_id_8) || F_IsDummyMonster($key_dropper_monster_id_1) || ($key_dropper_monster_id_8 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_8 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_8 == $key_dropper_monster_id_3) || ($key_dropper_monster_id_8 == $key_dropper_monster_id_4))
+		while(!isspawn($key_dropper_monster_id_8) || F_IsDummyMonster($key_dropper_monster_id_8)
+		|| ($key_dropper_monster_id_8 == $key_dropper_monster_id_1)
+		|| ($key_dropper_monster_id_8 == $key_dropper_monster_id_2)
+		|| ($key_dropper_monster_id_8 == $key_dropper_monster_id_3)
+		|| ($key_dropper_monster_id_8 == $key_dropper_monster_id_4)
+		|| ($key_dropper_monster_id_8 == $key_dropper_monster_id_5)
+		|| ($key_dropper_monster_id_8 == $key_dropper_monster_id_6)
+		|| ($key_dropper_monster_id_8 == $key_dropper_monster_id_7))
 		$key_dropper_monster_id_8 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
 	}
 	if(!$key_dropper_monster_id_9 || .is_force){
 		$key_dropper_monster_id_9 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
-		while(!isspawn($key_dropper_monster_id_9) || F_IsDummyMonster($key_dropper_monster_id_1) || ($key_dropper_monster_id_9 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_9 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_9 == $key_dropper_monster_id_3) || ($key_dropper_monster_id_9 == $key_dropper_monster_id_4))
+		while(!isspawn($key_dropper_monster_id_9) || F_IsDummyMonster($key_dropper_monster_id_9)
+		|| ($key_dropper_monster_id_9 == $key_dropper_monster_id_1)
+		|| ($key_dropper_monster_id_9 == $key_dropper_monster_id_2)
+		|| ($key_dropper_monster_id_9 == $key_dropper_monster_id_3)
+		|| ($key_dropper_monster_id_9 == $key_dropper_monster_id_4)
+		|| ($key_dropper_monster_id_9 == $key_dropper_monster_id_5)
+		|| ($key_dropper_monster_id_9 == $key_dropper_monster_id_6)
+		|| ($key_dropper_monster_id_9 == $key_dropper_monster_id_7)
+		|| ($key_dropper_monster_id_9 == $key_dropper_monster_id_8))
 		$key_dropper_monster_id_9 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
 	}
 	if(!$key_dropper_monster_id_10 || .is_force){
 		$key_dropper_monster_id_10 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
-		while(!isspawn($key_dropper_monster_id_10) || F_IsDummyMonster($key_dropper_monster_id_1) || ($key_dropper_monster_id_10 == $key_dropper_monster_id_1) || ($key_dropper_monster_id_10 == $key_dropper_monster_id_2) || ($key_dropper_monster_id_10 == $key_dropper_monster_id_3) || ($key_dropper_monster_id_10 == $key_dropper_monster_id_4))
+		while(!isspawn($key_dropper_monster_id_10) || F_IsDummyMonster($key_dropper_monster_id_10)
+		|| ($key_dropper_monster_id_10 == $key_dropper_monster_id_1)
+		|| ($key_dropper_monster_id_10 == $key_dropper_monster_id_2)
+		|| ($key_dropper_monster_id_10 == $key_dropper_monster_id_3)
+		|| ($key_dropper_monster_id_10 == $key_dropper_monster_id_4)
+		|| ($key_dropper_monster_id_10 == $key_dropper_monster_id_5)
+		|| ($key_dropper_monster_id_10 == $key_dropper_monster_id_6)
+		|| ($key_dropper_monster_id_10 == $key_dropper_monster_id_7)
+		|| ($key_dropper_monster_id_10 == $key_dropper_monster_id_8)
+		|| ($key_dropper_monster_id_10 == $key_dropper_monster_id_9))
 		$key_dropper_monster_id_10 = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
 	}
 	
@@ -111,7 +156,7 @@
 	}
 	return;
 	
-//OnTest:
+	//OnTest:
 OnMinute00:
 OnMinute30:
 	callsub L_Assign,1;
@@ -123,7 +168,7 @@ OnInit:
 	end;
 }
 
-prontera,148,200,5	script	หา THE BOX KEY	973,{
+prontera,148,200,5	script	หา THE BOX KEY	10007,{
 	mes "ขณะนี้ " + getitemname(40017) + " จะ Drop มากขึ้นกับ Monster ตามนี้";
 	mes "๐ ^3629FF" + getmonsterinfo($key_dropper_monster_id_1,MOB_NAME) + " (" + $key_dropper_monster_id_1 + ") (" + F_PercentBase10000($key_dropper_rate_1) + ")";
 	mes "๐ ^3629FF" + getmonsterinfo($key_dropper_monster_id_2,MOB_NAME) + " (" + $key_dropper_monster_id_2 + ") (" + F_PercentBase10000($key_dropper_rate_2) + ")";
