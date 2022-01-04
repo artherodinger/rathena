@@ -101,6 +101,7 @@ prontera,125,261,3	script	Enchantment	10111,{
 	close;
 
 	L_Select:
+	mes "โปรดลาก Enchantment ที่ต้องการ";
 	close2;
 	callshop "EnchantmentSelector",2;
 	npcshopattach "EnchantmentSelector";
