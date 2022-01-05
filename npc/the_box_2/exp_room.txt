@@ -65,7 +65,7 @@ OnBossDead:
 OnInit:
 	.map_name$ = "tra_fild";
 	
-	.exp_bonus = 50000000;
+	.exp_bonus = 190000000;
 	
 	.req_zeny = 1900000;
 	.req_item_id = 40017;
