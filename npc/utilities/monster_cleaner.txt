@@ -2,7 +2,6 @@
 	end;
 	
 OnMinute30:
-
 	// Instance
 	killmonsterall "1@ge_st";
 	killmonsterall "1@gef";
@@ -52,5 +51,9 @@ OnMinute30:
 	killmonsterall "1@sthd";
 	killmonsterall "1@slw";
 	killmonsterall "1@lhz";
+	
+	// Boss Room
+	donpcevent "Boss EXP::OnCleanUp";
+	donpcevent "Boss Equipment::OnCleanUp";
 	end;
 }
