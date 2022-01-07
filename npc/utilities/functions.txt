@@ -10,14 +10,26 @@ function	script	F_DropMultiplier	{
 	return;
 }
 
+function	script	F_THE_BOX_KEY_Quest_Add_Drop	{
+	if(key_dropper_monster_id
+			&& (the_box_key_quest_duration - gettimetick(2) > 0)){
+		bonus_script "bonus3 bAddMonsterIdDropItem,40018," + key_dropper_monster_id + "," + the_box_key_quest_drop_rate + ";",(the_box_key_quest_duration - gettimetick(2)),8,1;
+	}
+	return;
+}
+
 function	script	F_PercentBase10000	{
 	.@v = getarg(0,0);
 	if(.@v < 10)
 	return "0.0" + .@v + "%";
 	else if(.@v < 100)
 	return "0." + .@v + "%";
-	else
-	return (.@v / 100) + "%";
+	else{
+		.@percent = (.@v / 100);
+		.@decimal = (.@v % 100) / 10;
+		return .@percent + "." + .@decimal + "%";
+	}
+	
 	return;
 }
 

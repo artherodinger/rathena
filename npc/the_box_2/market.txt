@@ -42,7 +42,8 @@ function	script	F_EnchantmentMarketContain	{
 }
 
 prontera,108,230,5	script	วิธีใช้กล่อง	837,{
-	mes "๐ ใช้ ^3629FF" + getitemname(.item_id) + "^000000 สามารถหาได้จาก Monster ทุกตัว (^3629FFโอกาส 0.01% เพิ่ม Drop ได้ปกติ^000000)";
+	mes "๐ ใช้ ^3629FF" + getitemname(.item_id) + "^000000 สามารถหาได้จาก Monster ทุกตัว (^3629FFโอกาส 0.03% เพิ่ม Drop ได้ปกติ^000000)";
+	mes "๐ ใช้ ^3629FF" + getitemname(.item_id_quest) + "^000000 สามารถ\nหาได้จาก Quest (^FF2929ใช้ได้แค่กล่อง 1 ดอก^000000)";
 	mes "๐ รายการ Item จะ^3629FFเปลี่ยนทุก ๆ 10 นาที";
 	mes "๐ ^FF2929ระวัง Item เต็มกระเป๋า";
 	menu "ดูของในกล่อง THE BOX",L_THE_BOX,
@@ -235,6 +236,7 @@ OnMinute50:
 	
 OnInit:
 	.item_id = 40017;
+	.item_id_quest = 40018;
 
 	waitingroom strnpcinfo(0),0;
 	
@@ -250,7 +252,12 @@ OnInit:
 }
 
 prontera,108,236,5	script	THE BOX	10249,{
-	if(countitem(.item_id) < .amount)
+	if(countitem(.item_id_quest) >= .amount){
+		delitem .item_id_quest,.amount;
+		getitem $market[rand(0,(getarraysize($market) - 1))],1;
+		end;
+	}
+	else if(countitem(.item_id) < .amount)
 	message strcharinfo(0),"คุณไม่มี " + .amount + " " + getitemname(.item_id);
 	else{
 		delitem .item_id,.amount;
@@ -260,6 +267,7 @@ prontera,108,236,5	script	THE BOX	10249,{
 	
 OnInit:
 	.item_id = 40017;
+	.item_id_quest = 40018;
 	.amount = 1;
 	waitingroom "("+ .amount +" ดอก)" + strnpcinfo(0),0;
 	end;

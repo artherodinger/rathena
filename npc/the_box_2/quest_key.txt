@@ -1,0 +1,86 @@
+prontera,148,207,5	script	หา THE BOX KEY (Quest)	10007,{
+	mes "๐ เมื่อกดล่าจะให้ล่า Monster\nใน^3629FFระดับ Level ใกล้เคียงกับคุณ";
+	mes "๐ สามารถล่าได้ ^3629FF30 นาที ต่อการกดล่า";
+	mes "๐ หากต้องการ ^3629FFเปลี่ยนเป้าหมาย ^FF2929จะต้องรอ 5 นาทีหลังการกดล่า";
+	mes "๐ โอกาสที่จะได้ ^3629FF" + getitemname(.reward_item_id) + "^000000 ต่อการกำจัด Monster คือ ^3629FF" + F_PercentBase10000(.min_chance) + "~" + F_PercentBase10000(.max_chance) + "^000000 ต่อการกดล่า (เพิ่ม Drop ไม่ได้)";
+	next;
+	if(key_dropper_monster_id){
+		mes "ล่าสุด คุณต้องล่า \n^3629FF" + getmonsterinfo(key_dropper_monster_id,MOB_NAME) + " (" + key_dropper_monster_id + ")^000000 \nมีโอกาส ^3629FF" + F_PercentBase10000(the_box_key_quest_drop_rate) + "^000000 ที่จะได้รับ \n^3629FF" + getitemname(.reward_item_id);
+		
+		mes "มีเวลาเหลือ: ^FF2929" + (the_box_key_quest_duration - gettimetick(2)) + " วินาที";
+		if (the_box_key_quest_delay > gettimetick(2)){
+			next;
+			mes "โปรดรอ ^FF2929" + (the_box_key_quest_delay - gettimetick(2)) + " วินาที^000000 หากต้องการ^3629FFเปลี่ยนเป้าหมาย";
+			close;
+		}
+		next;
+		menu "ล่าตัวอื่น",-;
+	}
+	else
+	menu "ล่า",-;
+	
+	// Get tier
+	
+	if(BaseLevel >= .tier_7_lv)
+	.@tier = 7; // 150+
+	else if(BaseLevel >= .tier_6_lv)
+	.@tier = 6; // 120~149
+	else if(BaseLevel >= .tier_5_lv)
+	.@tier = 5; // 100~119
+	else if(BaseLevel >= .tier_4_lv)
+	.@tier = 4; // 80~99
+	else if(BaseLevel >= .tier_3_lv)
+	.@tier = 3; // 60~79
+	else if(BaseLevel >= .tier_2_lv)
+	.@tier = 2; // 30~59
+	else if(BaseLevel >= .tier_1_lv)
+	.@tier = 2; // 10~29
+	else
+	.@tier = 1; // 1~9
+
+	freeloop(1);
+	key_dropper_monster_id = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+	.@monster_level = getmonsterinfo(key_dropper_monster_id,MOB_LV);
+	while(!isspawn(key_dropper_monster_id)
+	|| ((.@tier == 1) && ((.@monster_level <= 0) || (.@monster_level > .tier_1_lv)))
+	|| ((.@tier == 2) && ((.@monster_level < .tier_1_lv) || (.@monster_level > .tier_2_lv)))
+	|| ((.@tier == 3) && ((.@monster_level < .tier_2_lv) || (.@monster_level > .tier_3_lv)))
+	|| ((.@tier == 4) && ((.@monster_level < .tier_3_lv) || (.@monster_level > .tier_4_lv)))
+	|| ((.@tier == 5) && ((.@monster_level < .tier_4_lv) || (.@monster_level > .tier_5_lv)))
+	|| ((.@tier == 6) && ((.@monster_level < .tier_5_lv) || (.@monster_level > .tier_6_lv)))
+	|| ((.@tier == 7) && (.@monster_level < .tier_7_lv))){
+		key_dropper_monster_id = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+		.@monster_level = getmonsterinfo(key_dropper_monster_id,MOB_LV);
+	}
+	freeloop(0);
+	
+	// Chance
+	the_box_key_quest_drop_rate = rand(.min_chance,.max_chance);
+	
+	// Add now
+	bonus_script_clear 1;
+	
+	F_THE_BOX_KEY_Quest_Add_Drop();
+	
+	mes "คุณต้องล่า " + getmonsterinfo(key_dropper_monster_id,MOB_NAME) + " (" + key_dropper_monster_id + ") มีโอกาส " + F_PercentBase10000(the_box_key_quest_drop_rate) + " ที่จะได้รับ " + getitemname(.reward_item_id);
+	
+	the_box_key_quest_delay = gettimetick(2) + .second_delay;
+	the_box_key_quest_duration = gettimetick(2) + .second_duration;
+	close;
+	
+OnInit:
+	.tier_1_lv = 10;
+	.tier_2_lv = 40;
+	.tier_3_lv = 60;
+	.tier_4_lv = 80;
+	.tier_5_lv = 100;
+	.tier_6_lv = 120;
+	.tier_7_lv = 150;
+	.min_chance = 100;
+	.max_chance = 250;
+	.reward_item_id = 40018;
+	.second_duration = 1800;
+	.second_delay = 300;
+	waitingroom strnpcinfo(0),0;
+	end;
+}
