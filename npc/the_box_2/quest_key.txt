@@ -13,7 +13,7 @@ prontera,148,207,5	script	หา THE BOX KEY (Quest)	10007,{
 			if (the_box_key_quest_delay > gettimetick(2)){
 				next;
 				mes "โปรดรอ ^FF2929" + (the_box_key_quest_delay - gettimetick(2)) + " วินาที^000000 หากต้องการ^3629FFเปลี่ยนเป้าหมาย";
-				//close;
+				close;
 			}
 			next;
 			menu "ล่าตัวอื่น",-;
