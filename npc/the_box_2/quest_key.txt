@@ -2,19 +2,24 @@ prontera,148,207,5	script	หา THE BOX KEY (Quest)	10007,{
 	mes "๐ เมื่อกดล่าจะให้ล่า Monster\nใน^3629FFระดับ Level ใกล้เคียงกับคุณ";
 	mes "๐ สามารถล่าได้ ^3629FF30 นาที ต่อการกดล่า";
 	mes "๐ หากต้องการ ^3629FFเปลี่ยนเป้าหมาย ^FF2929จะต้องรอ 5 นาทีหลังการกดล่า";
-	mes "๐ โอกาสที่จะได้ ^3629FF" + getitemname(.reward_item_id) + "^000000 ต่อการกำจัด Monster คือ ^3629FF" + F_PercentBase10000(.min_chance) + "~" + F_PercentBase10000(.max_chance) + "^000000 ต่อการกดล่า (เพิ่ม Drop ไม่ได้)";
+	mes "๐ โอกาสที่จะได้ ^3629FF" + getitemname(.reward_item_id) + "^000000 ต่อการกำจัด Monster คือ ^3629FF" + F_PercentBase10000(.min_chance) + "~" + F_PercentBase10000(.max_chance) + "^000000 ต่อการกดล่า (^FF2929เพิ่ม Drop ไม่ได้^000000)";
 	next;
 	if(key_dropper_monster_id){
-		mes "ล่าสุด คุณต้องล่า \n^3629FF" + getmonsterinfo(key_dropper_monster_id,MOB_NAME) + " (" + key_dropper_monster_id + ")^000000 \nมีโอกาส ^3629FF" + F_PercentBase10000(the_box_key_quest_drop_rate) + "^000000 ที่จะได้รับ \n^3629FF" + getitemname(.reward_item_id);
-		
-		mes "มีเวลาเหลือ: ^FF2929" + (the_box_key_quest_duration - gettimetick(2)) + " วินาที";
-		if (the_box_key_quest_delay > gettimetick(2)){
+		.@time_left = (the_box_key_quest_duration - gettimetick(2));
+		if(.@time_left > 0){
+			atcommand "@whereis " + key_dropper_monster_id;
+			mes "ล่าสุด คุณต้องล่า \n^3629FF" + getmonsterinfo(key_dropper_monster_id,MOB_NAME) + " (" + key_dropper_monster_id + ")^000000 (^FF2929Level " + getmonsterinfo(key_dropper_monster_id,MOB_LV) + "^000000) \nมีโอกาส ^3629FF" + F_PercentBase10000(the_box_key_quest_drop_rate) + "^000000 ที่จะได้รับ \n^3629FF" + getitemname(.reward_item_id);
+			mes "มีเวลาเหลือ: ^FF2929" + (the_box_key_quest_duration - gettimetick(2)) + " วินาที";
+			if (the_box_key_quest_delay > gettimetick(2)){
+				next;
+				mes "โปรดรอ ^FF2929" + (the_box_key_quest_delay - gettimetick(2)) + " วินาที^000000 หากต้องการ^3629FFเปลี่ยนเป้าหมาย";
+				//close;
+			}
 			next;
-			mes "โปรดรอ ^FF2929" + (the_box_key_quest_delay - gettimetick(2)) + " วินาที^000000 หากต้องการ^3629FFเปลี่ยนเป้าหมาย";
-			close;
+			menu "ล่าตัวอื่น",-;
 		}
-		next;
-		menu "ล่าตัวอื่น",-;
+		else
+		menu "ล่า",-;
 	}
 	else
 	menu "ล่า",-;
@@ -42,6 +47,8 @@ prontera,148,207,5	script	หา THE BOX KEY (Quest)	10007,{
 	key_dropper_monster_id = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
 	.@monster_level = getmonsterinfo(key_dropper_monster_id,MOB_LV);
 	while(!isspawn(key_dropper_monster_id)
+	|| F_IsDummyMonster(key_dropper_monster_id)
+	|| (getmonsterinfo(key_dropper_monster_id,MOB_MVPEXP) > 0)
 	|| ((.@tier == 1) && ((.@monster_level <= 0) || (.@monster_level > .tier_1_lv)))
 	|| ((.@tier == 2) && ((.@monster_level < .tier_1_lv) || (.@monster_level > .tier_2_lv)))
 	|| ((.@tier == 3) && ((.@monster_level < .tier_2_lv) || (.@monster_level > .tier_3_lv)))
@@ -62,7 +69,8 @@ prontera,148,207,5	script	หา THE BOX KEY (Quest)	10007,{
 	
 	F_THE_BOX_KEY_Quest_Add_Drop();
 	
-	mes "คุณต้องล่า " + getmonsterinfo(key_dropper_monster_id,MOB_NAME) + " (" + key_dropper_monster_id + ") มีโอกาส " + F_PercentBase10000(the_box_key_quest_drop_rate) + " ที่จะได้รับ " + getitemname(.reward_item_id);
+	atcommand "@whereis " + key_dropper_monster_id;
+	mes "คุณต้องล่า \n^3629FF" + getmonsterinfo(key_dropper_monster_id,MOB_NAME) + " (" + key_dropper_monster_id + ")^000000 (^FF2929Level " + getmonsterinfo(key_dropper_monster_id,MOB_LV) + "^000000) \nมีโอกาส ^3629FF" + F_PercentBase10000(the_box_key_quest_drop_rate) + "^000000 ที่จะได้รับ \n^3629FF" + getitemname(.reward_item_id);
 	
 	the_box_key_quest_delay = gettimetick(2) + .second_delay;
 	the_box_key_quest_duration = gettimetick(2) + .second_duration;
