@@ -2,8 +2,8 @@
 	end;
 	
 OnInit:
-	if($global_item_id_version != 3){
-		$global_item_id_version = 3;
+	if($global_item_id_version != 4){
+		$global_item_id_version = 4;
 		
 		deletearray $weaponIds[0],getarraysize($weaponIds);
 		deletearray $equipmentIds[0],getarraysize($equipmentIds);
