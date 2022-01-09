@@ -25,7 +25,7 @@ OnBuyItem:
 	end;
 	
 OnInit:
-	.max_page = 175;
+	.max_page = 176;
 	waitingroom "ดู Item ทั้งหมด",0;
 	end;
 }
