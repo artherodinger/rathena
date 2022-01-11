@@ -8,7 +8,7 @@ prontera,120,263,3	script	Random Option	10127,{
 	
 	for(.@i = 1; .@i<getarraysize(.@indices); ++.@i) {
 		if(getequipisequiped(.@indices[.@i])) {
-			.@menu$ = .@menu$ + F_getpositionname(.@indices[.@i]) + "-[" + getequipname(.@indices[.@i]) + "]";
+			.@menu$ = .@menu$ + F_getpositionname(.@indices[.@i]);
 			.@equipped = 1;
 		}
 		.@menu$ = .@menu$ + ":";

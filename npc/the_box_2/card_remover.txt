@@ -5,7 +5,7 @@ prontera,95,254,5	script	¶Í´ Card	643,{
 	
 	for(.@i = 1; .@i<getarraysize(.@indices); ++.@i) {
 		if(getequipisequiped(.@indices[.@i])) {
-			.@menu$ = .@menu$ + F_getpositionname(.@indices[.@i]) + "-[" + getequipname(.@indices[.@i]) + "]";
+			.@menu$ = .@menu$ + F_getpositionname(.@indices[.@i]);
 			.@equipped = 1;
 		}
 		.@menu$ = .@menu$ + ":";
