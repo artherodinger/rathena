@@ -102,6 +102,7 @@ OnInit:
 	end;
 }
 
+lasa_sea	mapflag	monster_noteleport
 lasa_sea	mapflag	noteleport
 lasa_sea	mapflag	nowarp
 lasa_sea	mapflag	nowarpto
