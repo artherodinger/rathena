@@ -2,9 +2,31 @@
 	end;
 	
 OnPCDieEvent:
-	exp_multiplier = 0;
-	drop_multiplier = 0;
-	sc_end SC_EXPBOOST;
-	sc_end SC_ITEMBOOST;
+	// Check is World Boss Map
+	.@dead_map_name$ = strcharinfo(3);
+	
+	if(.@dead_map_name$ == "1@halo")
+	{
+		warp "prontera",156,191;
+		end;
+	}
+	else{
+		exp_multiplier = 0;
+		drop_multiplier = 0;
+		sc_end SC_EXPBOOST;
+		sc_end SC_ITEMBOOST;
+		
+		// Auto warp
+		if((.@dead_map_name$ == "bossnia_01")
+				|| (.@dead_map_name$ == "bossnia_02")
+				|| (.@dead_map_name$ == "bossnia_03")
+				|| (.@dead_map_name$ == "bossnia_04")
+				|| (.@dead_map_name$ == "tra_fild")
+				|| (.@dead_map_name$ == "lasa_sea")
+				|| (.@dead_map_name$ == "1@halo"))
+		warp "prontera",156,191;
+		end;
+	}
+	
 	end;
 }

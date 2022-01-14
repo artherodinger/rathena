@@ -102,6 +102,7 @@ int battle_calc_cardfix(int attack_type, struct block_list *src, struct block_li
 int64 battle_calc_damage(struct block_list *src,struct block_list *bl,struct Damage *d,int64 damage,uint16 skill_id,uint16 skill_lv);
 int64 battle_calc_gvg_damage(struct block_list *src,struct block_list *bl,int64 damage,uint16 skill_id,int flag);
 int64 battle_calc_bg_damage(struct block_list *src,struct block_list *bl,int64 damage,uint16 skill_id,int flag);
+int64 battle_calc_tb_damage(struct block_list *src,struct block_list *bl,int64 damage,uint16 skill_id,int flag);
 
 void battle_damage(struct block_list *src, struct block_list *target, int64 damage, t_tick delay, uint16 skill_lv, uint16 skill_id, enum damage_lv dmg_lv, unsigned short attack_type, bool additional_effects, t_tick tick, bool spdamage);
 int battle_delay_damage (t_tick tick, int amotion, struct block_list *src, struct block_list *target, int attack_type, uint16 skill_id, uint16 skill_lv, int64 damage, enum damage_lv dmg_lv, t_tick ddelay, bool additional_effects, bool spdamage);
@@ -296,6 +297,10 @@ struct Battle_Config
 	int pc_cloak_check_type;
 	int monster_cloak_check_type;
 	int estimation_type;
+	int tb_monster_damage_multiplier;
+	int tb_damage_rate;
+	int tb_flee_penalty;
+	int tb_flee2_penalty;
 	int gvg_monster_damage_multiplier;
 	int gvg_short_damage_rate;
 	int gvg_long_damage_rate;

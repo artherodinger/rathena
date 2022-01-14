@@ -20,14 +20,8 @@
 prontera,163,207,5	script	ห้อง Bossnia	10007,{
 	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 \nและ ^FF2929" + F_InsertComma(.req_item_amount) + " " + getitemname(.req_item_id) + "^000000 ในการเข้าห้อง";
 	mes "---";
-	mes "๐ ^FF2929ไม่สามารถ /memo ใน Map Bossnia ได้";
-	mes "๐ ^FF2929ไม่สามารถ Warp ไป Map Bossnia ด้วย Skill ได้";
-	mes "๐ ^FF2929หากออกเกมใน Map Bossnia จะถูกส่งกลับเมือง";
-	mes "๐ ^FF2929บอสทุกตัวใช้เวลา 1 นาที 30 วินาทีในการเกิดใหม่ (มีเพียง 4 ตัวที่ตายแล้วเกิดทันที)";
-	mes "๐ ^3629FFWhitesmith Howard";
-	mes "๐ ^3629FFBeelzebub";
-	mes "๐ ^3629FFValkyrie Randgris";
-	mes "๐ ^3629FFIfrit";
+	mes "๐ ^FF2929หากออกจากเกมจะกลับสู่เมืองหลัก^000000";
+	mes "๐ ^FF2929บอสทุกตัวใช้เวลา 1 นาที 30 วินาทีในการเกิดใหม่^000000";
 	next;
 	// Check Zeny
 	if (Zeny < .req_zeny) {
@@ -49,8 +43,15 @@ prontera,163,207,5	script	ห้อง Bossnia	10007,{
 	Zeny -= .req_zeny;
 	delitem .req_item_id,.req_item_amount;
 	specialeffect2 EF_MAXPOWER;
+	setpcblock PCBLOCK_ALL,true;
+	setpcblock PCBLOCK_MOVE,false;
+	addtimer 2000,strnpcinfo(3) + "::OnWarp";
 	warp "bossnia_0"+.@i,.@x,.@y;
 	close;
+	
+OnWarp:
+	setpcblock PCBLOCK_ALL,false;
+	end;
 	
 OnInit:
 	waitingroom strnpcinfo(0),0;
@@ -110,12 +111,12 @@ bossnia_01,0,0	monster	Phreeoni	1159,10,90000
 bossnia_01,0,0	monster	Golden Thief Bug	1086,10,90000
 bossnia_01,0,0	monster	Evil Snake Lord	1418,10,90000
 bossnia_01,0,0	monster	RSX-0806	1623,5,90000
-bossnia_01,0,0	monster	Assassin Cross Eremes	1647,1
-bossnia_01,137,118,1,1	monster	Whitesmith Howard	1648,1
-bossnia_01,122,195,1,1	monster	Beelzebub	1873,1
-bossnia_01,45,118,1,1	monster	Beelzebub	1873,1
-bossnia_01,196,122,1,1	monster	Valkyrie Randgris	1751,1
-bossnia_01,142,61,1,1	monster	Ifrit	1832,1
+bossnia_01,0,0	monster	Assassin Cross Eremes	1647,1,90000
+bossnia_01,0,0	monster	Whitesmith Howard	1648,1,90000
+bossnia_01,0,0	monster	Beelzebub	1873,1,90000
+bossnia_01,0,0	monster	Beelzebub	1873,1,90000
+bossnia_01,0,0	monster	Valkyrie Randgris	1751,1,90000
+bossnia_01,0,0	monster	Ifrit	1832,1,90000
 
 //----------------------------------------------------------------------------
 // bossnia_02 - Bossnia
@@ -154,12 +155,12 @@ bossnia_02,0,0	monster	Phreeoni	1159,10,90000
 bossnia_02,0,0	monster	Golden Thief Bug	1086,10,90000
 bossnia_02,0,0	monster	Evil Snake Lord	1418,10,90000
 bossnia_02,0,0	monster	RSX-0806	1623,5,90000
-bossnia_02,0,0	monster	Assassin Cross Eremes	1647,1
-bossnia_02,137,118,1,1	monster	Whitesmith Howard	1648,1
-bossnia_02,122,195,1,1	monster	Beelzebub	1873,1
-bossnia_02,45,118,1,1	monster	Beelzebub	1873,1
-bossnia_02,196,122,1,1	monster	Valkyrie Randgris	1751,1
-bossnia_02,142,61,1,1	monster	Ifrit	1832,1
+bossnia_02,0,0	monster	Assassin Cross Eremes	1647,1,90000
+bossnia_02,0,0	monster	Whitesmith Howard	1648,1,90000
+bossnia_02,0,0	monster	Beelzebub	1873,1,90000
+bossnia_02,0,0	monster	Beelzebub	1873,1,90000
+bossnia_02,0,0	monster	Valkyrie Randgris	1751,1,90000
+bossnia_02,0,0	monster	Ifrit	1832,1,90000
 
 //----------------------------------------------------------------------------
 // bossnia_03 - Bossnia
@@ -198,12 +199,12 @@ bossnia_03,0,0	monster	Phreeoni	1159,10,90000
 bossnia_03,0,0	monster	Golden Thief Bug	1086,10,90000
 bossnia_03,0,0	monster	Evil Snake Lord	1418,10,90000
 bossnia_03,0,0	monster	RSX-0806	1623,5,90000
-bossnia_03,0,0	monster	Assassin Cross Eremes	1647,1
-bossnia_03,137,118,1,1	monster	Whitesmith Howard	1648,1
-bossnia_03,122,195,1,1	monster	Beelzebub	1873,1
-bossnia_03,45,118,1,1	monster	Beelzebub	1873,1
-bossnia_03,196,122,1,1	monster	Valkyrie Randgris	1751,1
-bossnia_03,142,61,1,1	monster	Ifrit	1832,1
+bossnia_03,0,0	monster	Assassin Cross Eremes	1647,1,90000
+bossnia_03,0,0	monster	Whitesmith Howard	1648,1,90000
+bossnia_03,0,0	monster	Beelzebub	1873,1,90000
+bossnia_03,0,0	monster	Beelzebub	1873,1,90000
+bossnia_03,0,0	monster	Valkyrie Randgris	1751,1,90000
+bossnia_03,0,0	monster	Ifrit	1832,1,90000
 
 //----------------------------------------------------------------------------
 // bossnia_04 - Bossnia
@@ -242,9 +243,9 @@ bossnia_04,0,0	monster	Phreeoni	1159,10,90000
 bossnia_04,0,0	monster	Golden Thief Bug	1086,10,90000
 bossnia_04,0,0	monster	Evil Snake Lord	1418,10,90000
 bossnia_04,0,0	monster	RSX-0806	1623,5,90000
-bossnia_04,0,0	monster	Assassin Cross Eremes	1647,1
-bossnia_04,137,118,1,1	monster	Whitesmith Howard	1648,1
-bossnia_04,122,195,1,1	monster	Beelzebub	1873,1
-bossnia_04,45,118,1,1	monster	Beelzebub	1873,1
-bossnia_04,196,122,1,1	monster	Valkyrie Randgris	1751,1
-bossnia_04,142,61,1,1	monster	Ifrit	1832,1
+bossnia_04,0,0	monster	Assassin Cross Eremes	1647,1,90000
+bossnia_04,0,0	monster	Whitesmith Howard	1648,1,90000
+bossnia_04,0,0	monster	Beelzebub	1873,1,90000
+bossnia_04,0,0	monster	Beelzebub	1873,1,90000
+bossnia_04,0,0	monster	Valkyrie Randgris	1751,1,90000
+bossnia_04,0,0	monster	Ifrit	1832,1,90000

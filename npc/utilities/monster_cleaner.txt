@@ -55,5 +55,6 @@ OnMinute30:
 	// Boss Room
 	donpcevent "Boss EXP::OnCleanUp";
 	donpcevent "Boss Equipment::OnCleanUp";
+	donpcevent "World Boss::OnCleanUp";
 	end;
 }
