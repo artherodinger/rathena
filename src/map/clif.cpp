@@ -17491,8 +17491,7 @@ void clif_parse_ViewPlayerEquip(int fd, struct map_session_data* sd)
 	if (sd->bl.m != tsd->bl.m)
 		return;
 	else if( tsd->status.show_equip || pc_has_permission(sd, PC_PERM_VIEW_EQUIPMENT) )
-		clif_msg(sd, VIEW_EQUIP_FAIL);
-		//clif_viewequip_ack(sd, tsd);
+		clif_viewequip_ack(sd, tsd);
 	else
 		clif_msg(sd, VIEW_EQUIP_FAIL);
 }
