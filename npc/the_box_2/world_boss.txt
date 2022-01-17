@@ -119,7 +119,7 @@ OnInit:
 	.special_round_chance = 3;
 	.special_round_multiplier = 3;
 	
-	.req_zeny = 9000;
+	.req_zeny = 90000;
 	.req_item_id = 40017;
 	.req_item_amount = 1;
 	
