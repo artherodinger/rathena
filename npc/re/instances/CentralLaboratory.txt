@@ -46,6 +46,7 @@
 
 prontera,161,305,3	script	Central Laboratory	1623,{
 	.@index = select(.m$);
+	announce strcharinfo(0) + " เข้าห้อง Central Laboratory",bc_all;
 	warp .mapName$[.@index - 1],0,0;
 	end;
 	
@@ -54,3 +55,5 @@ OnInit:
 	setarray .mapName$[0],"1@lab";
 	end;
 }
+
+1@lab	mapflag	pvp

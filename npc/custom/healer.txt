@@ -19,6 +19,9 @@
 	if (@HD > gettimetick(2))
 	end;	
 
+	bonus_script_clear 1;
+	F_THE_BOX_KEY_Quest_Add_Drop();
+
 	repairall;
 
 	sc_start SC_INCREASEAGI,600000,10;

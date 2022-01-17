@@ -1,38 +1,44 @@
-prontera,155,204,8	script	World Boss	10007,{
-	//mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 \nและ ^FF2929" + F_InsertComma(.req_item_amount) + " " + getitemname(.req_item_id) + "^000000 ในการเข้าห้อง";
-	mes "๐ ^3629FFไม่มีโทษการตายใด ๆ^000000";
+prontera,155,204,8	script	Big Boss	10007,{
+	bonus_script_clear 1;
+	F_THE_BOX_KEY_Quest_Add_Drop();
+	
+	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 \nและ ^FF2929" + F_InsertComma(.req_item_amount) + " " + getitemname(.req_item_id) + "^000000 ในการเข้าห้อง";
 	mes "---";
 	mes "๐ ^FF2929ทุก ๆ xx:30น. จะทำการ Reset ห้องใหม่ โปรดระวังหากจะเล่นในช่วงเวลานี้^000000";
 	mes "---";
 	mes "โทษภายในห้อง";
-	//mes "๐ ^FF2929ไม่สามารถใช้ Skill 'Greed' ได้^000000";
+	mes "๐ ^FF2929เป็นห้อง PvP^000000";
+	mes "๐ ^FF2929ไม่สามารถใช้ Skill 'Greed' ได้^000000";
 	mes "๐ ^FF2929Damage จะเหลือ 10%^000000";
 	mes "๐ ^FF2929Flee จะเหลือ 10%^000000";
 	mes "๐ ^FF2929Perfect Dodge จะเหลือ 10%^000000";
+	mes "๐ ^FF2929Def จะเหลือ 50%^000000";
 	mes "๐ ^FF2929Monster จะโจมตีแรงขึ้น 100 เท่า^000000";
 	mes "๐ ^FF2929Monster จะมี HP " + F_InsertComma(.max_hp) + "^000000";
-	//mes "---";
-	//mes "รางวัล";
-	//mes "๐ ^3629FF" + getitemname(.reward_item_id) + " ประมาณ " + F_InsertComma(.reward_drop_amount * .reward_min_per_drop) + "~" + F_InsertComma(.reward_drop_amount * .reward_max_per_drop) + " ชิ้น^000000";
-	//mes "๐ ^3629FF" + getitemname(.reward_item_id2) + " ประมาณ " + F_InsertComma(.reward_drop_amount2 * .reward_min_per_drop2) + "~" + F_InsertComma(.reward_drop_amount2 * .reward_max_per_drop2) + " ชิ้น^000000";
+	mes "---";
+	mes "รางวัล";
+	mes "๐ ^3629FF" + getitemname(.reward_item_id) + " ประมาณ " + F_InsertComma(.reward_drop_amount * .reward_min_per_drop) + "~" + F_InsertComma(.reward_drop_amount * .reward_max_per_drop) + " ชิ้น^000000";
+	mes "๐ ^3629FF" + getitemname(.reward_item_id2) + " ประมาณ " + F_InsertComma(.reward_drop_amount2 * .reward_min_per_drop2) + "~" + F_InsertComma(.reward_drop_amount2 * .reward_max_per_drop2) + " ชิ้น^000000";
 	next;
 	menu "เข้า",-;
 	// Check Zeny
-	//if (Zeny < .req_zeny){
-	//	mes "Zeny ไม่เพียงพอ";
-	//	close;
-	//}
+	if (Zeny < .req_zeny){
+		mes "Zeny ไม่เพียงพอ";
+		close;
+	}
 	// Check Item
-	//if (countitem(.req_item_id) < .req_item_amount){
-	//	mes getitemname(.req_item_id) + " ไม่เพียงพอ";
-	//	close;
-	//}
-	//Zeny -= .req_zeny;
-	//delitem .req_item_id,.req_item_amount;
+	if (countitem(.req_item_id) < .req_item_amount){
+		mes getitemname(.req_item_id) + " ไม่เพียงพอ";
+		close;
+	}
+	Zeny -= .req_zeny;
+	delitem .req_item_id,.req_item_amount;
 	specialeffect2 EF_MAXPOWER;
 	setpcblock PCBLOCK_ALL,true;
 	setpcblock PCBLOCK_MOVE,false;
 	addtimer 2000,strnpcinfo(3) + "::OnWarp";
+	announce strcharinfo(0) + " เข้าห้อง Big Boss",bc_all;
+	bonus_script "bonus bDefRate,-50; bonus bDef2Rate,-50; bonus bMdefRate,-50; bonus bMdef2Rate,-50;",86400,9,2;
 	warp .map_name$,rand(.min_x,.max_x),rand(.min_y,.max_y);
 	end;
 	
@@ -47,7 +53,7 @@ OnBossDead:
 	if(!playerattached())
 	end;
 
-	/*.@reward_drop_amount = .reward_drop_amount;
+	.@reward_drop_amount = .reward_drop_amount;
 	.@reward_drop_amount2 = .reward_drop_amount2;
 	if($world_boss_room_special_round){
 		.@reward_drop_amount *= .special_round_multiplier;
@@ -57,10 +63,10 @@ OnBossDead:
 	for(.@i = 0; .@i < .@reward_drop_amount; .@i++)
 	makeitem .reward_item_id,rand(.reward_min_per_drop,.reward_max_per_drop),.map_name$,rand(.min_x,.max_x),rand(.min_y,.max_y);
 	for(.@i = 0; .@i < .@reward_drop_amount2; .@i++)
-	makeitem .reward_item_id2,rand(.reward_min_per_drop2,.reward_max_per_drop2),.map_name$,rand(.min_x,.max_x),rand(.min_y,.max_y);*/
+	makeitem .reward_item_id2,rand(.reward_min_per_drop2,.reward_max_per_drop2),.map_name$,rand(.min_x,.max_x),rand(.min_y,.max_y);
 	
 	if($world_boss_room_killed <= 0){
-		announce "World Boss ถูกกำจัดแล้ว! World Boss ตัวใหม่จะปรากฎภายใน 10 วินาที",bc_map;
+		announce "Big Boss ถูกกำจัดแล้ว! Big Boss ตัวใหม่จะปรากฎภายใน 60 วินาที",bc_map;
 		
 OnCleanUp:
 		killmonsterall .map_name$;
@@ -69,7 +75,7 @@ OnCleanUp:
 	}
 	end;
 	
-OnTimer10000:
+OnTimer60000:
 	stopnpctimer;
 	callsub L_Spawn;
 	end;
@@ -80,7 +86,7 @@ OnTimer10000:
 	if(rand(0,100) <= .special_round_chance){
 		$world_boss_room_special_round = 1;
 		
-		//announce "World Boss รอบนี้เป็นรอบพิเศษ Boss จะออกมา " + .special_round_multiplier + " ตัว! โดยรางวัลจะ x" + .special_round_multiplier + "!!",bc_all;
+		announce "Big Boss รอบนี้เป็นรอบพิเศษ Boss จะออกมา " + .special_round_multiplier + " ตัว! และมี HP น้อยลงครึ่งนึง โดยรางวัลจะ x" + .special_round_multiplier + "!!",bc_all;
 	}
 	
 	.@spawn_amount = .spawn_amount;
@@ -92,6 +98,9 @@ OnTimer10000:
 	for(.@i = 0; .@i < .@spawn_amount; .@i++){
 		monster .map_name$,rand(.min_x,.max_x),rand(.min_y,.max_y),"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 		
+		if($world_boss_room_special_round)
+		setunitdata $@mobid[0],UMOB_MAXHP,.max_hp/2;
+		else
 		setunitdata $@mobid[0],UMOB_MAXHP,.max_hp;
 		
 		setunitdata $@mobid[0],UMOB_MODE,(0x0000001 | 0x0000004 | 0x0000010 | 0x0000080 | 0x0000800 | 0x0080000 | 0x0200000 | 0x2000000 | 0x4000000);
@@ -114,28 +123,29 @@ OnInit:
 	.req_item_id = 40017;
 	.req_item_amount = 1;
 	
-	.reward_item_id = 40017;
+	.reward_item_id = 40017;	// THE BOX KEY
 	.reward_drop_amount = 15;
-	.reward_min_per_drop = 3;
-	.reward_max_per_drop = 9;
+	.reward_min_per_drop = 1;
+	.reward_max_per_drop = 3;
 	
-	.reward_item_id2 = 40016;
+	.reward_item_id2 = 40016;	// MvP Refine
 	.reward_drop_amount2 = 1;
-	.reward_min_per_drop2 = 1;
-	.reward_max_per_drop2 = 2;
+	.reward_min_per_drop2 = 0;
+	.reward_max_per_drop2 = 1;
 	
-	waitingroom "ห้อง World Boss",0;
+	waitingroom "ห้อง Big Boss",0;
 	
 	callsub L_Spawn;
 	
 	end;
 }
 
+1@halo	mapflag	pvp
 1@halo	mapflag	novending
 1@halo	mapflag	nochat
-1@halo	mapflag	nopenalty
-1@halo	mapflag	noexp
-1@halo	mapflag	noloot
+//1@halo	mapflag	nopenalty
+//1@halo	mapflag	noexp
+//1@halo	mapflag	noloot
 1@halo	mapflag	monster_noteleport
 1@halo	mapflag	noteleport
 1@halo	mapflag	nowarp
@@ -145,3 +155,5 @@ OnInit:
 1@halo	mapflag	tb
 1@halo	mapflag	notomb
 1@halo	mapflag	restricted	7
+
+1@halo,0,0	monster	--ja--	1068,10,5000,5000

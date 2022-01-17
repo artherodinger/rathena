@@ -31,6 +31,7 @@ prontera,159,214,8	script	Boss Equipment	10007,{
 	setpcblock PCBLOCK_ALL,true;
 	setpcblock PCBLOCK_MOVE,false;
 	addtimer 2000,strnpcinfo(3) + "::OnWarp";
+	announce strcharinfo(0) + " เข้าห้อง Boss (Equipment)",bc_all;
 	warp .map_name$,0,0;
 	end;
 	

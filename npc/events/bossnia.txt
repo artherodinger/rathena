@@ -20,8 +20,11 @@
 prontera,163,207,5	script	ห้อง Bossnia	10007,{
 	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 \nและ ^FF2929" + F_InsertComma(.req_item_amount) + " " + getitemname(.req_item_id) + "^000000 ในการเข้าห้อง";
 	mes "---";
+	mes "๐ ^3629FFบอสทุกตัวใช้เวลา 1 นาที 30 วินาทีในการเกิดใหม่^000000";
+	mes "---";
+	mes "โทษภายในห้อง";
+	mes "๐ ^FF2929เป็นห้อง PvP^000000";
 	mes "๐ ^FF2929หากออกจากเกมจะกลับสู่เมืองหลัก^000000";
-	mes "๐ ^FF2929บอสทุกตัวใช้เวลา 1 นาที 30 วินาทีในการเกิดใหม่^000000";
 	next;
 	// Check Zeny
 	if (Zeny < .req_zeny) {
@@ -46,7 +49,8 @@ prontera,163,207,5	script	ห้อง Bossnia	10007,{
 	setpcblock PCBLOCK_ALL,true;
 	setpcblock PCBLOCK_MOVE,false;
 	addtimer 2000,strnpcinfo(3) + "::OnWarp";
-	warp "bossnia_0"+.@i,.@x,.@y;
+	announce strcharinfo(0) + " เข้าห้อง Bossnia (" + .@i + ")",bc_all;
+	warp "bossnia_0" + .@i,.@x,.@y;
 	close;
 	
 OnWarp:
@@ -63,6 +67,13 @@ OnInit:
 
 // Map Flag
 bossnia_01	mapflag	nosave
+bossnia_02	mapflag	nosave
+bossnia_03	mapflag	nosave
+bossnia_04	mapflag	nosave
+bossnia_01	mapflag	pvp
+bossnia_02	mapflag	pvp
+bossnia_03	mapflag	pvp
+bossnia_04	mapflag	pvp
 
 // Warp Portals
 //============================================================
