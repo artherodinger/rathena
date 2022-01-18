@@ -18,6 +18,38 @@ function	script	F_THE_BOX_KEY_Quest_Add_Drop	{
 	return;
 }
 
+function	script	F_BigBossDope	{
+	.@price = 999;
+	.@price_item_id = 40017;
+	.@max_hp = 10000000;
+	L_Retry:
+	mes "คุณต้องการ ต้ม ^3629FF" + getitemname(.@price_item_id) + "^000000 กินก่อนเข้าหรือไม่? มันจะช่วยให้คุณ^3629FFฮึกเฮิม กระปรี้กระเปร่า^000000";
+	mes "---";
+	mes "๐ ^3629FFMaxHP +" + F_InsertComma(.@max_hp) + "^000000";
+	//mes "๐ ^3629FFกัน (Human) +70%^000000";
+	//mes "๐ ^3629FFกัน (Doram) +70%^000000";
+	mes "๐ ^FF2929เมื่อตาย ผลจะหายไป^000000";
+	mes "๐ ^FF2929เมื่อออกจากเกม ผลจะหายไป^000000";
+	mes "๐ ^FF2929เมื่อกลับเมือง ผลจะหายไป^000000";
+	mes "---";
+	mes "๐ ส่วนผสมที่ต้องการ: ^FF2929" + F_InsertComma(.@price) + " " + getitemname(.@price_item_id) + "^000000";
+	next;
+	menu "^FF2929ไม่ ข้าไม่ต้องการยา^000000",-,"^3629FFโด๊ปยา^000000",L_Dope;
+	return;
+	
+	L_Dope:
+	if(countitem(.@price_item_id) > .@price){
+		delitem .@price_item_id,.@price;
+		bonus_script "bonus bMaxHP," + .@max_hp + ";",86400,9,1;
+		//bonus_script "bonus2 bSubRace,RC_Player_Human,70; bonus2 bSubRace,RC_Player_Doram,70;",86400,9,1;
+		percentheal 100,100;
+	}
+	else
+	goto L_Retry;
+	
+	return;
+}
+
 function	script	F_PercentBase10000	{
 	.@v = getarg(0,0);
 	if(.@v < 10)

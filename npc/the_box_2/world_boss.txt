@@ -1,8 +1,21 @@
+1@halo	mapflag	tb
+//1@halo	mapflag	battleground
+//1@halo	mapflag	gvg
+1@halo	mapflag	pvp
+1@halo	mapflag	novending
+1@halo	mapflag	nochat
+1@halo	mapflag	monster_noteleport
+1@halo	mapflag	noteleport
+1@halo	mapflag	nowarp
+1@halo	mapflag	nowarpto
+1@halo	mapflag	nosave
+1@halo	mapflag	nobranch
+1@halo	mapflag	notomb
+1@halo	mapflag	restricted	7
+
 prontera,155,204,8	script	Big Boss	10007,{
-	bonus_script_clear 1;
-	F_THE_BOX_KEY_Quest_Add_Drop();
-	
-	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 \nและ ^FF2929" + F_InsertComma(.req_item_amount) + " " + getitemname(.req_item_id) + "^000000 ในการเข้าห้อง";
+	//mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 \nและ ^FF2929" + F_InsertComma(.req_item_amount) + " " + getitemname(.req_item_id) + "^000000 ในการเข้าห้อง";
+	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 ในการเข้าห้อง";
 	mes "---";
 	mes "๐ ^FF2929ทุก ๆ xx:30น. จะทำการ Reset ห้องใหม่ โปรดระวังหากจะเล่นในช่วงเวลานี้^000000";
 	mes "---";
@@ -13,7 +26,7 @@ prontera,155,204,8	script	Big Boss	10007,{
 	mes "๐ ^FF2929Flee จะเหลือ 10%^000000";
 	mes "๐ ^FF2929Perfect Dodge จะเหลือ 10%^000000";
 	mes "๐ ^FF2929Def จะเหลือ 50%^000000";
-	mes "๐ ^FF2929Monster จะโจมตีแรงขึ้น 100 เท่า^000000";
+	mes "๐ ^FF2929Monster จะโจมตีแรงขึ้น 33,333 เท่า^000000";
 	mes "๐ ^FF2929Monster จะมี HP " + F_InsertComma(.max_hp) + "^000000";
 	mes "---";
 	mes "รางวัล";
@@ -31,6 +44,7 @@ prontera,155,204,8	script	Big Boss	10007,{
 		mes getitemname(.req_item_id) + " ไม่เพียงพอ";
 		close;
 	}
+	callfunc("F_BigBossDope");
 	Zeny -= .req_zeny;
 	delitem .req_item_id,.req_item_amount;
 	specialeffect2 EF_MAXPOWER;
@@ -121,17 +135,17 @@ OnInit:
 	
 	.req_zeny = 90000;
 	.req_item_id = 40017;
-	.req_item_amount = 1;
+	.req_item_amount = 0;
 	
 	.reward_item_id = 40017;	// THE BOX KEY
 	.reward_drop_amount = 15;
-	.reward_min_per_drop = 1;
-	.reward_max_per_drop = 3;
+	.reward_min_per_drop = 3;
+	.reward_max_per_drop = 9;
 	
 	.reward_item_id2 = 40016;	// MvP Refine
-	.reward_drop_amount2 = 1;
-	.reward_min_per_drop2 = 0;
-	.reward_max_per_drop2 = 1;
+	.reward_drop_amount2 = 3;
+	.reward_min_per_drop2 = 1;
+	.reward_max_per_drop2 = 3;
 	
 	waitingroom "ห้อง Big Boss",0;
 	
@@ -139,21 +153,5 @@ OnInit:
 	
 	end;
 }
-
-1@halo	mapflag	pvp
-1@halo	mapflag	novending
-1@halo	mapflag	nochat
-//1@halo	mapflag	nopenalty
-//1@halo	mapflag	noexp
-//1@halo	mapflag	noloot
-1@halo	mapflag	monster_noteleport
-1@halo	mapflag	noteleport
-1@halo	mapflag	nowarp
-1@halo	mapflag	nowarpto
-1@halo	mapflag	nosave
-1@halo	mapflag	nobranch
-1@halo	mapflag	tb
-1@halo	mapflag	notomb
-1@halo	mapflag	restricted	7
 
 1@halo,0,0	monster	--ja--	1068,10,5000,5000

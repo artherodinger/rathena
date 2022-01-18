@@ -1,9 +1,14 @@
+//1@lab	mapflag	tb
+//1@lab	mapflag	battleground
+1@lab	mapflag	gvg
+//1@lab	mapflag	pvp
+1@lab	mapflag	novending
+1@lab	mapflag	nochat
 1@lab	mapflag	monster_noteleport
-1@lab	mapflag	nosave
-1@lab	mapflag	pvp
 1@lab	mapflag	noteleport
 1@lab	mapflag	nowarp
 1@lab	mapflag	nowarpto
+1@lab	mapflag	nosave
 1@lab	mapflag	nobranch
 1@lab	mapflag	notomb
 
@@ -54,6 +59,13 @@
 1@lab,90,90,19,19	boss_monster	--ja--	1874,1,180000,180000
 
 prontera,161,305,3	script	Central Laboratory	1623,{
+	mes "โทษภายในห้อง";
+	mes "๐ ^FF2929เป็นห้อง GvG^000000";
+	mes "๐ ^FF2929ไม่สามารถกด Ctrl+โจมตี ได้ (ต้องคลิกเม้าส์ค้างไว้แทน)^000000";
+	mes "๐ ^FF2929หากออกจากเกมจะกลับสู่เมืองหลัก^000000";
+	mes "๐ ^FF2929Damage จะเหลือ 10%^000000";
+	mes "๐ ^FF2929Flee จะเหลือ 10%^000000";
+	mes "๐ ^FF2929Monster จะโจมตีแรงขึ้น 10 เท่า^000000";
 	.@index = select(.m$);
 	announce strcharinfo(0) + " เข้าห้อง Central Laboratory",bc_all;
 	warp .mapName$[.@index - 1],rand(56,119),rand(57,119);
@@ -64,5 +76,3 @@ OnInit:
 	setarray .mapName$[0],"1@lab";
 	end;
 }
-
-1@lab	mapflag	pvp

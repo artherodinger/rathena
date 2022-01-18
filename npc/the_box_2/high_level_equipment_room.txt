@@ -1,3 +1,17 @@
+//lasa_sea	mapflag	tb
+//lasa_sea	mapflag	battleground
+lasa_sea	mapflag	gvg
+//lasa_sea	mapflag	pvp
+lasa_sea	mapflag	novending
+lasa_sea	mapflag	nochat
+lasa_sea	mapflag	monster_noteleport
+lasa_sea	mapflag	noteleport
+lasa_sea	mapflag	nowarp
+lasa_sea	mapflag	nowarpto
+lasa_sea	mapflag	nosave
+lasa_sea	mapflag	nobranch
+lasa_sea	mapflag	notomb
+
 prontera,159,214,8	script	Boss Equipment	10007,{
 	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 \nและ ^FF2929" + F_InsertComma(.req_item_amount) + " " + getitemname(.req_item_id) + "^000000 ในการเข้าห้อง";
 	mes "---";
@@ -7,7 +21,7 @@ prontera,159,214,8	script	Boss Equipment	10007,{
 	mes "๐ ^FF2929เป็นห้อง GvG^000000";
 	mes "๐ ^FF2929ไม่สามารถกด Ctrl+โจมตี ได้ (ต้องคลิกเม้าส์ค้างไว้แทน)^000000";
 	mes "๐ ^FF2929หากออกจากเกมจะกลับสู่เมืองหลัก^000000";
-	mes "๐ ^FF2929Damage จะเหลือ 20%^000000";
+	mes "๐ ^FF2929Damage จะเหลือ 10%^000000";
 	mes "๐ ^FF2929Flee จะเหลือ 10%^000000";
 	mes "๐ ^FF2929Monster จะโจมตีแรงขึ้น 10 เท่า^000000";
 	mes "---";
@@ -106,12 +120,3 @@ OnInit:
 	
 	end;
 }
-
-lasa_sea	mapflag	monster_noteleport
-lasa_sea	mapflag	noteleport
-lasa_sea	mapflag	nowarp
-lasa_sea	mapflag	nowarpto
-lasa_sea	mapflag	nosave
-lasa_sea	mapflag	nobranch
-lasa_sea	mapflag	gvg
-lasa_sea	mapflag	notomb

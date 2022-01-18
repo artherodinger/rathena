@@ -1,3 +1,59 @@
+//bossnia_01	mapflag	tb
+//bossnia_01	mapflag	battleground
+bossnia_01	mapflag	gvg
+//bossnia_01	mapflag	pvp
+bossnia_01	mapflag	novending
+bossnia_01	mapflag	nochat
+bossnia_01	mapflag	monster_noteleport
+bossnia_01	mapflag	noteleport
+bossnia_01	mapflag	nowarp
+bossnia_01	mapflag	nowarpto
+bossnia_01	mapflag	nosave
+bossnia_01	mapflag	nobranch
+bossnia_01	mapflag	notomb
+
+//bossnia_02	mapflag	tb
+//bossnia_02	mapflag	battleground
+bossnia_02	mapflag	gvg
+//bossnia_02	mapflag	pvp
+bossnia_02	mapflag	novending
+bossnia_02	mapflag	nochat
+bossnia_02	mapflag	monster_noteleport
+bossnia_02	mapflag	noteleport
+bossnia_02	mapflag	nowarp
+bossnia_02	mapflag	nowarpto
+bossnia_02	mapflag	nosave
+bossnia_02	mapflag	nobranch
+bossnia_02	mapflag	notomb
+
+//bossnia_03	mapflag	tb
+//bossnia_03	mapflag	battleground
+bossnia_03	mapflag	gvg
+//bossnia_03	mapflag	pvp
+bossnia_03	mapflag	novending
+bossnia_03	mapflag	nochat
+bossnia_03	mapflag	monster_noteleport
+bossnia_03	mapflag	noteleport
+bossnia_03	mapflag	nowarp
+bossnia_03	mapflag	nowarpto
+bossnia_03	mapflag	nosave
+bossnia_03	mapflag	nobranch
+bossnia_03	mapflag	notomb
+
+//bossnia_04	mapflag	tb
+//bossnia_04	mapflag	battleground
+bossnia_04	mapflag	gvg
+//bossnia_04	mapflag	pvp
+bossnia_04	mapflag	novending
+bossnia_04	mapflag	nochat
+bossnia_04	mapflag	monster_noteleport
+bossnia_04	mapflag	noteleport
+bossnia_04	mapflag	nowarp
+bossnia_04	mapflag	nowarpto
+bossnia_04	mapflag	nosave
+bossnia_04	mapflag	nobranch
+bossnia_04	mapflag	notomb
+
 //===== rAthena Script ======================================= 
 //= Bossnia Warp NPCs
 //===== By: ================================================== 
@@ -23,8 +79,12 @@ prontera,163,207,5	script	ห้อง Bossnia	10007,{
 	mes "๐ ^3629FFบอสทุกตัวใช้เวลา 1 นาที 30 วินาทีในการเกิดใหม่^000000";
 	mes "---";
 	mes "โทษภายในห้อง";
-	mes "๐ ^FF2929เป็นห้อง PvP^000000";
+	mes "๐ ^FF2929เป็นห้อง GvG^000000";
+	mes "๐ ^FF2929ไม่สามารถกด Ctrl+โจมตี ได้ (ต้องคลิกเม้าส์ค้างไว้แทน)^000000";
 	mes "๐ ^FF2929หากออกจากเกมจะกลับสู่เมืองหลัก^000000";
+	mes "๐ ^FF2929Damage จะเหลือ 10%^000000";
+	mes "๐ ^FF2929Flee จะเหลือ 10%^000000";
+	mes "๐ ^FF2929Monster จะโจมตีแรงขึ้น 10 เท่า^000000";
 	next;
 	// Check Zeny
 	if (Zeny < .req_zeny) {
@@ -64,39 +124,6 @@ OnInit:
 	.req_item_amount = 9;
 	end;
 }
-
-// Map Flag
-bossnia_01	mapflag	nosave
-bossnia_01	mapflag	pvp
-bossnia_01	mapflag	noteleport
-bossnia_01	mapflag	nowarp
-bossnia_01	mapflag	nowarpto
-bossnia_01	mapflag	nobranch
-bossnia_01	mapflag	notomb
-
-bossnia_02	mapflag	nosave
-bossnia_02	mapflag	pvp
-bossnia_02	mapflag	noteleport
-bossnia_02	mapflag	nowarp
-bossnia_02	mapflag	nowarpto
-bossnia_02	mapflag	nobranch
-bossnia_02	mapflag	notomb
-
-bossnia_03	mapflag	nosave
-bossnia_03	mapflag	pvp
-bossnia_03	mapflag	noteleport
-bossnia_03	mapflag	nowarp
-bossnia_03	mapflag	nowarpto
-bossnia_03	mapflag	nobranch
-bossnia_03	mapflag	notomb
-
-bossnia_04	mapflag	nosave
-bossnia_04	mapflag	pvp
-bossnia_04	mapflag	noteleport
-bossnia_04	mapflag	nowarp
-bossnia_04	mapflag	nowarpto
-bossnia_04	mapflag	nobranch
-bossnia_04	mapflag	notomb
 
 // Warp Portals
 //============================================================
