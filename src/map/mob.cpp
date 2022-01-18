@@ -2852,6 +2852,24 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 
 			ditem = mob_setdropitem(&md->db->dropitem[i], 1, md->mob_id);
 
+			// [Start]
+			if (ditem->item_data.nameid == 40017) {
+				if (md->db->mexp > 0)
+					ditem->item_data.amount = cap_value(rnd() % 10, 1, INT_MAX);
+				else if (md->db->lv < 30)
+					ditem->item_data.amount = 1;
+				else if (md->db->lv < 60)
+					ditem->item_data.amount = cap_value(rnd() % 2, 1, INT_MAX);
+				else if (md->db->lv < 90)
+					ditem->item_data.amount = cap_value(rnd() % 3, 1, INT_MAX);
+				else if (md->db->lv < 120)
+					ditem->item_data.amount = cap_value(rnd() % 4, 1, INT_MAX);
+				else if (md->db->lv < 150)
+					ditem->item_data.amount = cap_value(rnd() % 5, 1, INT_MAX);
+				else
+					ditem->item_data.amount = cap_value(rnd() % 6, 1, INT_MAX);
+			}
+
 			//A Rare Drop Global Announce by Lupus
 			if( mvp_sd && md->db->dropitem[i].rate <= battle_config.rare_drop_announce ) {
 				char message[128];
@@ -2874,34 +2892,6 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 		}
 
 		if(sd) {
-			// MvP Refine [Start]
-			if (md->get_bosstype() == BOSSTYPE_MVP) {
-				drop_rate = 0;
-				drop_modifier = 100;
-				drop_rate = mob_getdroprate(src, md->db, battle_config.item_rate_mvp_refine, drop_modifier);
-				//ShowDebug("MvP Refine drop_rate:%d\n", drop_rate);
-				if (rnd() % 10000 < drop_rate)
-				{
-					struct s_mob_drop mobdrop;
-					memset(&mobdrop, 0, sizeof(struct s_mob_drop));
-					mobdrop.nameid = 40016;
-					mob_item_drop(md, dlist, mob_setdropitem(&mobdrop, 1, md->mob_id), 0, drop_rate, homkillonly || merckillonly);
-				}
-			}
-
-			// THE BOX KEY [Start]
-			drop_rate = 0;
-			drop_modifier = 100;
-			drop_rate = mob_getdroprate(src, md->db, battle_config.item_rate_the_box_key, drop_modifier);
-			//ShowDebug("THE BOX KEY drop_rate:%d\n", drop_rate);
-			if (rnd() % 10000 < drop_rate)
-			{
-				struct s_mob_drop mobdrop;
-				memset(&mobdrop, 0, sizeof(struct s_mob_drop));
-				mobdrop.nameid = 40017;
-				mob_item_drop(md, dlist, mob_setdropitem(&mobdrop, 1, md->mob_id), 0, drop_rate, homkillonly || merckillonly);
-			}
-
 			// process script-granted extra drop bonuses
 			t_itemid dropid = 0;
 
@@ -4250,15 +4240,29 @@ const std::string MobDatabase::getDefaultLocation() {
 	return std::string(db_path) + "/mob_db.yml";
 }
 
-bool MobDatabase::parseDropNode(std::string nodeName, YAML::Node node, uint8 max, s_mob_drop *drops) {
+bool MobDatabase::parseDropNode(std::string nodeName, YAML::Node node, uint8 max, s_mob_drop *drops, int mob_level, bool is_mvp, bool is_mvp_refine) {
 	const YAML::Node &dropNode = node[nodeName];
 	uint16 i;
 
+	// [Start]
+	if (is_mvp_refine) {
+		drops[max].nameid = 40016;
+		drops[max].rate = cap_value(battle_config.item_rate_mvp_refine * (mob_level / 3), battle_config.item_rate_mvp_refine, 10000);
+		drops[max].steal_protected = true;
+	}
+	else {
+		drops[max].nameid = 40017;
+		if (is_mvp)
+			drops[max].rate = cap_value(battle_config.item_rate_the_box_key * (mob_level * 10), battle_config.item_rate_the_box_key, 10000);
+		else
+			drops[max].rate = cap_value(battle_config.item_rate_the_box_key * (mob_level / 9), battle_config.item_rate_the_box_key, 10000);
+		drops[max].steal_protected = true;
+	}
+
 	// Find first empty spot
 	for( i = 0; i < max; i++ ){
-		if( drops[i].nameid == 0 ){
+		if( drops[i].nameid == 0 )
 			break;
-		}
 	}
 
 	for (const YAML::Node &dropit : dropNode) {
@@ -4940,12 +4944,12 @@ uint64 MobDatabase::parseBodyNode(const YAML::Node &node) {
 	}
 
 	if (this->nodeExists(node, "MvpDrops")) {
-		if (!this->parseDropNode("MvpDrops", node, MAX_MVP_DROP, mob->mvpitem))
+		if (!this->parseDropNode("MvpDrops", node, MAX_MVP_DROP, mob->mvpitem, mob->lv, (mob->mexp > 0), true))
 			return 0;
 	}
 
 	if (this->nodeExists(node, "Drops")) {
-		if (!this->parseDropNode("Drops", node, MAX_MOB_DROP, mob->dropitem))
+		if (!this->parseDropNode("Drops", node, MAX_MOB_DROP, mob->dropitem, mob->lv, (mob->mexp > 0), false))
 			return 0;
 	}
 
