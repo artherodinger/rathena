@@ -13,6 +13,7 @@ pvp_y_1-1	mapflag	nowarpto
 pvp_y_1-1	mapflag	nosave
 pvp_y_1-1	mapflag	nobranch
 pvp_y_1-1	mapflag	notomb
+pvp_y_1-1	mapflag	nopenalty
 pvp_y_1-1	mapflag	nocommand	99
 
 pvp_y_1-4	mapflag	tb
@@ -28,6 +29,7 @@ pvp_y_1-4	mapflag	nowarpto
 pvp_y_1-4	mapflag	nosave
 pvp_y_1-4	mapflag	nobranch
 pvp_y_1-4	mapflag	notomb
+pvp_y_1-4	mapflag	nopenalty
 pvp_y_1-4	mapflag	nocommand	99
 
 -	script	pvpMan	-1,{
