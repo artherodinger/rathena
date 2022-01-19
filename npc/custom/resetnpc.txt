@@ -16,9 +16,9 @@ prontera,169,180,2	script	Reset	10010,{
 	setarray .@Reset,	500000,	500000,	900000,	0;
 	mes "Reset Stats: "+ callfunc("F_InsertComma",.@Reset[1]) +"z";
 	mes "Reset Skills: "+ callfunc("F_InsertComma",.@Reset[0]) +"z";
-	mes "Reset Both: "+ callfunc("F_InsertComma",.@Reset[2]) +"z";
+	mes "Reset ทั้งคู่: "+ callfunc("F_InsertComma",.@Reset[2]) +"z";
 	next;
-	set .@i,(select("^FF3355Reset Skills:Reset Stats:Reset Both^000000:ยกเลิก"));
+	set .@i,(select("^FF3355Reset Skills:Reset Stats:Reset ทั้งคู่^000000:ยกเลิก"));
 	if(.@i > 3) close;
 	if (Zeny < .@Reset[.@i-1]) {
 		mes "Zeny ไม่เพียงพอ";

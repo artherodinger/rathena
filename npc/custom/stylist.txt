@@ -1,5 +1,5 @@
--	script	CharacterSuitController	-1,{
-	menu "ตัดผม, ย้อมสีผม, ย้อมสีเสื้อ",-,"เปลี่ยนชุด",L_Class3Suit,"แก้เด้ง ID ที่เข้าเกมไม่ได้",L_ResetErrorCharacter;
+prontera,142,180,7	script	แต่งตัว	894,{
+	menu "ตัดผม, ย้อมสีผม, ย้อมสีเสื้อ",-,"เปลี่ยนชุด Class 3",L_Class3Suit,"เปลี่ยน Password",L_ChangePassword;
 	//openstylist;
 	//end;
 	
@@ -38,9 +38,13 @@
 	}
 	
 	L_Class3Suit:
-	if(Class == 4190 || Class == 4191 || Class == 4239 || Class == 4240 || eaclass()&EAJL_FOURTH)
+	if((Class == 4190)
+			|| (Class == 4191)
+			|| (Class == 4239)
+			|| (Class == 4240)
+			|| (eaclass()&EAJL_FOURTH))
 	end;
-	menu "แบบ 1",-,"แบบ 2",L_1;
+	menu "แบบที่ 1",-,"แบบที่ 2",L_1;
 	atcommand "@bodystyle 0";
 	end;
 	
@@ -48,49 +52,26 @@
 	atcommand "@bodystyle 1";
 	end;
 
-	L_ResetErrorCharacter:
-	mes "ID ที่เด้ง";
-	input .@inputId$;
+	L_ChangePassword:
+	mes "โปรดระบุ ID ที่ต้องการเปลี่ยน Password";
+	input .@id$;
 	next;
-	mes "PW ที่เด้ง";
-	input .@inputPw$;
+	mes "โปรดระบุ Password ปัจจุบันของ ID\n^FF2929" + .@id$ + "^000000";
+	input .@password$;
 	next;
-	query_sql ("SELECT `account_id` FROM `login` WHERE `userid`='"+.@inputId$+"' AND `user_pass`='"+.@inputPw$+"'", .@sum);
-	if(.@sum<=0){
-		mes "ID หรือ PW ไม่ถูกต้อง";
+	query_sql ("SELECT `account_id` FROM `login` WHERE `userid`='" + .@id$ + "' AND `user_pass`='" + .@password$ + "'",.@sum);
+	if(.@sum <= 0){
+		mes "ID หรือ Password ไม่ถูกต้อง";
 		close;
 	}
-	.@onlyBuff = 0;
-	menu "ถอดเสื้ออย่างเดียวทั้งไอดี",L_Done3,"ลบบัฟอย่างเดียวทั้งไอดี",-,"ถอดเสื้อ+ลบบัฟทั้งไอดี",L_Done2;
-	.@onlyBuff = 1;
-	
-	L_Done2:
-	query_sql ("SELECT `char_id` FROM `char` WHERE `account_id`="+.@sum+"", .@sumChar);
-	for(.@i = 0; .@i<getarraysize(.@sumChar); .@i++){
-		if(!.@onlyBuff){
-			query_sql "UPDATE `inventory` SET `equip` = 0 WHERE `char_id` = "+.@sumChar[.@i]+"";
-			query_sql "UPDATE `char` SET `head_top` = 0, `head_mid` = 0, `head_bottom` = 0, `hair` = 1, `weapon` = 0, `shield` = 0, `body` = 0, `robe` = 0, `option` = 0 WHERE `account_id` = "+.@sum+"";
-		}
-		query_sql "DELETE FROM sc_data WHERE `char_id` = "+.@sumChar[.@i]+"";
-		query_sql "DELETE FROM bonus_script WHERE `char_id` = "+.@sumChar[.@i]+"";
-	}
+	mes "โปรดระบุ Password ใหม่";
+	input .@new_password$;
+	next;
+	query_sql "UPDATE `login` SET `user_pass` = '" + .@new_password$ + "' WHERE `userid` = '" + .@id$ + "'";	
 	mes "เรียบร้อยแล้ว โปรดลองเข้า ID ดังกล่าวใหม่อีกที";
 	close;
 	
-	L_Done3:
-	query_sql ("SELECT `char_id` FROM `char` WHERE `account_id`="+.@sum+"", .@sumChar);
-	for(.@i = 0; .@i<getarraysize(.@sumChar); .@i++){
-		if(!.@onlyBuff){
-			query_sql "UPDATE `inventory` SET `equip` = 0 WHERE `char_id` = "+.@sumChar[.@i]+"";
-			query_sql "UPDATE `char` SET `head_top` = 0, `head_mid` = 0, `head_bottom` = 0, `hair` = 1, `weapon` = 0, `shield` = 0, `body` = 0, `robe` = 0, `option` = 0 WHERE `account_id` = "+.@sum+"";
-		}
-	}
-	mes "เรียบร้อยแล้ว โปรดลองเข้า ID ดังกล่าวใหม่อีกที";
-	close;
-	
-	OnInit:
+OnInit:
 	waitingroom "แต่งตัว",0;
 	end;
 }
-
-prontera,142,180,7	duplicate(CharacterSuitController)	 แต่งตัว	894

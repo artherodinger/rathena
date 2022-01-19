@@ -1,16 +1,6 @@
-prontera,125,261,3	script	Enchantment	10111,{
-	if(target_enchantment > 0){
-		mes "ตอนนี้คุณต้องการจะฝัง: " + getitemname(target_enchantment);
-		next;
-	}
-	menu "เลือก Enchantment ที่จะฝัง",L_Select,"เริ่มกระบวนการฝัง Enchantment",-;
-	if(target_enchantment <= 0){
-		mes "คุณยังไม่ได้เลือก Enchantment ที่จะฝัง";
-		close;
-	}
-	mes "^3F28FF๐ Enchant ได้เฉพาะ:^000000 อุปกรณ์สวมใส่ที่มี Slot ไม่ครบ 4 Slot";
+prontera,95,254,5	script	ถอด Card	643,{
+	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.price) + "z^000000";
 	next;
-	
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_HEAD_MID, EQI_HEAD_LOW, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_COSTUME_HEAD_TOP, EQI_COSTUME_HEAD_MID, EQI_COSTUME_HEAD_LOW, EQI_SHADOW_ARMOR, EQI_SHADOW_WEAPON, EQI_SHADOW_SHIELD, EQI_COSTUME_GARMENT, EQI_SHADOW_SHOES, EQI_SHADOW_ACC_L, EQI_SHADOW_ACC_R;
 	
 	for(.@i = 1; .@i<getarraysize(.@indices); ++.@i) {
@@ -22,7 +12,7 @@ prontera,125,261,3	script	Enchantment	10111,{
 	}
 	
 	if (.@equipped == 0) {
-		mes "เจ้าไม่ได้สวมใส่ อุปกรณ์สวมใส่ใด ๆ เลย ข้าไม่สามารถทำอะไรได้";
+		mes "เจ้าไม่ได้สวมใส่ อุปกรณ์สวมใส่ใด ๆ เลย";
 		close;
 	}
 	
@@ -52,42 +42,49 @@ prontera,125,261,3	script	Enchantment	10111,{
 	.@randomOptionValue4 = getequiprandomoption(.@part,3,ROA_VALUE);
 	.@randomOptionValue5 = getequiprandomoption(.@part,4,ROA_VALUE);
 
-	// Slot select
+	// Slot check
 	.@itemSlotCount = getitemslots(.@selectedItemId);
-	.@sumSlotCount = 4 - .@itemSlotCount;
-	if(.@sumSlotCount <= 0){
-		mes "อุปกรณ์สวมใส่ดังกล่าว ไม่สามารถ Enchant ได้";
+	if(.@itemSlotCount <= 0){
+		mes "อุปกรณ์สวมใส่ดังกล่าว ไม่สามารถถอด Card ได้";
 		close;
 	}
-	mes "โปรดเลือก Slot ที่ต้องการ";
-	next;
 
-	.@menu$ = "";
+	// Zeny check
+	if(Zeny < .price) {
+		mes "Zeny ไม่เพียงพอ";
+		close;
+	}
 	
-	for(.@i = .@itemSlotCount; .@i < 4; ++.@i)
-	.@menu$ += "ช่องที่ " + (.@i + 1) + ":";
-
-	.@slot = select(.@menu$) + .@itemSlotCount - 1;
+	if (callfunc("F_IsEquipIDHack",.@part,.@selectedItemId)){
+		mes "เหมือนว่าเจ้า จะสลับอุปกรณ์ ระหว่างที่ข้า กำลังดำเนินการอยู่นะ!";
+		close;
+	}
 	
-	if(countitem(target_enchantment) < 1) {
-		mes getitemname(target_enchantment) + " ไม่เพียงพอ";
-		close;
-	}
-	delitem target_enchantment,1;
-
-	if (callfunc("F_IsEquipIDHack", .@part, .@selectedItemId)) {
-		mes "เหมือนว่าเจ้าจะสลับอุปกรณ์ ระหว่างข้าดำเนินการอยู่นะ";
-		close;
-	}
+	Zeny -= .price;
+	
 	delequip .@part;
-	if(.@slot == 0)
-	.@cardSlot1 = target_enchantment;
-	else if(.@slot == 1)
-	.@cardSlot2 = target_enchantment;
-	else if(.@slot == 2)
-	.@cardSlot3 = target_enchantment;
-	else if(.@slot == 3)
-	.@cardSlot4 = target_enchantment;
+
+	// Success card remove
+	if(.@itemSlotCount >= 1 && .@cardSlot1 > 0)
+	getitem .@cardSlot1,1;
+	if(.@itemSlotCount >= 2 && .@cardSlot2 > 0)
+	getitem .@cardSlot2,1;
+	if(.@itemSlotCount >= 3 && .@cardSlot3 > 0)
+	getitem .@cardSlot3,1;
+	if(.@itemSlotCount >= 4 && .@cardSlot4 > 0)
+	getitem .@cardSlot4,1;
+
+	// Clear card on equipment
+	if(.@itemSlotCount >= 1)
+	.@cardSlot1 = 0;
+	if(.@itemSlotCount >= 2)
+	.@cardSlot2 = 0;
+	if(.@itemSlotCount >= 3)
+	.@cardSlot3 = 0;
+	if(.@itemSlotCount >= 4)
+	.@cardSlot4 = 0;
+
+	// Return equipment without card
 	if(.@randomOptionId1 > 0){
 		setarray .@OptID[0],.@randomOptionId1,.@randomOptionId2,.@randomOptionId3,.@randomOptionId4,.@randomOptionId5;
 		setarray .@OptVal[0],.@randomOptionValue1,.@randomOptionValue2,.@randomOptionValue3,.@randomOptionValue4,.@randomOptionValue5;
@@ -100,28 +97,8 @@ prontera,125,261,3	script	Enchantment	10111,{
 	mes "เรียบร้อยแล้ว!";
 	close;
 
-	L_Select:
-	mes "โปรดลาก Enchantment ที่ต้องการ";
-	close2;
-	callshop "EnchantmentSelector",2;
-	npcshopattach "EnchantmentSelector";
-	end;
-	
-OnSellItem:
-	for (.@i = 0; .@i < getarraysize(@sold_nameid); .@i++){
-		if((getiteminfo(@sold_nameid[.@i],ITEMINFO_TYPE) == 6)
-			&& ((getiteminfo(@sold_nameid[.@i],ITEMINFO_SUBTYPE) == 1) || !compare(getitemname(@sold_nameid[.@i])," Card"))){
-			mes "คุณต้องการจะฝัง: " + getitemname(@sold_nameid[.@i]);
-			target_enchantment = @sold_nameid[.@i];
-			close;
-		}
-	}
-	mes "ไม่พบ Enchantment ที่คุณต้องการฝัง";
-	close;
-
 OnInit:
-	waitingroom "เสริมแกร่งด้วย Enchantment",0;
+	.price = 1000000;
+	waitingroom "ถอด Card",0;
 	end;
 }
-
--	shop	EnchantmentSelector	-1,no,501:-1

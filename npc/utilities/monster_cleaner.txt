@@ -53,10 +53,5 @@ OnMinute30:
 	killmonsterall "1@lhz";
 	killmonsterall "1@eom";
 	killmonsterall "new_zone01";
-	
-	// Boss Room
-	donpcevent "Boss EXP::OnCleanUp";
-	donpcevent "Boss Equipment::OnCleanUp";
-	donpcevent "Big Boss::OnCleanUp";
 	end;
 }

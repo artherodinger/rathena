@@ -1,27 +1,27 @@
 prontera,120,263,3	script	Random Option	10127,{
-	mes "๐ ราคาต่อรอบ: " + F_InsertComma(.price) + "z";
-	mes "^3F28FF๐ แถวที่ได้รับ:^000000 5 แถว";
-	mes "^3F28FF๐ ค่าที่ได้รับ:^000000 1~5";
+	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.price) + "z^000000";
+	mes "^3F28FF๐ รับ Random Option 5 แถว^000000";
+	mes "^3F28FF๐ สุ่มค่าที่ได้รับ 1~5 ต่อแถว^000000";
 	next;
 	
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_HEAD_MID, EQI_HEAD_LOW, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_COSTUME_HEAD_TOP, EQI_COSTUME_HEAD_MID, EQI_COSTUME_HEAD_LOW, EQI_SHADOW_ARMOR, EQI_SHADOW_WEAPON, EQI_SHADOW_SHIELD, EQI_COSTUME_GARMENT, EQI_SHADOW_SHOES, EQI_SHADOW_ACC_L, EQI_SHADOW_ACC_R;
 	
-	for(.@i = 1; .@i<getarraysize(.@indices); ++.@i) {
-		if(getequipisequiped(.@indices[.@i])) {
+	for(.@i = 1; .@i<getarraysize(.@indices); ++.@i){
+		if(getequipisequiped(.@indices[.@i])){
 			.@menu$ = .@menu$ + F_getpositionname(.@indices[.@i]);
 			.@equipped = 1;
 		}
 		.@menu$ = .@menu$ + ":";
 	}
 	
-	if (.@equipped == 0) {
-		mes "เจ้าไม่ได้สวมใส่ อุปกรณ์สวมใส่ใด ๆ เลย ข้าไม่สามารถทำอะไรได้";
+	if (.@equipped == 0){
+		mes "เจ้าไม่ได้สวมใส่ อุปกรณ์สวมใส่ใด ๆ เลย";
 		close;
 	}
 	
 	.@part = .@indices[select(.@menu$)];
 
-	if(!getequipisequiped(.@part)) {
+	if(!getequipisequiped(.@part)){
 		mes "เจ้าเลือกช่องที่ ไม่ได้สวมใส่อะไรอยู่เลย";
 		close;
 	}
@@ -32,12 +32,13 @@ prontera,120,263,3	script	Random Option	10127,{
 		mes "Zeny ไม่เพียงพอ";
 		close;
 	}
-	Zeny -= .price;
-
-	if (callfunc("F_IsEquipIDHack", .@part, .@selectedItemId)) {
-		mes "เหมือนว่าเจ้าจะสลับอุปกรณ์ ระหว่างข้าดำเนินการอยู่นะ";
+	
+	if (callfunc("F_IsEquipIDHack",.@part,.@selectedItemId)){
+		mes "เหมือนว่าเจ้า จะสลับอุปกรณ์ ระหว่างที่ข้า กำลังดำเนินการอยู่นะ!";
 		close;
 	}
+	
+	Zeny -= .price;
 	
 	setrandomoption(.@part,0,callfunc("GetRandomOptionId"),rand(1,5),0);
 	setrandomoption(.@part,1,callfunc("GetRandomOptionId"),rand(1,5),0);
@@ -58,19 +59,14 @@ function	script	GetRandomOptionId	{
 	.@optId = rand(1,254);
 	
 	freeloop(1);
-	while((.@optId >= 76 && .@optId <= 85) || (.@optId >= 175 && .@optId <= 184) || .@optId == 203 || .@optId == 204)
+	
+	while((.@optId >= 76 && .@optId <= 85)
+	|| (.@optId >= 175 && .@optId <= 184)
+	|| .@optId == 203
+	|| .@optId == 204)
 	.@optId = rand(1,254);
 
 	freeloop(0);
 	
 	return .@optId;
-}
-
-function	script	IsHadRandomOptionId	{
-	.@optId = getarg(0,0);
-	
-	if(.@optId < 1 || .@optId > 254)
-	return 0;
-	else
-	return 1;
 }

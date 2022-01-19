@@ -73,10 +73,8 @@ bossnia_04	mapflag	notomb
 
 // Entrance NPCs
 //============================================================
-prontera,163,207,5	script	ห้อง Bossnia	10007,{
+prontera,148,200,5	script	ห้อง Bossnia	10007,{
 	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 \nและ ^FF2929" + F_InsertComma(.req_item_amount) + " " + getitemname(.req_item_id) + "^000000 ในการเข้าห้อง";
-	mes "---";
-	mes "๐ ^3629FFบอสทุกตัวใช้เวลา 1 นาที 30 วินาทีในการเกิดใหม่^000000";
 	mes "---";
 	mes "โทษภายในห้อง";
 	mes "๐ ^FF2929เป็นห้อง GvG^000000";
@@ -85,6 +83,8 @@ prontera,163,207,5	script	ห้อง Bossnia	10007,{
 	mes "๐ ^FF2929Damage จะเหลือ 10%^000000";
 	mes "๐ ^FF2929Flee จะเหลือ 10%^000000";
 	mes "๐ ^FF2929Monster จะโจมตีแรงขึ้น 10 เท่า^000000";
+	mes "---";
+	mes "๐ ^3629FFบอสทุกตัวใช้เวลา 1 นาที 30 วินาทีในการเกิดใหม่^000000";
 	next;
 	// Check Zeny
 	if (Zeny < .req_zeny) {

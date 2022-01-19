@@ -1,0 +1,133 @@
+vis_h04	mapflag	tb
+//vis_h04	mapflag	battleground
+//vis_h04	mapflag	gvg
+vis_h04	mapflag	pvp
+vis_h04	mapflag	novending
+vis_h04	mapflag	nochat
+vis_h04	mapflag	monster_noteleport
+vis_h04	mapflag	noteleport
+vis_h04	mapflag	nowarp
+vis_h04	mapflag	nowarpto
+vis_h04	mapflag	nosave
+vis_h04	mapflag	nobranch
+vis_h04	mapflag	notomb
+
+vis_h04,0,0	monster	--ja--	1068,100,5000,5000
+
+prontera,155,204,8	script	4 Keys	10007,{
+	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 ในการเข้าห้อง";
+	mes "---";
+	mes "โทษภายในห้อง";
+	mes "๐ ^FF2929เป็นห้อง PvP^000000";
+	mes "๐ ^FF2929Damage จะเหลือ 10%^000000";
+	mes "๐ ^FF2929Flee จะเหลือ 10%^000000";
+	mes "๐ ^FF2929Perfect Dodge จะเหลือ 10%^000000";
+	mes "๐ ^FF2929Monster จะโจมตีแรงขึ้น 33,333 เท่า^000000";
+	mes "๐ ^FF2929Monster จะมี HP " + F_InsertComma(.max_hp) + "^000000";
+	mes "---";
+	mes "รางวัล";
+	mes "๐ ^3629FF" + getitemname(.reward_item_id) + " ประมาณ " + F_InsertComma(.reward_min_per_drop) + "~" + F_InsertComma(.reward_max_per_drop) + " ชิ้น^000000";
+	mes "๐ ^3629FF" + getitemname(.reward_item_id2) + " ประมาณ " + F_InsertComma(.reward_min_per_drop2) + "~" + F_InsertComma(.reward_max_per_drop2) + " ชิ้น^000000";
+	next;
+	menu "เข้า",-;
+	// Check Zeny
+	if (Zeny < .req_zeny){
+		mes "Zeny ไม่เพียงพอ";
+		close;
+	}
+	callfunc("F_BigBossDope");
+	Zeny -= .req_zeny;
+	specialeffect2 EF_MAXPOWER;
+	setpcblock PCBLOCK_ALL,true;
+	setpcblock PCBLOCK_MOVE,false;
+	addtimer 2000,strnpcinfo(3) + "::OnWarp";
+	announce strcharinfo(0) + " เข้าห้อง Big Boss",bc_all;
+	warp .map_name$,0,0;
+	end;
+	
+OnWarp:
+	setpcblock PCBLOCK_ALL,false;
+	end;
+	
+OnBossDead:
+	$world_boss_room_killed--;
+
+	// Unexpected error
+	if(!playerattached())
+	end;
+
+	if($world_boss_room_special_round){
+		getitem .reward_item_id,rand(.reward_min_per_drop,.reward_max_per_drop) * .special_round_multiplier;
+		getitem .reward_item_id2,rand(.reward_min_per_drop2,.reward_max_per_drop2) * .special_round_multiplier;
+	}
+	else{
+		getitem .reward_item_id,rand(.reward_min_per_drop,.reward_max_per_drop);
+		getitem .reward_item_id2,rand(.reward_min_per_drop2,.reward_max_per_drop2);
+	}
+	
+	if($world_boss_room_killed <= 0){
+		announce "4 Keys ทั้งหมดถูกกำจัดแล้ว! 4 Keys กลุ่มใหม่จะปรากฎภายใน 60 วินาที",bc_map;
+		
+OnCleanUp:
+		killmonsterall .map_name$;
+		$world_boss_room_killed = 0;
+		initnpctimer;
+	}
+	end;
+	
+OnTimer60000:
+	stopnpctimer;
+	callsub L_Spawn;
+	end;
+	
+	L_Spawn:
+	$world_boss_room_special_round = 0;
+	
+	if(rand(0,100) <= .special_round_chance){
+		$world_boss_room_special_round = 1;
+		
+		announce "4 Keys รอบนี้เป็นรอบพิเศษ Boss จะออกมา " + (.spawn_amount * .special_round_multiplier) + " ตัว! และมี HP น้อยลงครึ่งนึง โดยรางวัลจะ x" + .special_round_multiplier + "!!",bc_all;
+	}
+	
+	.@spawn_amount = .spawn_amount;
+	if($world_boss_room_special_round)
+	.@spawn_amount *= .special_round_multiplier;
+	
+	$world_boss_room_killed = .@spawn_amount;
+	
+	for(.@i = 0; .@i < .@spawn_amount; .@i++){
+		monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
+		
+		if($world_boss_room_special_round)
+		setunitdata $@mobid[0],UMOB_MAXHP,.max_hp / 2;
+		else
+		setunitdata $@mobid[0],UMOB_MAXHP,.max_hp;
+		
+		setunitdata $@mobid[0],UMOB_MODE,(0x0000001 | 0x0000004 | 0x0000010 | 0x0000080 | 0x0000800 | 0x0080000 | 0x0200000 | 0x2000000 | 0x4000000);
+	}
+	return;
+	
+OnInit:
+	.map_name$ = "vis_h04";
+	.spawn_amount = 4;
+	.max_hp = 500000000;
+	
+	.special_round_chance = 3;
+	.special_round_multiplier = 2;
+	
+	.req_zeny = 400000;
+	
+	.reward_item_id = 40017;	// THE BOX KEY
+	.reward_min_per_drop = 30;
+	.reward_max_per_drop = 90;
+	
+	.reward_item_id2 = 40016;	// MvP Refine
+	.reward_min_per_drop2 = 0;
+	.reward_max_per_drop2 = 1;
+	
+	waitingroom "ห้อง 4 Keys",0;
+	
+	callsub L_Spawn;
+	
+	end;
+}

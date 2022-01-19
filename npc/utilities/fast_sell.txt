@@ -1,6 +1,8 @@
 prontera,125,250,3	script	ขายของเร็ว	10389,{
-	mes "๐ จะไม่ขาย Item ที่สวมใส่อยู่";
-	mes "๐ จะไม่ขาย Item ที่ Favourite อยู่";
+	mes "๐ ^FF2929จะขาย Item ทุกชิ้นในกระเป๋า^000000";
+	mes "๐ ^3629FFจะไม่ขาย Item ที่สวมใส่อยู่^000000";
+	mes "๐ ^3629FFจะไม่ขาย Item ที่ Favourite อยู่^000000";
+	mes "๐ ^3629FFSkill 'Overcharge' จะเพิ่มราคาขายได้ตามปกติ^000000";
 	next;
 	menu "ไม่ทำอะไร",-,"ขายของเร็ว",L_FastSell;
 	close;
