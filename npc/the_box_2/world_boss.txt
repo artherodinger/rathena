@@ -14,7 +14,6 @@
 1@halo	mapflag	restricted	7
 
 prontera,155,204,8	script	Big Boss	10007,{
-	//mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 \nและ ^FF2929" + F_InsertComma(.req_item_amount) + " " + getitemname(.req_item_id) + "^000000 ในการเข้าห้อง";
 	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 ในการเข้าห้อง";
 	mes "---";
 	mes "๐ ^FF2929ทุก ๆ xx:30น. จะทำการ Reset ห้องใหม่ โปรดระวังหากจะเล่นในช่วงเวลานี้^000000";
@@ -39,14 +38,8 @@ prontera,155,204,8	script	Big Boss	10007,{
 		mes "Zeny ไม่เพียงพอ";
 		close;
 	}
-	// Check Item
-	if (countitem(.req_item_id) < .req_item_amount){
-		mes getitemname(.req_item_id) + " ไม่เพียงพอ";
-		close;
-	}
 	callfunc("F_BigBossDope");
 	Zeny -= .req_zeny;
-	delitem .req_item_id,.req_item_amount;
 	specialeffect2 EF_MAXPOWER;
 	setpcblock PCBLOCK_ALL,true;
 	setpcblock PCBLOCK_MOVE,false;
@@ -134,8 +127,6 @@ OnInit:
 	.special_round_multiplier = 3;
 	
 	.req_zeny = 90000;
-	.req_item_id = 40017;
-	.req_item_amount = 0;
 	
 	.reward_item_id = 40017;	// THE BOX KEY
 	.reward_drop_amount = 15;

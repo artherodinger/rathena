@@ -3617,13 +3617,15 @@ static void battle_calc_skill_base_damage(struct Damage* wd, struct block_list *
 		case RK_DRAGONBREATH_WATER:
 			{
 				int damagevalue = (sstatus->hp / 50 + status_get_max_sp(src) / 4) * skill_lv;
-
+				int bk_dmg = damagevalue; // [Start]
 				if(status_get_lv(src) > 100)
 					damagevalue = damagevalue * status_get_lv(src) / 100;
 				if(sd)
 					damagevalue = damagevalue * (90 + 10 * pc_checkskill(sd, RK_DRAGONTRAINING)) / 100;
 				if (sc && sc->data[SC_DRAGONIC_AURA])// Need official damage increase. [Rytech]
 					damagevalue += damagevalue * 50 / 100;
+				if ((damagevalue < 0) && (bk_dmg > 0)) // [Start]
+					damagevalue = INT32_MAX - 1;
 				ATK_ADD(wd->damage, wd->damage2, damagevalue);
 #ifdef RENEWAL
 				ATK_ADD(wd->weaponAtk, wd->weaponAtk2, damagevalue);
@@ -3636,7 +3638,10 @@ static void battle_calc_skill_base_damage(struct Damage* wd, struct block_list *
 
 				if(status_get_lv(src) > 100)
 					damagevalue = damagevalue * status_get_lv(src) / 100;
+				int bk_dmg = damagevalue; // [Start]
 				damagevalue = damagevalue + sstatus->hp;
+				if ((damagevalue < 0) && (bk_dmg > 0)) // [Start]
+					damagevalue = INT32_MAX - 1;
 				ATK_ADD(wd->damage, wd->damage2, damagevalue);
 #ifdef RENEWAL
 				ATK_ADD(wd->weaponAtk, wd->weaponAtk2, damagevalue);

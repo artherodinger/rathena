@@ -2855,19 +2855,19 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 			// [Start]
 			if (ditem->item_data.nameid == 40017) {
 				if (md->db->mexp > 0)
-					ditem->item_data.amount = cap_value(rnd() % 10, 1, INT_MAX);
+					ditem->item_data.amount = (rnd() % 10) + 1;
 				else if (md->db->lv < 30)
 					ditem->item_data.amount = 1;
 				else if (md->db->lv < 60)
-					ditem->item_data.amount = cap_value(rnd() % 2, 1, INT_MAX);
+					ditem->item_data.amount = (rnd() % 2) + 1;
 				else if (md->db->lv < 90)
-					ditem->item_data.amount = cap_value(rnd() % 3, 1, INT_MAX);
+					ditem->item_data.amount = (rnd() % 3) + 1;
 				else if (md->db->lv < 120)
-					ditem->item_data.amount = cap_value(rnd() % 4, 1, INT_MAX);
+					ditem->item_data.amount = (rnd() % 4) + 1;
 				else if (md->db->lv < 150)
-					ditem->item_data.amount = cap_value(rnd() % 5, 1, INT_MAX);
+					ditem->item_data.amount = (rnd() % 5) + 1;
 				else
-					ditem->item_data.amount = cap_value(rnd() % 6, 1, INT_MAX);
+					ditem->item_data.amount = (rnd() % 6) + 1;
 			}
 
 			//A Rare Drop Global Announce by Lupus

@@ -97,12 +97,6 @@ prontera,163,207,5	script	ห้อง Bossnia	10007,{
 		close;
 	}
 	.@i = select("ห้องที่ 1:ห้องที่ 2:ห้องที่ 3:ห้องที่ 4");
-	switch(select("จุดหมายที่ 1:จุดหมายที่ 2:จุดหมายที่ 3:จุดหมายที่ 4")) {
-	case 1: .@x = 31; .@y = 208; break;
-	case 2: .@x = 31; .@y = 31; break;
-	case 3: .@x = 208; .@y = 31; break;
-	case 4: .@x = 208; .@y = 208; break;
-	}
 	Zeny -= .req_zeny;
 	delitem .req_item_id,.req_item_amount;
 	specialeffect2 EF_MAXPOWER;
@@ -110,7 +104,7 @@ prontera,163,207,5	script	ห้อง Bossnia	10007,{
 	setpcblock PCBLOCK_MOVE,false;
 	addtimer 2000,strnpcinfo(3) + "::OnWarp";
 	announce strcharinfo(0) + " เข้าห้อง Bossnia (" + .@i + ")",bc_all;
-	warp "bossnia_0" + .@i,.@x,.@y;
+	warp "bossnia_0" + .@i,0,0;
 	close;
 	
 OnWarp:
