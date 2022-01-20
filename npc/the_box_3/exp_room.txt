@@ -90,7 +90,7 @@ OnInit:
 	
 	.spawn_amount = 10;
 	
-	waitingroom "ห้องล่า Boss (EXP)",0;
+	waitingroom "ห้อง Boss (EXP)",0;
 	
 	callsub L_Spawn;
 	

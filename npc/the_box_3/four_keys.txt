@@ -41,7 +41,7 @@ prontera,155,204,8	script	4 Keys	10007,{
 	setpcblock PCBLOCK_ALL,true;
 	setpcblock PCBLOCK_MOVE,false;
 	addtimer 2000,strnpcinfo(3) + "::OnWarp";
-	announce strcharinfo(0) + " เข้าห้อง Big Boss",bc_all;
+	announce strcharinfo(0) + " เข้าห้อง 4 Keys",bc_all;
 	warp .map_name$,0,0;
 	end;
 	
