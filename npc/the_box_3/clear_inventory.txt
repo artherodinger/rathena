@@ -1,4 +1,4 @@
-prontera,147,166,5	script	ลบ Item ในกระเป๋า	828,{
+prontera,106,269,5	script	ลบ Item ในกระเป๋า	828,{
 	menu "ไม่ลบ",-,"^FF2929ลบ Item ทุกอย่างในกระเป๋า (ไม่ลบที่สวมใส่อยู่)^000000",L_Clear;
 	end;
 	
@@ -7,8 +7,6 @@ prontera,147,166,5	script	ลบ Item ในกระเป๋า	828,{
 	end;
 	
 OnInit:
-	waitingroom "ลบ Item ในกระเป๋า",0;
+	waitingroom strnpcinfo(0),0;
 	end;
 }
-
-prontera,106,269,5	duplicate(ลบ Item ในกระเป๋า)	ลบ Item ในกระเป๋า#2	828
