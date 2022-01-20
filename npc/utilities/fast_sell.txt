@@ -35,7 +35,7 @@ prontera,125,250,3	script	ขายของเร็ว	10389,{
 	}
 	freeloop(0);
 	
-	message strcharinfo(0),"ได้รับ " + .@sum + "z";
+	message strcharinfo(0),"ได้รับ " + F_InsertComma(.@sum) + "z";
 	Zeny += .@sum;
 	
 	close;
