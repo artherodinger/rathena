@@ -3030,6 +3030,9 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 				if (temp != 10000) {
 					if(temp <= 0 && !battle_config.drop_rate0item)
 						temp = 1;
+
+					temp = mob_getdroprate(src, md->db, temp, 100); // MvP Drop should increase drop rates too. [Start]
+
 					if(rnd()%10000 >= temp) //if ==0, then it doesn't drop
 						continue;
 				}
@@ -4448,7 +4451,7 @@ uint64 MobDatabase::parseBodyNode(const YAML::Node &node) {
 		mob->base_exp = static_cast<t_exp>(cap_value((double)exp * (double)battle_config.base_exp_rate / 100., 0, MAX_EXP));
 	} else {
 		if (!exists)
-			mob->base_exp = 0;
+			mob->base_exp = static_cast<t_exp>(cap_value((double)(mob->status.max_hp / 3) * (double)battle_config.base_exp_rate / 100., 0, MAX_EXP));
 	}
 	
 	if (this->nodeExists(node, "JobExp")) {
@@ -4460,7 +4463,7 @@ uint64 MobDatabase::parseBodyNode(const YAML::Node &node) {
 		mob->job_exp = static_cast<t_exp>(cap_value((double)exp * (double)battle_config.job_exp_rate / 100., 0, MAX_EXP));
 	} else {
 		if (!exists)
-			mob->job_exp = 0;
+			mob->job_exp = static_cast<t_exp>(cap_value((double)(mob->status.max_hp / 3) * (double)battle_config.job_exp_rate / 100., 0, MAX_EXP));
 	}
 	
 	if (this->nodeExists(node, "MvpExp")) {
@@ -4943,14 +4946,39 @@ uint64 MobDatabase::parseBodyNode(const YAML::Node &node) {
 		}
 	}
 
+	/*if (this->nodeExists(node, "MvpDrops")) {
+		if (!this->parseDropNode("MvpDrops", node, MAX_MVP_DROP, mob->mvpitem))
+			return 0;
+	}
+	if (this->nodeExists(node, "Drops")) {
+		if (!this->parseDropNode("Drops", node, MAX_MOB_DROP, mob->dropitem)
+			return 0;
+	}*/
+
+	// [Start]
 	if (this->nodeExists(node, "MvpDrops")) {
 		if (!this->parseDropNode("MvpDrops", node, MAX_MVP_DROP, mob->mvpitem, mob->lv, (mob->mexp > 0), true))
 			return 0;
+	}
+	else {
+		mob->mvpitem[MAX_MVP_DROP].nameid = 40016;
+		mob->mvpitem[MAX_MVP_DROP].rate = cap_value(battle_config.item_rate_mvp_refine * (mob->lv / 3), battle_config.item_rate_mvp_refine, 10000);
+		mob->mvpitem[MAX_MVP_DROP].steal_protected = true;
+		mob->mvpitem[MAX_MVP_DROP].randomopt_group = 0;
 	}
 
 	if (this->nodeExists(node, "Drops")) {
 		if (!this->parseDropNode("Drops", node, MAX_MOB_DROP, mob->dropitem, mob->lv, (mob->mexp > 0), false))
 			return 0;
+	}
+	else {
+		mob->dropitem[MAX_MOB_DROP].nameid = 40017;
+		if (mob->mexp > 0)
+			mob->dropitem[MAX_MOB_DROP].rate = cap_value(battle_config.item_rate_the_box_key * (mob->lv * 10), battle_config.item_rate_the_box_key, 10000);
+		else
+			mob->dropitem[MAX_MOB_DROP].rate = cap_value(battle_config.item_rate_the_box_key * (mob->lv / 9), battle_config.item_rate_the_box_key, 10000);
+		mob->dropitem[MAX_MOB_DROP].steal_protected = true;
+		mob->dropitem[MAX_MOB_DROP].randomopt_group = 0;
 	}
 
 	if (!exists)

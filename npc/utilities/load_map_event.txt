@@ -4,8 +4,7 @@ prontera	mapflag	loadevent
 	end;
 	
 OnPCLoadMapEvent:
-	if(strcharinfo(3) == "prontera"){
-		bonus_script_clear 1;
-	}
+	if(strcharinfo(3) == "prontera")
+	bonus_script_clear 1;
 	end;
 }

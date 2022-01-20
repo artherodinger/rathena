@@ -6,6 +6,7 @@ OnPCLoginEvent:
 	bonus_script_clear 1;
 	F_ExpMultiplier();
 	F_DropMultiplier();
-	F_THE_BOX_KEY_Quest_Add_Drop();
+	atcommand "@alootid +40016";
+	atcommand "@alootid +40017";
 	end;
 }
