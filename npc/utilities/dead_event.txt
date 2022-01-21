@@ -1,6 +1,8 @@
 prontera	mapflag	noexp
 prontera	mapflag	nopenalty
+force_1-1	mapflag	noexp
 force_1-1	mapflag	nopenalty
+force_1-2	mapflag	noexp
 force_1-2	mapflag	nopenalty
 
 -	script	DeadEvent	-1,{
