@@ -35,7 +35,7 @@ prontera,155,200,8	script	Self Challenge	10007,{
 	.@is_force_no_cooldown = 0;
 	if(self_test_cooldown && !.@is_force_no_cooldown){
 		.@time_left = (self_test_cooldown - gettimetick(2));
-		if(.@time_left){
+		if(.@time_left > 0){
 			mes "โปรดรอ " + F_InsertComma(.@time_left) + " วินาที";
 			close;
 		}
