@@ -67,13 +67,28 @@ function	script	F_PercentBase10000	{
 
 function	script	F_IsDummyMonster	{
 	.@v = getarg(0,0);
-	if((.@v == 2408)			// Dummy
-			|| (.@v == 2409)	// Dummy
-			|| (.@v == 2410)	// Dummy
-			|| (.@v == 2411)	// Dummy
-			|| (.@v == 2413)	// Dummy
-			|| (.@v == 2401))	// Poring Initial Land Map
+	if((.@v == 2408)									// Dummy
+			|| (.@v == 2409)							// Dummy
+			|| (.@v == 2410)							// Dummy
+			|| (.@v == 2411)							// Dummy
+			|| (.@v == 2413)							// Dummy
+			|| (.@v == 2401)							// Poring on initial land maps
+			|| (getmonsterinfo(.@v,MOB_MAXHP) < 60)		// HP below Poring is not allowed
+			|| !isspawn(.@v))							// It's not spawn in official servers
 	return true;
 	else
 	return false;
+}
+
+function	script	F_CleanUpSelfTest	{
+	deltimer $self_test_npc_name$ + "::OnFailed";
+	
+	for(.@i = 0; .@i < getarraysize(self_test_monster_gids); .@i++){
+		if(unitexists(self_test_monster_gids[.@i]))
+		unitkill self_test_monster_gids[.@i];
+	}
+	
+	// Clean up old array
+	deletearray self_test_monster_gids[0],getarraysize(self_test_monster_gids);
+	return;
 }

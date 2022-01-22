@@ -14,7 +14,7 @@ vis_h04	mapflag	notomb
 
 vis_h04,0,0	monster	--ja--	1068,100,5000,5000
 
-prontera,155,204,8	script	4 Keys	10007,{
+prontera,155,208,8	script	4 Keys	10007,{
 	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 ในการเข้าห้อง";
 	mes "---";
 	mes "โทษภายในห้อง";

@@ -1,0 +1,285 @@
+//force_2-1	mapflag	tb
+//force_2-1	mapflag	battleground
+//force_2-1	mapflag	gvg
+//force_2-1	mapflag	pvp
+force_2-1	mapflag	novending
+force_2-1	mapflag	nochat
+force_2-1	mapflag	monster_noteleport
+force_2-1	mapflag	noteleport
+force_2-1	mapflag	nowarp
+force_2-1	mapflag	nowarpto
+force_2-1	mapflag	nosave
+force_2-1	mapflag	nobranch
+force_2-1	mapflag	notomb
+force_2-1	mapflag	noexp
+force_2-1	mapflag	noloot
+
+//force_2-2	mapflag	tb
+//force_2-2	mapflag	battleground
+//force_2-2	mapflag	gvg
+//force_2-2	mapflag	pvp
+force_2-2	mapflag	novending
+force_2-2	mapflag	nochat
+force_2-2	mapflag	monster_noteleport
+force_2-2	mapflag	noteleport
+force_2-2	mapflag	nowarp
+force_2-2	mapflag	nowarpto
+force_2-2	mapflag	nosave
+force_2-2	mapflag	nobranch
+force_2-2	mapflag	notomb
+force_2-2	mapflag	noexp
+force_2-2	mapflag	noloot
+
+prontera,155,200,8	script	Self Challenge	10007,{
+	// Cooldown
+	.@is_force_no_cooldown = 0;
+	if(self_test_cooldown && !.@is_force_no_cooldown){
+		.@time_left = (self_test_cooldown - gettimetick(2));
+		if(.@time_left){
+			mes "โปรดรอ " + F_InsertComma(.@time_left) + " วินาที";
+			close;
+		}
+	}
+	mes "๐ Monster จะออกมาประมาณ " + .monster_min_amount + "~" + .monster_max_amount + " ตัว";
+	mes "๐ มีเวลาเล่นต่อรอบ " + F_InsertComma(.play_timer) + " วินาที";
+	mes "๐ หลังเข้าจะต้องรอ " + F_InsertComma(.enter_delay) + " วินาที";
+	mes "---";
+	mes "รางวัล";
+	mes "๐ ^3629FF" + F_InsertComma(.monster_min_amount * (NextBaseExp / .reward_exp_max_divider)) + "~" + F_InsertComma(.monster_max_amount *(NextBaseExp / .reward_exp_min_divider)) + " EXP (เพิ่ม EXP ได้ปกติ)^000000";
+	mes "๐ ^3629FF" + F_InsertComma(.monster_min_amount * (NextJobExp / .reward_exp_max_divider)) + "~" + F_InsertComma(.monster_max_amount *(NextJobExp / .reward_exp_min_divider)) + " Job EXP (เพิ่ม EXP ได้ปกติ)^000000";
+	mes "๐ ^3629FF" + F_InsertComma(.monster_min_amount * .reward_item_min_amount) + "~" + F_InsertComma(.monster_max_amount * .reward_item_max_amount) + " THE BOX KEY^000000";
+	mes "๐ ^3629FF" + F_InsertComma(.monster_min_amount * .reward_zeny_min_amount) + "~" + F_InsertComma(.monster_max_amount * .reward_zeny_max_amount) + " Zeny^000000";
+	mes "๐ ^3629FFไม่มีโทษการตายใด ๆ ตายรัว ๆ ได้เลย^000000";
+	next;
+	menu "เข้า",-;
+	
+	// Reset temporary variables
+	@self_test_map = 0;
+	@self_test_room = 0;
+	
+	// Find available area (Map 1)
+	for(.@i = 0; .@i < .map_1_room_amount; .@i++){
+		if(getareausers(.map_1_name$,(.map_1_room_x_start[.@i] - .area_check_helper),(.map_1_room_y_start[.@i] - .area_check_helper),(.map_1_room_x_end[.@i] + .area_check_helper),(.map_1_room_y_end[.@i] + .area_check_helper)) <= 0){
+			setpcblock PCBLOCK_ALL,true;
+			setpcblock PCBLOCK_MOVE,false;
+			
+			// Clean up old monsters
+			callfunc("F_CleanUpSelfTest");
+			
+			// Set cooldown
+			self_test_cooldown = gettimetick(2) + .enter_delay;
+			
+			// Set temporary variables
+			@self_test_map = 1;
+			@self_test_room = .@i;
+			
+			// Set timer events
+			addtimer 2000,$self_test_npc_name$ + "::OnWarp";
+			addtimer (.play_timer * 1000),$self_test_npc_name$ + "::OnFailed";
+			
+			// Warp
+			warp .map_1_name$,rand(.map_1_room_x_start[.@i],.map_1_room_x_end[.@i]),rand(.map_1_room_y_start[.@i],.map_1_room_y_end[.@i]);
+			end;
+		}
+	}
+	
+	// Find available area (Map 2)
+	for(.@i = 0; .@i < .map_2_room_amount; .@i++){
+		if(getareausers(.map_2_name$,(.map_2_room_x_start[.@i] - .area_check_helper),(.map_2_room_y_start[.@i] - .area_check_helper),(.map_2_room_x_end[.@i] + .area_check_helper),(.map_2_room_y_end[.@i] + .area_check_helper)) <= 0){
+			setpcblock PCBLOCK_ALL,true;
+			setpcblock PCBLOCK_MOVE,false;
+			
+			// Clean up old monsters
+			callfunc("F_CleanUpSelfTest");
+			
+			// Set cooldown
+			self_test_cooldown = gettimetick(2) + .enter_delay;
+			
+			// Set temporary variables
+			@self_test_map = 2;
+			@self_test_room = .@i;
+			
+			// Set timer events
+			addtimer 2000,$self_test_npc_name$ + "::OnWarp";
+			addtimer (.play_timer * 1000),$self_test_npc_name$ + "::OnFailed";
+			
+			// Warp
+			warp .map_2_name$,rand(.map_2_room_x_start[.@i],.map_2_room_x_end[.@i]),rand(.map_2_room_y_start[.@i],.map_2_room_y_end[.@i]);
+			end;
+		}
+	}
+	
+	message strcharinfo(0),"ห้องเต็ม โปรดรอสักครู่";
+	
+	end;
+	
+OnWarp:
+	// Unexpected error
+	if(!playerattached())
+	end;
+
+	// Unexpected error
+	if(!@self_test_map)
+	return;
+
+	setpcblock PCBLOCK_ALL,false;
+	
+	// Get tier
+	if(BaseLevel >= .tier_7_lv)
+	.@tier = 7; // 150+
+	else if(BaseLevel >= .tier_6_lv)
+	.@tier = 6; // 120~149
+	else if(BaseLevel >= .tier_5_lv)
+	.@tier = 5; // 100~119
+	else if(BaseLevel >= .tier_4_lv)
+	.@tier = 4; // 80~99
+	else if(BaseLevel >= .tier_3_lv)
+	.@tier = 3; // 60~79
+	else if(BaseLevel >= .tier_2_lv)
+	.@tier = 2; // 30~59
+	else if(BaseLevel >= .tier_1_lv)
+	.@tier = 2; // 10~29
+	else
+	.@tier = 1; // 1~9
+
+	// Spawn monster
+	self_test_kill_count = rand(.monster_min_amount,.monster_max_amount);
+	
+	freeloop(1);
+	
+	for(.@i = 0; .@i < self_test_kill_count; .@i++){
+		.@monster_id = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+		.@monster_level = getmonsterinfo(.@monster_id,MOB_LV);
+		while(F_IsDummyMonster(.@monster_id)
+		|| (getmonsterinfo(.@monster_id,MOB_MVPEXP) > 0)
+		|| ((.@tier == 1) && ((.@monster_level <= 0) || (.@monster_level > .tier_1_lv)))
+		|| ((.@tier == 2) && ((.@monster_level < .tier_1_lv) || (.@monster_level > .tier_2_lv)))
+		|| ((.@tier == 3) && ((.@monster_level < .tier_2_lv) || (.@monster_level > .tier_3_lv)))
+		|| ((.@tier == 4) && ((.@monster_level < .tier_3_lv) || (.@monster_level > .tier_4_lv)))
+		|| ((.@tier == 5) && ((.@monster_level < .tier_4_lv) || (.@monster_level > .tier_5_lv)))
+		|| ((.@tier == 6) && ((.@monster_level < .tier_5_lv) || (.@monster_level > .tier_6_lv)))
+		|| ((.@tier == 7) && (.@monster_level < .tier_7_lv))){
+			.@monster_id = $all_mob_ids[rand(0,$all_mob_id_size - 1)];
+			.@monster_level = getmonsterinfo(.@monster_id,MOB_LV);
+		}
+		
+		// Spawn
+		if(@self_test_map == 1)
+		monster .map_1_name$,rand(.map_1_room_x_start[@self_test_room],.map_1_room_x_end[@self_test_room]),rand(.map_1_room_y_start[@self_test_room],.map_1_room_y_end[@self_test_room]),"--ja--",.@monster_id,1,$self_test_npc_name$ + "::OnMonsterDead";
+		else if(@self_test_map == 2)
+		monster .map_2_name$,rand(.map_2_room_x_start[@self_test_room],.map_2_room_x_end[@self_test_room]),rand(.map_2_room_y_start[@self_test_room],.map_2_room_y_end[@self_test_room]),"--ja--",.@monster_id,1,$self_test_npc_name$ + "::OnMonsterDead";
+		
+		// Set GID
+		setarray self_test_monster_gids[getarraysize(self_test_monster_gids)],$@mobid[0];
+	}
+	
+	freeloop(0);
+	
+	end;
+	
+OnFailed:
+	// Unexpected error
+	if(!playerattached())
+	end;
+
+	// Unexpected error
+	if((@self_test_map == 1 && (strcharinfo(3) != .map_1_name$))
+			|| (@self_test_map == 2 && (strcharinfo(3) != .map_2_name$)))
+	end;
+	
+	warp "prontera",156,191;
+	
+	callfunc("F_CleanUpSelfTest");
+	
+	sleep2 100;
+	
+	message strcharinfo(0),"หมดเวลา!";
+	
+	end;
+
+OnMonsterDead:
+	// Unexpected error
+	if(!playerattached())
+	end;
+
+	// Unexpected error
+	if((@self_test_map == 1 && (strcharinfo(3) != .map_1_name$))
+			|| (@self_test_map == 2 && (strcharinfo(3) != .map_2_name$)))
+	end;
+	
+	// Get EXP and Job EXP
+	getexp (NextBaseExp / rand(.reward_exp_min_divider,.reward_exp_max_divider)),(NextJobExp / rand(.reward_exp_min_divider,.reward_exp_max_divider));
+	// Get Items
+	getitem .reward_item_id,rand(.reward_item_min_amount,.reward_item_max_amount);
+	// Get Zeny
+	.@reward_zeny = rand(.reward_zeny_min_amount,.reward_zeny_max_amount);
+	Zeny += .@reward_zeny;
+	message strcharinfo(0),"ได้รับ " + F_InsertComma(.@reward_zeny) + "z";
+	
+	self_test_kill_count--;
+	
+	if(self_test_kill_count <= 0){
+		warp "prontera",156,191;
+		
+		callfunc("F_CleanUpSelfTest");
+		
+		sleep2 100;
+
+		message strcharinfo(0),"คุณกำจัด Monster ครบแล้ว!";
+	}
+	
+	end;
+	
+OnInit:
+	$self_test_npc_name$ = strnpcinfo(0);
+
+	// Level range
+	.tier_1_lv = 10;
+	.tier_2_lv = 40;
+	.tier_3_lv = 60;
+	.tier_4_lv = 80;
+	.tier_5_lv = 100;
+	.tier_6_lv = 120;
+	.tier_7_lv = 150;
+	
+	// Maps
+	.map_1_name$ = "force_2-1";
+	.map_2_name$ = "force_2-2";
+	
+	// Rooms
+	.area_check_helper = 10;
+	setarray .map_1_room_x_start[0],	13,		161,	13,		161,	88;
+	setarray .map_1_room_x_end[0],		38,		186,	38,		186,	111;
+	setarray .map_1_room_y_start[0],	161,	186,	13,		13,		88;
+	setarray .map_1_room_y_end[0],		186,	161,	38,		38,		111;
+	setarray .map_2_room_x_start[0],	14,		87,		163,	14,		88,		161;
+	setarray .map_2_room_x_end[0],		37,		112,	185,	37,		111,	186;
+	setarray .map_2_room_y_start[0],	66,		65,		66,		14,		14,		13;
+	setarray .map_2_room_y_end[0],		89,		90,		88,		37,		37,		38;
+	
+	.map_1_room_amount = getarraysize(.map_1_room_x_start);
+	.map_2_room_amount = getarraysize(.map_2_room_x_start);
+	
+	// Monster count
+	.monster_min_amount = 3;
+	.monster_max_amount = 7;
+	.play_timer = 180;
+	
+	// Rewards
+	.reward_item_id = 40017;
+	.reward_item_min_amount = 1;
+	.reward_item_max_amount = 2;
+	.reward_zeny_min_amount = 10000;
+	.reward_zeny_max_amount = 100000;
+	.reward_exp_min_divider = 1000;
+	.reward_exp_max_divider = 3500;
+	.enter_delay = 600;
+	
+	waitingroom "เก็บเลเวล, " + getitemname(.reward_item_id) + ", Zeny",0;
+	
+	// Move out left over players inside rooms
+	mapwarp .map_1_name$,"prontera",156,191;
+	mapwarp .map_2_name$,"prontera",156,191;
+	
+	end;
+}

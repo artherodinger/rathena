@@ -4,19 +4,31 @@ force_1-1	mapflag	noexp
 force_1-1	mapflag	nopenalty
 force_1-2	mapflag	noexp
 force_1-2	mapflag	nopenalty
+force_2-1	mapflag	noexp
+force_2-1	mapflag	nopenalty
+force_2-2	mapflag	noexp
+force_2-2	mapflag	nopenalty
 
 -	script	DeadEvent	-1,{
 	end;
 	
 OnPCDieEvent:
+	callfunc("F_CleanUpSelfTest");
+
 	.@dead_map_name$ = strcharinfo(3);
 	
 	if((.@dead_map_name$ == "pvp_y_1-1")
 			|| (.@dead_map_name$ == "pvp_y_1-4")
 			|| (.@dead_map_name$ == "force_1-1")
 			|| (.@dead_map_name$ == "force_1-2")
+			|| (.@dead_map_name$ == "force_2-1")
+			|| (.@dead_map_name$ == "force_2-2")
 			|| (.@dead_map_name$ == "prontera")){
 		dispbottom "คุณตายใน Map ที่ไม่มีโทษใด ๆ";
+		
+		if((.@dead_map_name$ == "force_2-1")
+				|| (.@dead_map_name$ == "force_2-2"))
+		addtimer 100,strnpcinfo(3) + "::OnWarp";
 		
 		end;
 	}
