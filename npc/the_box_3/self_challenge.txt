@@ -59,7 +59,11 @@ prontera,155,200,8	script	Self Challenge	10007,{
 	
 	// Find available area (Map 1)
 	for(.@i = 0; .@i < .map_1_room_amount; .@i++){
-		if(getareausers(.map_1_name$,(.map_1_room_x_start[.@i] - .area_check_helper),(.map_1_room_y_start[.@i] - .area_check_helper),(.map_1_room_x_end[.@i] + .area_check_helper),(.map_1_room_y_end[.@i] + .area_check_helper)) <= 0){
+		if(getareausers(.map_1_name$
+					,(.map_1_room_x_start[.@i] - .area_check_helper)
+					,(.map_1_room_y_start[.@i] - .area_check_helper)
+					,(.map_1_room_x_end[.@i] + .area_check_helper)
+					,(.map_1_room_y_end[.@i] + .area_check_helper)) <= 0){
 			setpcblock PCBLOCK_ALL,true;
 			setpcblock PCBLOCK_MOVE,false;
 			
@@ -85,7 +89,11 @@ prontera,155,200,8	script	Self Challenge	10007,{
 	
 	// Find available area (Map 2)
 	for(.@i = 0; .@i < .map_2_room_amount; .@i++){
-		if(getareausers(.map_2_name$,(.map_2_room_x_start[.@i] - .area_check_helper),(.map_2_room_y_start[.@i] - .area_check_helper),(.map_2_room_x_end[.@i] + .area_check_helper),(.map_2_room_y_end[.@i] + .area_check_helper)) <= 0){
+		if(getareausers(.map_2_name$
+					,(.map_2_room_x_start[.@i] - .area_check_helper)
+					,(.map_2_room_y_start[.@i] - .area_check_helper)
+					,(.map_2_room_x_end[.@i] + .area_check_helper)
+					,(.map_2_room_y_end[.@i] + .area_check_helper)) <= 0){
 			setpcblock PCBLOCK_ALL,true;
 			setpcblock PCBLOCK_MOVE,false;
 			
@@ -247,11 +255,11 @@ OnInit:
 	.map_2_name$ = "force_2-2";
 	
 	// Rooms
-	.area_check_helper = 10;
+	.area_check_helper = 15;
 	setarray .map_1_room_x_start[0],	13,		161,	13,		161,	88;
 	setarray .map_1_room_x_end[0],		38,		186,	38,		186,	111;
-	setarray .map_1_room_y_start[0],	161,	186,	13,		13,		88;
-	setarray .map_1_room_y_end[0],		186,	161,	38,		38,		111;
+	setarray .map_1_room_y_start[0],	161,	161,	13,		13,		88;
+	setarray .map_1_room_y_end[0],		186,	186,	38,		38,		111;
 	setarray .map_2_room_x_start[0],	14,		87,		163,	14,		88,		161;
 	setarray .map_2_room_x_end[0],		37,		112,	185,	37,		111,	186;
 	setarray .map_2_room_y_start[0],	66,		65,		66,		14,		14,		13;
