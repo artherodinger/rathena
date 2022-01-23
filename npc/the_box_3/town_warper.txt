@@ -58,7 +58,7 @@ prontera,234,69,5	script	Warper#4	10081,{
 	end;
 	
 OnInit:
-	waitingroom "Zone ∑¥ Õ∫ Battleground",0;
+	waitingroom "Zone ∑¥ Õ∫ Damage 5%",0;
 	end;
 }
 
@@ -67,7 +67,7 @@ prontera,240,69,5	script	Warper#5	10081,{
 	end;
 	
 OnInit:
-	waitingroom "Zone ∑¥ Õ∫ GvG",0;
+	waitingroom "Zone ∑¥ Õ∫ Damage 10%",0;
 	end;
 }
 
