@@ -301,6 +301,10 @@ struct Battle_Config
 	int tb_damage_rate;
 	int tb_flee_penalty;
 	int tb_flee2_penalty;
+	int tb2_monster_damage_multiplier;
+	int tb2_damage_rate;
+	int tb2_flee_penalty;
+	int tb2_flee2_penalty;
 	int gvg_monster_damage_multiplier;
 	int gvg_short_damage_rate;
 	int gvg_long_damage_rate;

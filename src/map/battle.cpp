@@ -2016,6 +2016,19 @@ int64 battle_calc_tb_damage(struct block_list* src, struct block_list* bl, int64
 	return damage;
 }
 
+int64 battle_calc_tb2_damage(struct block_list* src, struct block_list* bl, int64 damage, uint16 skill_id, int flag)
+{
+	if (!damage) //No reductions to make.
+		return 0;
+
+	if (BL_CAST(BL_MOB, src)) // [Start]
+		damage = damage * battle_config.tb2_monster_damage_multiplier;
+	else
+		damage = damage * battle_config.tb2_damage_rate / 10000;
+	damage = i64max(damage, 1);
+	return damage;
+}
+
 /**
  * HP/SP drain calculation
  * @param damage Damage inflicted to the enemy
@@ -5968,6 +5981,8 @@ static void battle_calc_attack_gvg_bg(struct Damage* wd, struct block_list *src,
 				wd->damage=battle_calc_bg_damage(src,target,wd->damage,skill_id,wd->flag);
 			else if( mapdata->flag[MF_TB] )
 				wd->damage=battle_calc_tb_damage(src,target,wd->damage,skill_id,wd->flag);
+			else if (mapdata->flag[MF_TB2])
+				wd->damage = battle_calc_tb2_damage(src, target, wd->damage, skill_id, wd->flag);
 		}
 		else if(!wd->damage) {
 			wd->damage2 = battle_calc_damage(src,target,wd,wd->damage2,skill_id,skill_lv);
@@ -5977,6 +5992,8 @@ static void battle_calc_attack_gvg_bg(struct Damage* wd, struct block_list *src,
 				wd->damage2 = battle_calc_bg_damage(src,target,wd->damage2,skill_id,wd->flag);
 			else if (mapdata->flag[MF_TB])
 				wd->damage2 = battle_calc_tb_damage(src, target, wd->damage2, skill_id, wd->flag);
+			else if (mapdata->flag[MF_TB2])
+				wd->damage2 = battle_calc_tb2_damage(src, target, wd->damage2, skill_id, wd->flag);
 		}
 		else {
 			int64 d1 = wd->damage + wd->damage2,d2 = wd->damage2;
@@ -5987,6 +6004,8 @@ static void battle_calc_attack_gvg_bg(struct Damage* wd, struct block_list *src,
 				wd->damage = battle_calc_bg_damage(src,target,wd->damage,skill_id,wd->flag);
 			else if (mapdata->flag[MF_TB])
 				wd->damage = battle_calc_tb_damage(src, target, wd->damage, skill_id, wd->flag);
+			else if (mapdata->flag[MF_TB2])
+				wd->damage = battle_calc_tb2_damage(src, target, wd->damage, skill_id, wd->flag);
 			wd->damage2 = (int64)d2*100/d1 * wd->damage/100;
 			if(wd->damage > 1 && wd->damage2 < 1) wd->damage2 = 1;
 			wd->damage-=wd->damage2;
@@ -7775,6 +7794,8 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 		ad.damage = battle_calc_bg_damage(src,target,ad.damage,skill_id,ad.flag);
 	else if (mapdata->flag[MF_TB])
 		ad.damage = battle_calc_tb_damage(src, target, ad.damage, skill_id, ad.flag);
+	else if (mapdata->flag[MF_TB2])
+		ad.damage = battle_calc_tb2_damage(src, target, ad.damage, skill_id, ad.flag);
 
 	// Skill damage adjustment
 	if ((skill_damage = battle_skill_damage(src,target,skill_id)) != 0)
@@ -8162,6 +8183,8 @@ struct Damage battle_calc_misc_attack(struct block_list *src,struct block_list *
 		md.damage = battle_calc_bg_damage(src,target,md.damage,skill_id,md.flag);
 	else if (mapdata->flag[MF_TB])
 		md.damage = battle_calc_tb_damage(src, target, md.damage, skill_id, md.flag);
+	else if (mapdata->flag[MF_TB2])
+		md.damage = battle_calc_tb2_damage(src, target, md.damage, skill_id, md.flag);
 
 	// Skill damage adjustment
 	if ((skill_damage = battle_skill_damage(src,target,skill_id)) != 0)
@@ -9712,6 +9735,10 @@ static const struct _battle_data {
 	{ "tb_damage_rate",                     &battle_config.tb_damage_rate,                  80,     0,      INT_MAX,        },
 	{ "tb_flee_penalty",                    &battle_config.tb_flee_penalty,                 20,     0,      INT_MAX,        },
 	{ "tb_flee2_penalty",                   &battle_config.tb_flee2_penalty,                20,     0,      INT_MAX,        },
+	{ "tb2_monster_damage_multiplier",      &battle_config.tb2_monster_damage_multiplier,   1,      0,      INT_MAX,        },
+	{ "tb2_damage_rate",                    &battle_config.tb2_damage_rate,                 80,     0,      INT_MAX,        },
+	{ "tb2_flee_penalty",                   &battle_config.tb2_flee_penalty,                20,     0,      INT_MAX,        },
+	{ "tb2_flee2_penalty",                  &battle_config.tb2_flee2_penalty,               20,     0,      INT_MAX,        },
 	{ "gvg_monster_damage_multiplier",      &battle_config.gvg_monster_damage_multiplier,   1,      0,      INT_MAX,        },
 	{ "gvg_short_attack_damage_rate",       &battle_config.gvg_short_damage_rate,           80,     0,      INT_MAX,        },
 	{ "gvg_long_attack_damage_rate",        &battle_config.gvg_long_damage_rate,            80,     0,      INT_MAX,        },

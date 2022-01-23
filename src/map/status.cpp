@@ -8348,6 +8348,8 @@ static signed short status_calc_flee(struct block_list *bl, struct status_change
 			flee -= flee * battle_config.bg_flee_penalty/100;
 		else if (mapdata->flag[MF_TB])
 			flee -= flee * battle_config.tb_flee_penalty / 100;
+		else if (mapdata->flag[MF_TB2])
+			flee -= flee * battle_config.tb2_flee_penalty / 100;
 	}
 
 	if(!sc || !sc->count)
@@ -8474,6 +8476,8 @@ static signed short status_calc_flee2(struct block_list *bl, struct status_chang
 
 		if (mapdata->flag[MF_TB])
 			flee2 -= flee2 * battle_config.tb_flee2_penalty / 100;
+		else if (mapdata->flag[MF_TB2])
+			flee2 -= flee2 * battle_config.tb2_flee2_penalty / 100;
 	}
 
 	return (short)cap_value(flee2,10,SHRT_MAX);

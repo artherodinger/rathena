@@ -11088,6 +11088,7 @@ void clif_parse_LoadEndAck(int fd,struct map_session_data *sd)
 			if ((pmap != nullptr && (mapdata_flag_gvg(pmap) || pmap->flag[MF_BATTLEGROUND]))
 				|| (mapdata != nullptr && (mapdata_flag_gvg(mapdata) || mapdata->flag[MF_BATTLEGROUND]))
 				|| (mapdata != nullptr && mapdata->flag[MF_TB])
+				|| (mapdata != nullptr && mapdata->flag[MF_TB2])
 				)
 				status_calc_bl(&sd->bl, SCB_FLEE); //Refresh flee penalty
 		}
