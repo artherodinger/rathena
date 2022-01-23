@@ -32,6 +32,7 @@ prontera,163,208,1	script	Boss Zeny	10007,{
 		mes getitemname(.req_item_id) + " ไม่เพียงพอ";
 		close;
 	}
+	zeny_room_combo = 0;
 	delitem .req_item_id,.req_item_amount;
 	setpcblock PCBLOCK_ALL,true;
 	setpcblock PCBLOCK_MOVE,false;
@@ -58,9 +59,17 @@ OnBossDead:
 	end;
 
 	// Get Zeny
+	if(zeny_room_combo){
+		.@combo_min_zeny = .reward_min_zeny + (.reward_combo_zeny * zeny_room_combo);
+		if(.@combo_min_zeny > .reward_max_zeny)
+		.@combo_min_zeny = .reward_max_zeny;
+		.@reward_zeny = rand(.@combo_min_zeny,.reward_max_zeny);
+	}
+	else
 	.@reward_zeny = rand(.reward_min_zeny,.reward_max_zeny);
 	Zeny += .@reward_zeny;
-	message strcharinfo(0),"ได้รับ " + F_InsertComma(.@reward_zeny) + "z";
+	zeny_room_combo++;
+	message strcharinfo(0),"ได้รับ " + F_InsertComma(.@reward_zeny) + "z (ฆ่าไปแล้ว " + F_InsertComma(zeny_room_combo) + " ตัว)";
 	
 	if($exp_room_killed <= 0){
 		killmonsterall .map_name$;
@@ -78,6 +87,7 @@ OnBossDead:
 OnInit:
 	.map_name$ = "tra_fild";
 	
+	.reward_combo_zeny = 10000;
 	.reward_min_zeny = 100000;
 	.reward_max_zeny = 1000000;
 	
