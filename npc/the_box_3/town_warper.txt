@@ -2,7 +2,7 @@ force_1-1	mapflag	monster_noteleport
 force_1-1	mapflag	noteleport
 force_1-1	mapflag	nomemo
 force_1-1	mapflag	nosave
-force_1-1	mapflag	battleground
+force_1-1	mapflag	tb2
 
 force_1-2	mapflag	monster_noteleport
 force_1-2	mapflag	noteleport
