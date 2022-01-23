@@ -42,16 +42,18 @@ function	script	F_EnchantmentMarketContain	{
 }
 
 prontera,108,230,5	script	วิธีใช้กล่อง	837,{
-	mes "๐ ใช้ ^3629FF" + getitemname(.item_id) + "^000000 สามารถหาได้จาก Monster ทุกตัว (^3629FFโอกาส 0.03% เพิ่ม Drop ได้ปกติ^000000)";
-	mes "๐ ใช้ ^3629FF" + getitemname(.item_id_quest) + "^000000 สามารถ\nหาได้จาก Quest (^FF2929ใช้ได้แค่กล่อง 1 ดอก^000000)";
+	mes "๐ ใช้ ^3629FF" + getitemname(.item_id) + "^000000";
 	mes "๐ รายการ Item จะ^3629FFเปลี่ยนทุก ๆ 10 นาที";
-	mes "๐ ^FF2929ระวัง Item เต็มกระเป๋า";
 	menu "ดูของในกล่อง THE BOX",L_THE_BOX,
 	"ดูของในกล่อง THE BOX WEAPON",L_THE_BOX_WEAPON,
 	"ดูของในกล่อง THE BOX EQUIPMENT",L_THE_BOX_EQUIPMENT,
 	"ดูของในกล่อง THE BOX COSTUME",L_THE_BOX_COSTUME,
 	"ดูของในกล่อง THE BOX CARD",L_THE_BOX_CARD,
-	"ดูของในกล่อง THE BOX ENCHANTMENT",L_THE_BOX_ENCHANTMENT;
+	"ดูของในกล่อง THE BOX ENCHANTMENT",L_THE_BOX_ENCHANTMENT,
+	"เปิดกล่องทีเดียวหมดตัว [" + (is_manual_tap_the_box ? "^FF2929ปิดอยู่^000000" : "^3629FFเปิดอยู่^000000") + "]",-;
+	is_manual_tap_the_box = !is_manual_tap_the_box;
+	message strcharinfo(0),"เปิดกล่องทีเดียวหมดตัว [" + (is_manual_tap_the_box ? "ปิด" : "เปิด") + "]";
+	end;
 	
 OnBuyItem:
 	end;
@@ -252,16 +254,56 @@ OnInit:
 }
 
 prontera,108,236,5	script	THE BOX	10249,{
+	// THE BOX KEY (Quest)
 	if(countitem(.item_id_quest) >= .amount){
-		delitem .item_id_quest,.amount;
-		getitem $market[rand(0,(getarraysize($market) - 1))],1;
+		freeloop(1);
+		
+		while(countitem(.item_id_quest) >= .amount){
+			// Random reward
+			.@reward_item_id = $market[rand(0,(getarraysize($market) - 1))];
+			// Check weight
+			if(!checkweight(.@reward_item_id,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม";
+				freeloop(0);
+				end;
+			}
+			// Trade
+			delitem .item_id_quest,.amount;
+			getitem .@reward_item_id,1;
+			// Not using automatic tap
+			if(is_manual_tap_the_box)
+			break;
+		}
+		
+		freeloop(0);
+		
 		end;
 	}
+	// THE BOX KEY
 	else if(countitem(.item_id) < .amount)
 	message strcharinfo(0),"คุณไม่มี " + .amount + " " + getitemname(.item_id);
 	else{
-		delitem .item_id,.amount;
-		getitem $market[rand(0,(getarraysize($market) - 1))],1;
+		freeloop(1);
+		
+		while(countitem(.item_id) >= .amount){
+			// Random reward
+			.@reward_item_id = $market[rand(0,(getarraysize($market) - 1))];
+			// Check weight
+			if(!checkweight(.@reward_item_id,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม";
+				freeloop(0);
+				end;
+			}
+			// Trade
+			delitem .item_id,.amount;
+			getitem .@reward_item_id,1;
+			// Not using automatic tap
+			if(is_manual_tap_the_box)
+			break;
+		}
+		
+		freeloop(0);
+		
 	}
 	end;
 	
@@ -277,8 +319,26 @@ prontera,99,239,5	script	THE BOX WEAPON	10249,{
 	if(countitem(.item_id) < .amount)
 	message strcharinfo(0),"คุณไม่มี " + .amount + " " + getitemname(.item_id);
 	else{
-		delitem .item_id,.amount;
-		getitem $weapon_market[rand(0,(getarraysize($weapon_market) - 1))],1;
+		freeloop(1);
+		
+		while(countitem(.item_id) >= .amount){
+			// Random reward
+			.@reward_item_id = $weapon_market[rand(0,(getarraysize($weapon_market) - 1))];
+			// Check weight
+			if(!checkweight(.@reward_item_id,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม";
+				freeloop(0);
+				end;
+			}
+			// Trade
+			delitem .item_id,.amount;
+			getitem .@reward_item_id,1;
+			// Not using automatic tap
+			if(is_manual_tap_the_box)
+			break;
+		}
+		
+		freeloop(0);
 	}
 	end;
 	
@@ -293,8 +353,26 @@ prontera,103,241,5	script	THE BOX EQUIPMENT	10249,{
 	if(countitem(.item_id) < .amount)
 	message strcharinfo(0),"คุณไม่มี " + .amount + " " + getitemname(.item_id);
 	else{
-		delitem .item_id,.amount;
-		getitem $equipment_market[rand(0,(getarraysize($equipment_market) - 1))],1;
+		freeloop(1);
+		
+		while(countitem(.item_id) >= .amount){
+			// Random reward
+			.@reward_item_id = $equipment_market[rand(0,(getarraysize($equipment_market) - 1))];
+			// Check weight
+			if(!checkweight(.@reward_item_id,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม";
+				freeloop(0);
+				end;
+			}
+			// Trade
+			delitem .item_id,.amount;
+			getitem .@reward_item_id,1;
+			// Not using automatic tap
+			if(is_manual_tap_the_box)
+			break;
+		}
+		
+		freeloop(0);
 	}
 	end;
 	
@@ -309,8 +387,26 @@ prontera,108,243,5	script	THE BOX COSTUME	10249,{
 	if(countitem(.item_id) < .amount)
 	message strcharinfo(0),"คุณไม่มี " + .amount + " " + getitemname(.item_id);
 	else{
-		delitem .item_id,.amount;
-		getitem $costume_market[rand(0,(getarraysize($costume_market) - 1))],1;
+		freeloop(1);
+		
+		while(countitem(.item_id) >= .amount){
+			// Random reward
+			.@reward_item_id = $costume_market[rand(0,(getarraysize($costume_market) - 1))];
+			// Check weight
+			if(!checkweight(.@reward_item_id,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม";
+				freeloop(0);
+				end;
+			}
+			// Trade
+			delitem .item_id,.amount;
+			getitem .@reward_item_id,1;
+			// Not using automatic tap
+			if(is_manual_tap_the_box)
+			break;
+		}
+		
+		freeloop(0);
 	}
 	end;
 	
@@ -325,8 +421,26 @@ prontera,113,241,5	script	THE BOX CARD	10249,{
 	if(countitem(.item_id) < .amount)
 	message strcharinfo(0),"คุณไม่มี " + .amount + " " + getitemname(.item_id);
 	else{
-		delitem .item_id,.amount;
-		getitem $card_market[rand(0,(getarraysize($card_market) - 1))],1;
+		freeloop(1);
+		
+		while(countitem(.item_id) >= .amount){
+			// Random reward
+			.@reward_item_id = $card_market[rand(0,(getarraysize($card_market) - 1))];
+			// Check weight
+			if(!checkweight(.@reward_item_id,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม";
+				freeloop(0);
+				end;
+			}
+			// Trade
+			delitem .item_id,.amount;
+			getitem .@reward_item_id,1;
+			// Not using automatic tap
+			if(is_manual_tap_the_box)
+			break;
+		}
+		
+		freeloop(0);
 	}
 	end;
 	
@@ -341,8 +455,26 @@ prontera,117,239,5	script	THE BOX ENCHANTMENT	10249,{
 	if(countitem(.item_id) < .amount)
 	message strcharinfo(0),"คุณไม่มี " + .amount + " " + getitemname(.item_id);
 	else{
-		delitem .item_id,.amount;
-		getitem $enchantment_market[rand(0,(getarraysize($enchantment_market) - 1))],1;
+		freeloop(1);
+		
+		while(countitem(.item_id) >= .amount){
+			// Random reward
+			.@reward_item_id = $enchantment_market[rand(0,(getarraysize($enchantment_market) - 1))];
+			// Check weight
+			if(!checkweight(.@reward_item_id,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม";
+				freeloop(0);
+				end;
+			}
+			// Trade
+			delitem .item_id,.amount;
+			getitem .@reward_item_id,1;
+			// Not using automatic tap
+			if(is_manual_tap_the_box)
+			break;
+		}
+		
+		freeloop(0);
 	}
 	end;
 	
