@@ -3,7 +3,7 @@ prontera,125,261,3	script	Enchantment	10111,{
 		mes "ตอนนี้คุณต้องการจะฝัง: " + getitemname(target_enchantment);
 		next;
 	}
-	menu "เลือก Enchantment ที่จะฝัง",L_Select,"เริ่มกระบวนการฝัง Enchantment",-;
+	menu "เริ่มกระบวนการฝัง Enchantment",-,"เลือก Enchantment ที่จะฝัง",L_Select;
 	if(target_enchantment <= 0){
 		mes "คุณยังไม่ได้เลือก Enchantment ที่จะฝัง";
 		close;
@@ -64,30 +64,59 @@ prontera,125,261,3	script	Enchantment	10111,{
 
 	.@menu$ = "";
 	
-	for(.@i = .@itemSlotCount; .@i < 4; ++.@i)
-	.@menu$ += "ช่องที่ " + (.@i + 1) + ":";
+	for(.@i = .@itemSlotCount; .@i < 4; ++.@i){
+		if(getd(".@cardSlot" + (.@i + 1)) > 0)
+		.@menu$ += "[" + (.@i + 1) + "] ^1D68FF" + getitemname(getd(".@cardSlot" + (.@i + 1))) + "^000000:";
+		else
+		.@menu$ += "[" + (.@i + 1) + "] ว่าง" + ":";
+	}
+	if(.@menu$ != "" && .@menu$ != " ")
+	.@menu$ += "^FF1D1Dทีเดียวทุกช่อง^000000";
 
 	.@slot = select(.@menu$) + .@itemSlotCount - 1;
 	
-	if(countitem(target_enchantment) < 1){
-		mes getitemname(target_enchantment) + " ไม่เพียงพอ";
-		close;
+	.@is_all_slot = (.@slot == 4);
+	
+	if(.@is_all_slot){
+		if(countitem(target_enchantment) < .@sumSlotCount){
+			mes getitemname(target_enchantment) + " ไม่เพียงพอ";
+			close;
+		}
+		delitem target_enchantment,.@sumSlotCount;
 	}
-	delitem target_enchantment,1;
-
+	else{
+		if(countitem(target_enchantment) < 1){
+			mes getitemname(target_enchantment) + " ไม่เพียงพอ";
+			close;
+		}
+		delitem target_enchantment,1;
+	}
+	
 	if (callfunc("F_IsEquipIDHack",.@part,.@selectedItemId)){
 		mes "เหมือนว่าเจ้า จะสลับอุปกรณ์ ระหว่างที่ข้า กำลังดำเนินการอยู่นะ!";
 		close;
 	}
 	delequip .@part;
-	if(.@slot == 0)
-	.@cardSlot1 = target_enchantment;
-	else if(.@slot == 1)
-	.@cardSlot2 = target_enchantment;
-	else if(.@slot == 2)
-	.@cardSlot3 = target_enchantment;
-	else if(.@slot == 3)
-	.@cardSlot4 = target_enchantment;
+	if(.@is_all_slot){
+		if((.@sumSlotCount - 4) >= 0)
+		.@cardSlot1 = target_enchantment;
+		if((.@sumSlotCount - 3) >= 0)
+		.@cardSlot2 = target_enchantment;
+		if((.@sumSlotCount - 2) >= 0)
+		.@cardSlot3 = target_enchantment;
+		if((.@sumSlotCount - 1) >= 0)
+		.@cardSlot4 = target_enchantment;
+	}
+	else{
+		if(.@slot == 0)
+		.@cardSlot1 = target_enchantment;
+		else if(.@slot == 1)
+		.@cardSlot2 = target_enchantment;
+		else if(.@slot == 2)
+		.@cardSlot3 = target_enchantment;
+		else if(.@slot == 3)
+		.@cardSlot4 = target_enchantment;
+	}
 	if(.@randomOptionId1 > 0){
 		setarray .@OptID[0],.@randomOptionId1,.@randomOptionId2,.@randomOptionId3,.@randomOptionId4,.@randomOptionId5;
 		setarray .@OptVal[0],.@randomOptionValue1,.@randomOptionValue2,.@randomOptionValue3,.@randomOptionValue4,.@randomOptionValue5;
