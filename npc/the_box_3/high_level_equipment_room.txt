@@ -1,4 +1,5 @@
 //lasa_sea	mapflag	tb
+//lasa_sea	mapflag	tb2
 //lasa_sea	mapflag	battleground
 lasa_sea	mapflag	gvg
 //lasa_sea	mapflag	pvp

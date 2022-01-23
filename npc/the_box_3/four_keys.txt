@@ -1,4 +1,5 @@
 vis_h04	mapflag	tb
+//vis_h04	mapflag	tb2
 //vis_h04	mapflag	battleground
 //vis_h04	mapflag	gvg
 vis_h04	mapflag	pvp

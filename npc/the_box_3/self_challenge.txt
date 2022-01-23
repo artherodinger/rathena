@@ -1,4 +1,5 @@
 //force_2-1	mapflag	tb
+//force_2-1	mapflag	tb2
 //force_2-1	mapflag	battleground
 //force_2-1	mapflag	gvg
 //force_2-1	mapflag	pvp
@@ -15,6 +16,7 @@ force_2-1	mapflag	noexp
 force_2-1	mapflag	noloot
 
 //force_2-2	mapflag	tb
+//force_2-2	mapflag	tb2
 //force_2-2	mapflag	battleground
 //force_2-2	mapflag	gvg
 //force_2-2	mapflag	pvp

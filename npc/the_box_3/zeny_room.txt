@@ -1,5 +1,5 @@
 //tra_fild	mapflag	tb
-//tra_fild	mapflag	tb2
+tra_fild	mapflag	tb2
 //tra_fild	mapflag	battleground
 //tra_fild	mapflag	gvg
 tra_fild	mapflag	pvp
