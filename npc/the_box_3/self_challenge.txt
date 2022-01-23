@@ -283,7 +283,7 @@ OnInit:
 	.reward_exp_max_divider = 3500;
 	.enter_delay = 600;
 	
-	waitingroom "เก็บเลเวล, " + getitemname(.reward_item_id) + ", Zeny",0;
+	waitingroom "เก็บ Level, " + getitemname(.reward_item_id) + ", Zeny",0;
 	
 	// Move out left over players inside rooms
 	mapwarp .map_1_name$,"prontera",156,191;
