@@ -62,7 +62,8 @@ OnBossDead:
 	if(zeny_room_combo){
 		.@combo_min_zeny = .reward_min_zeny + (.reward_combo_zeny * zeny_room_combo);
 		if(.@combo_min_zeny > .reward_max_zeny)
-		.@combo_min_zeny = .reward_max_zeny;
+		.@reward_zeny = .reward_max_zeny;
+		else
 		.@reward_zeny = rand(.@combo_min_zeny,.reward_max_zeny);
 	}
 	else
