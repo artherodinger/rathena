@@ -1,7 +1,8 @@
 //tra_fild	mapflag	tb
-tra_fild	mapflag	battleground
+//tra_fild	mapflag	tb2
+//tra_fild	mapflag	battleground
 //tra_fild	mapflag	gvg
-//tra_fild	mapflag	pvp
+tra_fild	mapflag	pvp
 tra_fild	mapflag	novending
 tra_fild	mapflag	nochat
 tra_fild	mapflag	monster_noteleport
