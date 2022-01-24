@@ -1,5 +1,12 @@
 prontera,120,263,3	script	Random Option	10127,{
-	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.price) + "z^000000";
+	L_Menu:
+	if(locking_option)
+	mes "^FF2929คุณกำลังจะเสียเงินมหาศาล\nเพื่อหา Option ID: " + locking_option + "^000000";
+	else
+	mes "คุณไม่ได้กำหนด Option ID ที่ต้องการ เราจะทำการสุ่มให้เพียงรอบเดียวตามปกติ";
+	next;
+	menu "ใช้งาน NPC",-,(locking_option ? "^3F28FFนำการกำหนดออก^000000" : "-"),L_RemoveLockingOption,"กำหนด Option ที่อยากได้ (^FF2929ใช้เงินมหาศาล^000000)",L_LockingOptionSetup;
+	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.price) + "z^000000 " + (locking_option ? "ต่อรอบ" : "");
 	mes "^3F28FF๐ รับ Random Option 5 แถว^000000";
 	mes "^3F28FF๐ สุ่มค่าที่ได้รับ 1~5 ต่อแถว^000000";
 	next;
@@ -40,16 +47,74 @@ prontera,120,263,3	script	Random Option	10127,{
 	
 	Zeny -= .price;
 	
-	setrandomoption(.@part,0,callfunc("GetRandomOptionId"),rand(1,5),0);
-	setrandomoption(.@part,1,callfunc("GetRandomOptionId"),rand(1,5),0);
-	setrandomoption(.@part,2,callfunc("GetRandomOptionId"),rand(1,5),0);
-	setrandomoption(.@part,3,callfunc("GetRandomOptionId"),rand(1,5),0);
-	setrandomoption(.@part,4,callfunc("GetRandomOptionId"),rand(1,5),0);
+	.@opt_id_index_0 = callfunc("GetRandomOptionId",locking_option);
+	.@opt_id_index_1 = callfunc("GetRandomOptionId",locking_option);
+	.@opt_id_index_2 = callfunc("GetRandomOptionId",locking_option);
+	.@opt_id_index_3 = callfunc("GetRandomOptionId",locking_option);
+	.@opt_id_index_4 = callfunc("GetRandomOptionId",locking_option);
+	setrandomoption(.@part,0,.@opt_id_index_0,rand(1,5),0);
+	setrandomoption(.@part,1,.@opt_id_index_1,rand(1,5),0);
+	setrandomoption(.@part,2,.@opt_id_index_2,rand(1,5),0);
+	setrandomoption(.@part,3,.@opt_id_index_3,rand(1,5),0);
+	setrandomoption(.@part,4,.@opt_id_index_4,rand(1,5),0);
 
+	if(locking_option){
+		freeloop(1);
+		
+		while(true){
+			if((.@opt_id_index_0 == locking_option)
+					|| (.@opt_id_index_1 == locking_option)
+					|| (.@opt_id_index_2 == locking_option)
+					|| (.@opt_id_index_3 == locking_option)
+					|| (.@opt_id_index_4 == locking_option)
+					|| (Zeny < .price))
+			break;
+			else{
+				Zeny -= .price;
+				
+				.@opt_id_index_0 = callfunc("GetRandomOptionId",locking_option);
+				.@opt_id_index_1 = callfunc("GetRandomOptionId",locking_option);
+				.@opt_id_index_2 = callfunc("GetRandomOptionId",locking_option);
+				.@opt_id_index_3 = callfunc("GetRandomOptionId",locking_option);
+				.@opt_id_index_4 = callfunc("GetRandomOptionId",locking_option);
+				setrandomoption(.@part,0,.@opt_id_index_0,rand(1,5),0);
+				setrandomoption(.@part,1,.@opt_id_index_1,rand(1,5),0);
+				setrandomoption(.@part,2,.@opt_id_index_2,rand(1,5),0);
+				setrandomoption(.@part,3,.@opt_id_index_3,rand(1,5),0);
+				setrandomoption(.@part,4,.@opt_id_index_4,rand(1,5),0);
+			}
+		}
+		
+		freeloop(0);
+	}
+	
 	mes "เรียบร้อยแล้ว!";
 	close;
 
+	L_RemoveLockingOption:
+	if(!locking_option)
+	goto L_Menu;
+	locking_option = 0;
+	mes "คุณนำการกำหนด Option ID ที่อยากได้ออก เรียบร้อยแล้ว";
+	end;
+
+	L_LockingOptionSetup:
+	mes "โปรดระบุ ID Option ที่ต้องการ (" + .min_option_id + "~" + .max_option_id + ")";
+	mes "สามารถเช็คได้ที่: <URL>คลิก<INFO>https://raw.githubusercontent.com/kaninhot004/rathena/the-box-3/db/re/item_randomopt_db.yml</INFO></URL>";
+	next;
+	input .@i;
+	if(.@i < .min_option_id || .@i > .max_option_id)
+	{
+		mes "ยกเลิกเรียบร้อยแล้ว";
+		close;
+	}
+	locking_option = .@i;
+	mes "คุณต้องการ Option ID: " + locking_option;
+	close;
+
 OnInit:
+	.min_option_id = 1;
+	.max_option_id = 254;
 	.price = 3000000;
 	waitingroom "เสริมแกร่งด้วย Random Option",0;
 	end;
@@ -58,12 +123,23 @@ OnInit:
 function	script	GetRandomOptionId	{
 	.@optId = rand(1,254);
 	
+	// Locking option
+	if(getarg(0,0) > 0){
+		while((.@optId == 86)
+		|| (.@optId == 173)
+		|| (.@optId == 174)
+		|| (.@optId == 204)
+		|| (.@optId == 205))
+		.@optId = rand(1,254);
+		return .@optId;
+	}
+	
 	freeloop(1);
 	
-	while((.@optId >= 76 && .@optId <= 85)
-	|| (.@optId >= 175 && .@optId <= 184)
-	|| .@optId == 203
-	|| .@optId == 204)
+	while(((.@optId >= 76) && (.@optId <= 86))
+	|| ((.@optId >= 173) && (.@optId <= 184))
+	|| (.@optId == 204)
+	|| (.@optId == 205))
 	.@optId = rand(1,254);
 
 	freeloop(0);
