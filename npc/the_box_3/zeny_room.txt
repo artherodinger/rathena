@@ -17,11 +17,11 @@ prontera,163,208,1	script	Boss Zeny	10007,{
 	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_item_amount) + " " + getitemname(.req_item_id) + "^000000 ในการเข้าห้อง";
 	mes "---";
 	mes "โทษภายในห้อง";
-	mes "๐ ^FF2929เป็นห้อง Battleground (PvP)^000000";
-	mes "๐ ^FF2929ไม่สามารถกด Ctrl+โจมตี ได้ (ต้องคลิกเม้าส์ค้างไว้แทน)^000000";
+	mes "๐ ^FF2929เป็นห้อง PvP^000000";
 	mes "๐ ^FF2929หากออกจากเกมจะกลับสู่เมืองหลัก^000000";
 	mes "๐ ^FF2929Damage จะเหลือ 5%^000000";
 	mes "๐ ^FF2929Flee จะเหลือ 1%^000000";
+	mes "๐ ^FF2929Perfect Dodge จะเหลือ 1%^000000";
 	mes "๐ ^FF2929Monster จะโจมตีแรงขึ้น 20 เท่า^000000";
 	mes "---";
 	mes "รางวัล";
