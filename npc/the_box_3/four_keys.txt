@@ -36,7 +36,7 @@ prontera,155,208,8	script	4 Keys	10007,{
 		mes "Zeny ไม่เพียงพอ";
 		close;
 	}
-	callfunc("F_BigBossDope");
+	//callfunc("F_BigBossDope");
 	Zeny -= .req_zeny;
 	specialeffect2 EF_MAXPOWER;
 	setpcblock PCBLOCK_ALL,true;
