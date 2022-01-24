@@ -134325,6 +134325,7 @@ Body:
       Knight: true
     Classes:
       All_Third: true
+      Fourth: true
     Locations:
       Right_Hand: true
     WeaponLevel: 4
