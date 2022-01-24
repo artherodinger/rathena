@@ -2,6 +2,8 @@ prontera,125,250,3	script	ขายของเร็ว	10389,{
 	mes "๐ ^FF2929จะขาย Item ทุกชิ้นในกระเป๋า^000000";
 	mes "๐ ^3629FFจะไม่ขาย Item ที่สวมใส่อยู่^000000";
 	mes "๐ ^3629FFจะไม่ขาย Item ที่ Favourite อยู่^000000";
+	mes "๐ ^3629FFจะไม่ขาย " + getitemname(.no_sell_item_id_1) + "^000000";
+	mes "๐ ^3629FFจะไม่ขาย " + getitemname(.no_sell_item_id_2) + "^000000";
 	mes "๐ ^3629FFSkill 'Overcharge' จะเพิ่มราคาขายได้ตามปกติ^000000";
 	next;
 	menu "ไม่ทำอะไร",-,"ขายของเร็ว",L_FastSell;
@@ -17,7 +19,10 @@ prontera,125,250,3	script	ขายของเร็ว	10389,{
 	freeloop(1);
 	for(.@i = @inventorylist_count - 1; .@i >= 0; .@i--){
 		// Equipped or Favourite will skip
-		if(@inventorylist_equip[.@i] || @inventorylist_favorite[.@i])
+		if(@inventorylist_equip[.@i]
+				|| @inventorylist_favorite[.@i]
+				|| @inventorylist_id[.@i] == .no_sell_item_id_1
+				|| @inventorylist_id[.@i] == .no_sell_item_id_2)
 		continue;
 		
 		// Get sell price
@@ -41,6 +46,8 @@ prontera,125,250,3	script	ขายของเร็ว	10389,{
 	close;
 	
 OnInit:
+	.no_sell_item_id_1 = 40016;
+	.no_sell_item_id_2 = 40017;
 	waitingroom "ขายของเร็ว",0;
 	end;
 }
