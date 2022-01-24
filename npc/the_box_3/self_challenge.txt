@@ -33,6 +33,9 @@ force_2-2	mapflag	noexp
 force_2-2	mapflag	noloot
 
 prontera,155,200,8	script	Self Challenge	10007,{
+	mes "ปิดชั่วคราว";
+	close;
+	
 	// Cooldown
 	.@is_force_no_cooldown = 0;
 	if(self_test_cooldown && !.@is_force_no_cooldown){
