@@ -286,7 +286,7 @@ OnInit:
 	.reward_zeny_max_amount = 100000;
 	.reward_exp_min_divider = 1000;
 	.reward_exp_max_divider = 3500;
-	.enter_delay = 300;
+	.enter_delay = 600;
 	
 	waitingroom "เก็บ Level, " + getitemname(.reward_item_id) + ", Zeny",0;
 	
