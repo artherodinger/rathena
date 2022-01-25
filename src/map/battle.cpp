@@ -701,6 +701,7 @@ int battle_calc_cardfix(int attack_type, struct block_list *src, struct block_li
 						break;
 					}
 				}
+				if (cardfix < 1) cardfix = 1; // [Start]
 				APPLY_CARDFIX(damage, cardfix);
 			}
 
@@ -762,6 +763,7 @@ int battle_calc_cardfix(int attack_type, struct block_list *src, struct block_li
 
 				if( tsd->sc.data[SC_MDEF_RATE] )
 					cardfix = cardfix * (100 - tsd->sc.data[SC_MDEF_RATE]->val1) / 100;
+				if (cardfix < 1) cardfix = 1; // [Start]
 				APPLY_CARDFIX(damage, cardfix);
 			}
 			break;
@@ -909,8 +911,10 @@ int battle_calc_cardfix(int attack_type, struct block_list *src, struct block_li
 					cardfix = cardfix * (100 + sd->bonus.long_attack_atk_rate) / 100;
 #endif
 				if (left&1) {
+					if (cardfix_ < 1) cardfix_ = 1; // [Start]
 					APPLY_CARDFIX(damage, cardfix_);
 				} else {
+					if (cardfix < 1) cardfix = 1; // [Start]
 					APPLY_CARDFIX(damage, cardfix);
 				}
 			}
@@ -979,6 +983,7 @@ int battle_calc_cardfix(int attack_type, struct block_list *src, struct block_li
 					cardfix = cardfix * (100 - tsd->bonus.long_attack_def_rate) / 100;
 				if( tsd->sc.data[SC_DEF_RATE] )
 					cardfix = cardfix * (100 - tsd->sc.data[SC_DEF_RATE]->val1) / 100;
+				if (cardfix < 1) cardfix = 1; // [Start]
 				APPLY_CARDFIX(damage, cardfix);
 			}
 			break;
@@ -1024,6 +1029,7 @@ int battle_calc_cardfix(int attack_type, struct block_list *src, struct block_li
 					cardfix = cardfix * (100 - tsd->bonus.near_attack_def_rate) / 100;
 				else if (!nk[NK_IGNORELONGCARD])	// BF_LONG (there's no other choice)
 					cardfix = cardfix * (100 - tsd->bonus.long_attack_def_rate) / 100;
+				if (cardfix < 1) cardfix = 1; // [Start]
 				APPLY_CARDFIX(damage, cardfix);
 			}
 			break;
