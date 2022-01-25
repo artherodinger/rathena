@@ -254,6 +254,7 @@ OnInit:
 }
 
 prontera,108,236,5	script	THE BOX	10249,{
+	menu "เริ่มสุ่ม",-;
 	// THE BOX KEY (Quest)
 	if(countitem(.item_id_quest) >= .amount){
 		freeloop(1);
@@ -316,6 +317,7 @@ OnInit:
 }
 
 prontera,99,239,5	script	THE BOX WEAPON	10249,{
+	menu "เริ่มสุ่ม",-;
 	if(countitem(.item_id) < .amount)
 	message strcharinfo(0),"คุณไม่มี " + .amount + " " + getitemname(.item_id);
 	else{
@@ -350,6 +352,7 @@ OnInit:
 }
 
 prontera,103,241,5	script	THE BOX EQUIPMENT	10249,{
+	menu "เริ่มสุ่ม",-;
 	if(countitem(.item_id) < .amount)
 	message strcharinfo(0),"คุณไม่มี " + .amount + " " + getitemname(.item_id);
 	else{
@@ -384,6 +387,7 @@ OnInit:
 }
 
 prontera,108,243,5	script	THE BOX COSTUME	10249,{
+	menu "เริ่มสุ่ม",-;
 	if(countitem(.item_id) < .amount)
 	message strcharinfo(0),"คุณไม่มี " + .amount + " " + getitemname(.item_id);
 	else{
@@ -418,6 +422,7 @@ OnInit:
 }
 
 prontera,113,241,5	script	THE BOX CARD	10249,{
+	menu "เริ่มสุ่ม",-;
 	if(countitem(.item_id) < .amount)
 	message strcharinfo(0),"คุณไม่มี " + .amount + " " + getitemname(.item_id);
 	else{
@@ -452,6 +457,7 @@ OnInit:
 }
 
 prontera,117,239,5	script	THE BOX ENCHANTMENT	10249,{
+	menu "เริ่มสุ่ม",-;
 	if(countitem(.item_id) < .amount)
 	message strcharinfo(0),"คุณไม่มี " + .amount + " " + getitemname(.item_id);
 	else{
