@@ -262,8 +262,8 @@ prontera,108,236,5	script	THE BOX	10249,{
 			// Random reward
 			.@reward_item_id = $market[rand(0,(getarraysize($market) - 1))];
 			// Check weight
-			if(!checkweight(.@reward_item_id,1)){
-				message strcharinfo(0),"น้ำหนักเต็ม";
+			if(!checkweight(6825,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม (ต้องว่างอย่างน้อย 1000 น้ำหนัก)";
 				freeloop(0);
 				end;
 			}
@@ -289,8 +289,8 @@ prontera,108,236,5	script	THE BOX	10249,{
 			// Random reward
 			.@reward_item_id = $market[rand(0,(getarraysize($market) - 1))];
 			// Check weight
-			if(!checkweight(.@reward_item_id,1)){
-				message strcharinfo(0),"น้ำหนักเต็ม";
+			if(!checkweight(6825,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม (ต้องว่างอย่างน้อย 1000 น้ำหนัก)";
 				freeloop(0);
 				end;
 			}
@@ -325,8 +325,8 @@ prontera,99,239,5	script	THE BOX WEAPON	10249,{
 			// Random reward
 			.@reward_item_id = $weapon_market[rand(0,(getarraysize($weapon_market) - 1))];
 			// Check weight
-			if(!checkweight(.@reward_item_id,1)){
-				message strcharinfo(0),"น้ำหนักเต็ม";
+			if(!checkweight(6825,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม (ต้องว่างอย่างน้อย 1000 น้ำหนัก)";
 				freeloop(0);
 				end;
 			}
@@ -359,8 +359,8 @@ prontera,103,241,5	script	THE BOX EQUIPMENT	10249,{
 			// Random reward
 			.@reward_item_id = $equipment_market[rand(0,(getarraysize($equipment_market) - 1))];
 			// Check weight
-			if(!checkweight(.@reward_item_id,1)){
-				message strcharinfo(0),"น้ำหนักเต็ม";
+			if(!checkweight(6825,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม (ต้องว่างอย่างน้อย 1000 น้ำหนัก)";
 				freeloop(0);
 				end;
 			}
@@ -393,8 +393,8 @@ prontera,108,243,5	script	THE BOX COSTUME	10249,{
 			// Random reward
 			.@reward_item_id = $costume_market[rand(0,(getarraysize($costume_market) - 1))];
 			// Check weight
-			if(!checkweight(.@reward_item_id,1)){
-				message strcharinfo(0),"น้ำหนักเต็ม";
+			if(!checkweight(6825,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม (ต้องว่างอย่างน้อย 1000 น้ำหนัก)";
 				freeloop(0);
 				end;
 			}
@@ -427,8 +427,8 @@ prontera,113,241,5	script	THE BOX CARD	10249,{
 			// Random reward
 			.@reward_item_id = $card_market[rand(0,(getarraysize($card_market) - 1))];
 			// Check weight
-			if(!checkweight(.@reward_item_id,1)){
-				message strcharinfo(0),"น้ำหนักเต็ม";
+			if(!checkweight(6825,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม (ต้องว่างอย่างน้อย 1000 น้ำหนัก)";
 				freeloop(0);
 				end;
 			}
@@ -461,8 +461,8 @@ prontera,117,239,5	script	THE BOX ENCHANTMENT	10249,{
 			// Random reward
 			.@reward_item_id = $enchantment_market[rand(0,(getarraysize($enchantment_market) - 1))];
 			// Check weight
-			if(!checkweight(.@reward_item_id,1)){
-				message strcharinfo(0),"น้ำหนักเต็ม";
+			if(!checkweight(6825,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม (ต้องว่างอย่างน้อย 1000 น้ำหนัก)";
 				freeloop(0);
 				end;
 			}
