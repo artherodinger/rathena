@@ -53,5 +53,9 @@ OnMinute30:
 	killmonsterall "1@lhz";
 	killmonsterall "1@eom";
 	killmonsterall "new_zone01";
+	// Boss Room
+	donpcevent "4 Keys::OnCleanUp";
+	donpcevent "Boss Equipment::OnCleanUp";
+	donpcevent "Boss Zeny::OnCleanUp";
 	end;
 }
