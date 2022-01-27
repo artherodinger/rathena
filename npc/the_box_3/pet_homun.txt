@@ -1,13 +1,13 @@
-prontera,196,249,5	script	ฟักไข่	918,{
+prontera,196,249,5	script	�ѡ��	918,{
 	bpet;
 	end;
 	
 OnInit:
-	waitingroom "ฟักไข่",0;
+	waitingroom "�ѡ��",0;
 	end;
 }
 
-prontera,202,249,3	script	Pet & Hom. อิ่มสนิท	919,{
+prontera,202,249,3	script	Pet & Hom. ����ʹԷ	919,{
 	if(getpetinfo(PETINFO_ID) > 0){
 		atcommand "@petfriendly 1000";
 		atcommand "@pethungry 100";
@@ -19,7 +19,7 @@ prontera,202,249,3	script	Pet & Hom. อิ่มสนิท	919,{
 	end;
 	
 OnInit:
-	waitingroom "Pet & Hom. อิ่มสนิท",0;
+	waitingroom "Pet & Hom. ����ʹԷ",0;
 	end;
 }
 
@@ -58,13 +58,13 @@ prontera,206,239,3	script	Hom. S 	915,{
 				.@Homunculus = 6052; //MER_ELEANOR
 				break;
 			}
-			menu "ยืนยัน",-;
+			menu "�׹�ѹ",-;
 			morphembryo;
 			hommutate .@Homunculus;
 			end;
 		}
 		else{
-			mes "ต้องมี Homunculus ปกติที่ Evolution แล้วและ Level 99 หรือมากกว่า";
+			mes "��ͧ�� Homunculus ���Է�� Evolution ������� Level 99 �����ҡ����";
 			close;
 		}
 	}

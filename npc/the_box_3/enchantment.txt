@@ -1,14 +1,14 @@
 prontera,125,261,3	script	Enchantment	10111,{
 	if(target_enchantment > 0){
-		mes "‡∏ï‡∏≠‡∏ô‡∏ô‡∏µ‡πâ‡∏Ñ‡∏∏‡∏ì‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡∏à‡∏∞‡∏ù‡∏±‡∏á: " + getitemname(target_enchantment);
+		mes "µÕππ’È§ÿ≥µÈÕß°“√®–Ω—ß: " + getitemname(target_enchantment);
 		next;
 	}
-	menu "‡πÄ‡∏£‡∏¥‡πà‡∏°‡∏Å‡∏£‡∏∞‡∏ö‡∏ß‡∏ô‡∏Å‡∏≤‡∏£‡∏ù‡∏±‡∏á Enchantment",-,"‡πÄ‡∏•‡∏∑‡∏≠‡∏Å Enchantment ‡∏ó‡∏µ‡πà‡∏à‡∏∞‡∏ù‡∏±‡∏á",L_Select;
+	menu "‡√‘Ë¡°√–∫«π°“√Ω—ß Enchantment",-,"‡≈◊Õ° Enchantment ∑’Ë®–Ω—ß",L_Select;
 	if(target_enchantment <= 0){
-		mes "‡∏Ñ‡∏∏‡∏ì‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡πÄ‡∏•‡∏∑‡∏≠‡∏Å Enchantment ‡∏ó‡∏µ‡πà‡∏à‡∏∞‡∏ù‡∏±‡∏á";
+		mes "§ÿ≥¬—ß‰¡Ë‰¥È‡≈◊Õ° Enchantment ∑’Ë®–Ω—ß";
 		close;
 	}
-	mes "^3F28FF‡πê Enchant ‡πÑ‡∏î‡πâ‡πÄ‡∏â‡∏û‡∏≤‡∏∞:^000000 ‡∏≠‡∏∏‡∏õ‡∏Å‡∏£‡∏ì‡πå‡∏™‡∏ß‡∏°‡πÉ‡∏™‡πà‡∏ó‡∏µ‡πà‡∏°‡∏µ Slot ‡πÑ‡∏°‡πà‡∏Ñ‡∏£‡∏ö 4 Slot";
+	mes "^3F28FF Enchant ‰¥È‡©æ“–:^000000 Õÿª°√≥Ï «¡„ Ë∑’Ë¡’ Slot ‰¡Ë§√∫ 4 Slot";
 	next;
 	
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_HEAD_MID, EQI_HEAD_LOW, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_COSTUME_HEAD_TOP, EQI_COSTUME_HEAD_MID, EQI_COSTUME_HEAD_LOW, EQI_SHADOW_ARMOR, EQI_SHADOW_WEAPON, EQI_SHADOW_SHIELD, EQI_COSTUME_GARMENT, EQI_SHADOW_SHOES, EQI_SHADOW_ACC_L, EQI_SHADOW_ACC_R;
@@ -22,14 +22,14 @@ prontera,125,261,3	script	Enchantment	10111,{
 	}
 	
 	if (.@equipped == 0){
-		mes "‡πÄ‡∏à‡πâ‡∏≤‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡∏™‡∏ß‡∏°‡πÉ‡∏™‡πà ‡∏≠‡∏∏‡∏õ‡∏Å‡∏£‡∏ì‡πå‡∏™‡∏ß‡∏°‡πÉ‡∏™‡πà‡πÉ‡∏î ‡πÜ ‡πÄ‡∏•‡∏¢";
+		mes "‡®È“‰¡Ë‰¥È «¡„ Ë Õÿª°√≥Ï «¡„ Ë„¥ Ê ‡≈¬";
 		close;
 	}
 	
 	.@part = .@indices[select(.@menu$)];
 
 	if(!getequipisequiped(.@part)){
-		mes "‡πÄ‡∏à‡πâ‡∏≤‡πÄ‡∏•‡∏∑‡∏≠‡∏Å‡∏ä‡πà‡∏≠‡∏á‡∏ó‡∏µ‡πà ‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡∏™‡∏ß‡∏°‡πÉ‡∏™‡πà‡∏≠‡∏∞‡πÑ‡∏£‡∏≠‡∏¢‡∏π‡πà‡πÄ‡∏•‡∏¢";
+		mes "‡®È“‡≈◊Õ°™ËÕß∑’Ë ‰¡Ë‰¥È «¡„ ËÕ–‰√Õ¬ŸË‡≈¬";
 		close;
 	}
 	
@@ -56,10 +56,10 @@ prontera,125,261,3	script	Enchantment	10111,{
 	.@itemSlotCount = getitemslots(.@selectedItemId);
 	.@sumSlotCount = 4 - .@itemSlotCount;
 	if(.@sumSlotCount <= 0){
-		mes "‡∏≠‡∏∏‡∏õ‡∏Å‡∏£‡∏ì‡πå‡∏™‡∏ß‡∏°‡πÉ‡∏™‡πà‡∏î‡∏±‡∏á‡∏Å‡∏•‡πà‡∏≤‡∏ß ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ Enchant ‡πÑ‡∏î‡πâ";
+		mes "Õÿª°√≥Ï «¡„ Ë¥—ß°≈Ë“« ‰¡Ë “¡“√∂ Enchant ‰¥È";
 		close;
 	}
-	mes "‡πÇ‡∏õ‡∏£‡∏î‡πÄ‡∏•‡∏∑‡∏≠‡∏Å Slot ‡∏ó‡∏µ‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£";
+	mes "‚ª√¥‡≈◊Õ° Slot ∑’ËµÈÕß°“√";
 	next;
 
 	.@menu$ = "";
@@ -68,10 +68,10 @@ prontera,125,261,3	script	Enchantment	10111,{
 		if(getd(".@cardSlot" + (.@i + 1)) > 0)
 		.@menu$ += "[" + (.@i + 1) + "] ^1D68FF" + getitemname(getd(".@cardSlot" + (.@i + 1))) + "^000000:";
 		else
-		.@menu$ += "[" + (.@i + 1) + "] ‡∏ß‡πà‡∏≤‡∏á" + ":";
+		.@menu$ += "[" + (.@i + 1) + "] «Ë“ß" + ":";
 	}
 	if(.@menu$ != "" && .@menu$ != " ")
-	.@menu$ += "^FF1D1D‡∏ó‡∏µ‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏ó‡∏∏‡∏Å‡∏ä‡πà‡∏≠‡∏á^000000";
+	.@menu$ += "^FF1D1D∑’‡¥’¬«∑ÿ°™ËÕß^000000";
 
 	.@slot = select(.@menu$) + .@itemSlotCount - 1;
 	
@@ -79,21 +79,21 @@ prontera,125,261,3	script	Enchantment	10111,{
 	
 	if(.@is_all_slot){
 		if(countitem(target_enchantment) < .@sumSlotCount){
-			mes getitemname(target_enchantment) + " ‡πÑ‡∏°‡πà‡πÄ‡∏û‡∏µ‡∏¢‡∏á‡∏û‡∏≠";
+			mes getitemname(target_enchantment) + " ‰¡Ë‡æ’¬ßæÕ";
 			close;
 		}
 		delitem target_enchantment,.@sumSlotCount;
 	}
 	else{
 		if(countitem(target_enchantment) < 1){
-			mes getitemname(target_enchantment) + " ‡πÑ‡∏°‡πà‡πÄ‡∏û‡∏µ‡∏¢‡∏á‡∏û‡∏≠";
+			mes getitemname(target_enchantment) + " ‰¡Ë‡æ’¬ßæÕ";
 			close;
 		}
 		delitem target_enchantment,1;
 	}
 	
 	if (callfunc("F_IsEquipIDHack",.@part,.@selectedItemId)){
-		mes "‡πÄ‡∏´‡∏°‡∏∑‡∏≠‡∏ô‡∏ß‡πà‡∏≤‡πÄ‡∏à‡πâ‡∏≤ ‡∏à‡∏∞‡∏™‡∏•‡∏±‡∏ö‡∏≠‡∏∏‡∏õ‡∏Å‡∏£‡∏ì‡πå ‡∏£‡∏∞‡∏´‡∏ß‡πà‡∏≤‡∏á‡∏ó‡∏µ‡πà‡∏Ç‡πâ‡∏≤ ‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏î‡∏≥‡πÄ‡∏ô‡∏¥‡∏ô‡∏Å‡∏≤‡∏£‡∏≠‡∏¢‡∏π‡πà‡∏ô‡∏∞!";
+		mes "‡À¡◊Õπ«Ë“‡®È“ ®– ≈—∫Õÿª°√≥Ï √–À«Ë“ß∑’Ë¢È“ °”≈—ß¥”‡π‘π°“√Õ¬ŸËπ–!";
 		close;
 	}
 	delequip .@part;
@@ -126,11 +126,11 @@ prontera,125,261,3	script	Enchantment	10111,{
 	else
 	getitem2 .@selectedItemId,1,1,.@refineCount,0,.@cardSlot1,.@cardSlot2,.@cardSlot3,.@cardSlot4;
 	
-	mes "‡πÄ‡∏£‡∏µ‡∏¢‡∏ö‡∏£‡πâ‡∏≠‡∏¢‡πÅ‡∏•‡πâ‡∏ß!";
+	mes "‡√’¬∫√ÈÕ¬·≈È«!";
 	close;
 
 	L_Select:
-	mes "‡πÇ‡∏õ‡∏£‡∏î‡∏•‡∏≤‡∏Å Enchantment ‡∏ó‡∏µ‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£";
+	mes "‚ª√¥≈“° Enchantment ∑’ËµÈÕß°“√";
 	close2;
 	callshop "EnchantmentSelector",2;
 	npcshopattach "EnchantmentSelector";
@@ -140,16 +140,16 @@ OnSellItem:
 	for (.@i = 0; .@i < getarraysize(@sold_nameid); .@i++){
 		if((getiteminfo(@sold_nameid[.@i],ITEMINFO_TYPE) == 6)
 				&& ((getiteminfo(@sold_nameid[.@i],ITEMINFO_SUBTYPE) == 1) || !compare(getitemname(@sold_nameid[.@i])," Card"))){
-			mes "‡∏Ñ‡∏∏‡∏ì‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡∏à‡∏∞‡∏ù‡∏±‡∏á: " + getitemname(@sold_nameid[.@i]);
+			mes "§ÿ≥µÈÕß°“√®–Ω—ß: " + getitemname(@sold_nameid[.@i]);
 			target_enchantment = @sold_nameid[.@i];
 			close;
 		}
 	}
-	mes "‡πÑ‡∏°‡πà‡∏û‡∏ö Enchantment ‡∏ó‡∏µ‡πà‡∏Ñ‡∏∏‡∏ì‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡∏ù‡∏±‡∏á";
+	mes "‰¡Ëæ∫ Enchantment ∑’Ë§ÿ≥µÈÕß°“√Ω—ß";
 	close;
 
 OnInit:
-	waitingroom "‡πÄ‡∏™‡∏£‡∏¥‡∏°‡πÅ‡∏Å‡∏£‡πà‡∏á‡∏î‡πâ‡∏ß‡∏¢ Enchantment",0;
+	waitingroom "‡ √‘¡·°√Ëß¥È«¬ Enchantment",0;
 	end;
 }
 

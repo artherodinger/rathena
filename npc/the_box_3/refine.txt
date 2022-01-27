@@ -1,17 +1,17 @@
-prontera,95,248,5	script	ตีบวก	10366,{
-	mes "ต้องการตีบวกปกติ หรือตีบวกไวทั้งตัว?";
+prontera,95,248,5	script	�պǡ	10366,{
+	mes "��ͧ��õպǡ���� ���͵պǡ�Ƿ�駵��?";
 	mes "---";
-	mes "การตีบวกไวทั้งตัว จะใช้ Zeny อย่างเดียว ไม่ต้องการแร่ตีบวกใด ๆ";
-	mes "ค่าตีบวกคิดตามเดิม แต่จะเพิ่มราคาตาม Level อุปกรณ์ดังนี้";
-	mes "^3629FFWeapon Level 1^000000 ราคา ^FF2929" + F_InsertComma(.price_weapon_level_1) + "z^000000";
-	mes "^3629FFWeapon Level 2^000000 ราคา ^FF2929" + F_InsertComma(.price_weapon_level_2) + "z^000000";
-	mes "^3629FFWeapon Level 3^000000 ราคา ^FF2929" + F_InsertComma(.price_weapon_level_3) + "z^000000";
-	mes "^3629FFWeapon Level 4^000000 ราคา ^FF2929" + F_InsertComma(.price_weapon_level_4) + "z^000000";
-	mes "^3629FFWeapon Level 5^000000 ราคา ^FF2929" + F_InsertComma(.price_weapon_level_5) + "z^000000";
-	mes "^3629FFArmor Level 1^000000 ราคา ^FF2929" + F_InsertComma(.price_armor_level_1) + "z^000000";
-	mes "^3629FFArmor Level 2^000000 ราคา ^FF2929" + F_InsertComma(.price_armor_level_2) + "z^000000";
+	mes "��õպǡ�Ƿ�駵�� ���� Zeny ���ҧ���� ����ͧ������պǡ� �";
+	mes "��ҵպǡ�Դ������ ��������Ҥҵ�� Level �ػ�ó�ѧ���";
+	mes "^3629FFWeapon Level 1^000000 �Ҥ� ^FF2929" + F_InsertComma(.price_weapon_level_1) + "z^000000";
+	mes "^3629FFWeapon Level 2^000000 �Ҥ� ^FF2929" + F_InsertComma(.price_weapon_level_2) + "z^000000";
+	mes "^3629FFWeapon Level 3^000000 �Ҥ� ^FF2929" + F_InsertComma(.price_weapon_level_3) + "z^000000";
+	mes "^3629FFWeapon Level 4^000000 �Ҥ� ^FF2929" + F_InsertComma(.price_weapon_level_4) + "z^000000";
+	mes "^3629FFWeapon Level 5^000000 �Ҥ� ^FF2929" + F_InsertComma(.price_weapon_level_5) + "z^000000";
+	mes "^3629FFArmor Level 1^000000 �Ҥ� ^FF2929" + F_InsertComma(.price_armor_level_1) + "z^000000";
+	mes "^3629FFArmor Level 2^000000 �Ҥ� ^FF2929" + F_InsertComma(.price_armor_level_2) + "z^000000";
 	next;
-	menu "^3629FFตีบวกปกติ^000000",-,"^FF2929ตีบวกไวทั้งตัว^000000",L_OneStopRefine;
+	menu "^3629FF�պǡ����^000000",-,"^FF2929�պǡ�Ƿ�駵��^000000",L_OneStopRefine;
 	refineui;
 	end;
 	
@@ -49,7 +49,7 @@ prontera,95,248,5	script	ตีบวก	10366,{
 				if(Zeny < (.@material_price + .@refine_price)){
 					freeloop(0);
 					
-					mes "Zeny ไม่เพียงพอ";
+					mes "Zeny �����§��";
 					
 					close;
 				}
@@ -87,7 +87,7 @@ OnInit:
 	.price_armor_level_1 = 60000;
 	.price_armor_level_2 = 120000;
 	
-	waitingroom "ตีบวก",0;
+	waitingroom "�պǡ",0;
 	
 	end;
 }

@@ -1,16 +1,16 @@
-prontera,101,257,5	script	ซื้อ x EXP	10364,{
-	mes "๐ ^FF2929ตายแล้วต้องซื้อใหม่^000000";
+prontera,101,257,5	script	���� x EXP	10364,{
+	mes "� ^FF2929������ǵ�ͧ��������^000000";
 	mes "---";
-	mes "ปัจจุบัน EXP x^3629FF" + exp_multiplier;
-	mes "โปรดระบุจำนวน 1~100";
+	mes "�Ѩ�غѹ EXP x^3629FF" + exp_multiplier;
+	mes "�ô�кبӹǹ 1~100";
 	next;
 	input .@i;
 	if(.@i <= exp_multiplier){
-		mes "จำนวนที่ระบุน้อยกว่าหรือเท่ากับปัจจุบัน";
+		mes "�ӹǹ����кع��¡���������ҡѺ�Ѩ�غѹ";
 		close;
 	}
 	else if(.@i < .min || .@i > .max){
-		mes "จำนวนผิดพลาด";
+		mes "�ӹǹ�Դ��Ҵ";
 		close;
 	}
 	else{
@@ -31,18 +31,18 @@ prontera,101,257,5	script	ซื้อ x EXP	10364,{
 		.@price = .base_price_below_11 * .@i;
 		
 		mes "x" + .@i;
-		mes "ราคา: " + F_InsertComma(.@price) + "z";
+		mes "�Ҥ�: " + F_InsertComma(.@price) + "z";
 		next;
-		menu "จ่าย",-;
+		menu "����",-;
 		
 		if(Zeny < .@price){
-			mes "ต้องการ " + F_InsertComma(.@price) + "z";
+			mes "��ͧ��� " + F_InsertComma(.@price) + "z";
 			close;
 		}
 		else{
 			Zeny -= .@price;
 			exp_multiplier = .@i;
-			mes "ปัจจุบัน EXP x^3629FF" + exp_multiplier;
+			mes "�Ѩ�غѹ EXP x^3629FF" + exp_multiplier;
 			F_ExpMultiplier();
 			close;
 		}
@@ -58,6 +58,6 @@ OnInit:
 	.base_price_below_51 = 200000;
 	.base_price_below_91 = 450000;
 	.base_price_over_90 = 10000000;
-	waitingroom "ซื้อ x EXP",0;
+	waitingroom "���� x EXP",0;
 	end;
 }

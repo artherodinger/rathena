@@ -15,7 +15,7 @@ force_1-2	mapflag	gvg
 	end;
 	
 OnInit:
-	waitingroom "กลับกลางเมือง",0;
+	waitingroom "��Ѻ��ҧ���ͧ",0;
 	end;
 }
 
@@ -31,7 +31,7 @@ prontera,145,193,5	script	Warper#1	10081,{
 	end;
 	
 OnInit:
-	waitingroom "Zone - พัฒนาตัวละคร",0;
+	waitingroom "Zone - �Ѳ�ҵ���Ф�",0;
 	end;
 }
 
@@ -40,7 +40,7 @@ prontera,138,193,5	script	Warper#2	10081,{
 	end;
 	
 OnInit:
-	waitingroom "Zone - ของจำเป็น",0;
+	waitingroom "Zone - �ͧ����",0;
 	end;
 }
 
@@ -49,7 +49,7 @@ prontera,173,193,5	script	Warper#3	10081,{
 	end;
 	
 OnInit:
-	waitingroom "Zone - ทดสอบ",0;
+	waitingroom "Zone - ���ͺ",0;
 	end;
 }
 
@@ -58,7 +58,7 @@ prontera,234,69,5	script	Warper#4	10081,{
 	end;
 	
 OnInit:
-	waitingroom "Zone ทดสอบ Damage 5%",0;
+	waitingroom "Zone ���ͺ Damage 5%",0;
 	end;
 }
 
@@ -67,7 +67,7 @@ prontera,240,69,5	script	Warper#5	10081,{
 	end;
 	
 OnInit:
-	waitingroom "Zone ทดสอบ Damage 10%",0;
+	waitingroom "Zone ���ͺ Damage 10%",0;
 	end;
 }
 

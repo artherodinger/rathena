@@ -27,7 +27,7 @@ OnPCDieEvent:
 			|| (.@dead_map_name$ == "force_2-1")
 			|| (.@dead_map_name$ == "force_2-2")
 			|| (.@dead_map_name$ == "prontera")){
-		dispbottom "‡∏Ñ‡∏∏‡∏ì‡∏ï‡∏≤‡∏¢‡πÉ‡∏ô Map ‡∏ó‡∏µ‡πà‡πÑ‡∏°‡πà‡∏°‡∏µ‡πÇ‡∏ó‡∏©‡πÉ‡∏î ‡πÜ";
+		dispbottom "§ÿ≥µ“¬„π Map ∑’Ë‰¡Ë¡’‚∑…„¥ Ê";
 		
 		if((.@dead_map_name$ == "force_2-1")
 				|| (.@dead_map_name$ == "force_2-2"))

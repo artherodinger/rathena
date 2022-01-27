@@ -16,24 +16,24 @@ vis_h04	mapflag	notomb
 vis_h04,0,0	monster	--ja--	1068,100,5000,5000
 
 prontera,155,208,8	script	4 Keys	10007,{
-	mes "à¹ à¸•à¹‰à¸­à¸‡à¸à¸²à¸£ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 à¹ƒà¸™à¸à¸²à¸£à¹€à¸‚à¹‰à¸²à¸«à¹‰à¸­à¸‡";
+	mes "ğ µéÍ§¡ÒÃ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 ã¹¡ÒÃà¢éÒËéÍ§";
 	mes "---";
-	mes "à¹‚à¸—à¸©à¸ à¸²à¸¢à¹ƒà¸™à¸«à¹‰à¸­à¸‡";
-	mes "à¹ ^FF2929à¹€à¸›à¹‡à¸™à¸«à¹‰à¸­à¸‡ PvP^000000";
-	mes "à¹ ^FF2929Damage à¸ˆà¸°à¹€à¸«à¸¥à¸·à¸­ 10%^000000";
-	mes "à¹ ^FF2929Flee à¸ˆà¸°à¹€à¸«à¸¥à¸·à¸­ 10%^000000";
-	mes "à¹ ^FF2929Perfect Dodge à¸ˆà¸°à¹€à¸«à¸¥à¸·à¸­ 10%^000000";
-	mes "à¹ ^FF2929Monster à¸ˆà¸°à¹‚à¸ˆà¸¡à¸•à¸µà¹à¸£à¸‡à¸‚à¸¶à¹‰à¸™ 33,333 à¹€à¸—à¹ˆà¸²^000000";
-	mes "à¹ ^FF2929Monster à¸ˆà¸°à¸¡à¸µ HP " + F_InsertComma(.max_hp) + "^000000";
+	mes "â·ÉÀÒÂã¹ËéÍ§";
+	mes "ğ ^FF2929à»ç¹ËéÍ§ PvP^000000";
+	mes "ğ ^FF2929Damage ¨ĞàËÅ×Í 10%^000000";
+	mes "ğ ^FF2929Flee ¨ĞàËÅ×Í 10%^000000";
+	mes "ğ ^FF2929Perfect Dodge ¨ĞàËÅ×Í 10%^000000";
+	mes "ğ ^FF2929Monster ¨Ğâ¨ÁµÕáÃ§¢Öé¹ 33,333 à·èÒ^000000";
+	mes "ğ ^FF2929Monster ¨ĞÁÕ HP " + F_InsertComma(.max_hp) + "^000000";
 	mes "---";
-	mes "à¸£à¸²à¸‡à¸§à¸±à¸¥";
-	mes "à¹ ^3629FF" + getitemname(.reward_item_id) + " à¸›à¸£à¸°à¸¡à¸²à¸“ " + F_InsertComma(.reward_min_per_drop) + "~" + F_InsertComma(.reward_max_per_drop) + " à¸Šà¸´à¹‰à¸™^000000";
-	mes "à¹ ^3629FF" + getitemname(.reward_item_id2) + " à¸›à¸£à¸°à¸¡à¸²à¸“ " + F_InsertComma(.reward_min_per_drop2) + "~" + F_InsertComma(.reward_max_per_drop2) + " à¸Šà¸´à¹‰à¸™^000000";
+	mes "ÃÒ§ÇÑÅ";
+	mes "ğ ^3629FF" + getitemname(.reward_item_id) + " »ÃĞÁÒ³ " + F_InsertComma(.reward_min_per_drop) + "~" + F_InsertComma(.reward_max_per_drop) + " ªÔé¹^000000";
+	mes "ğ ^3629FF" + getitemname(.reward_item_id2) + " »ÃĞÁÒ³ " + F_InsertComma(.reward_min_per_drop2) + "~" + F_InsertComma(.reward_max_per_drop2) + " ªÔé¹^000000";
 	next;
-	menu "à¹€à¸‚à¹‰à¸²",-;
+	menu "à¢éÒ",-;
 	// Check Zeny
 	if (Zeny < .req_zeny){
-		mes "Zeny à¹„à¸¡à¹ˆà¹€à¸à¸µà¸¢à¸‡à¸à¸­";
+		mes "Zeny äÁèà¾ÕÂ§¾Í";
 		close;
 	}
 	//callfunc("F_BigBossDope");
@@ -42,7 +42,7 @@ prontera,155,208,8	script	4 Keys	10007,{
 	setpcblock PCBLOCK_ALL,true;
 	setpcblock PCBLOCK_MOVE,false;
 	addtimer 2000,strnpcinfo(3) + "::OnWarp";
-	announce strcharinfo(0) + " à¹€à¸‚à¹‰à¸²à¸«à¹‰à¸­à¸‡ 4 Keys",bc_all;
+	announce strcharinfo(0) + " à¢éÒËéÍ§ 4 Keys",bc_all;
 	warp .map_name$,0,0;
 	end;
 	
@@ -71,7 +71,6 @@ OnCleanUp:
 		getitem .reward_item_id,rand(.reward_min_per_drop,.reward_max_per_drop);
 		getitem .reward_item_id2,rand(.reward_min_per_drop2,.reward_max_per_drop2);
 	}
-	
 	end;
 	
 OnTimer60000:
@@ -85,7 +84,7 @@ OnTimer60000:
 	if(rand(0,100) <= .special_round_chance){
 		$world_boss_room_special_round = 1;
 		
-		announce "4 Keys à¸£à¸­à¸šà¸™à¸µà¹‰à¹€à¸›à¹‡à¸™à¸£à¸­à¸šà¸à¸´à¹€à¸¨à¸© Boss à¸ˆà¸°à¸­à¸­à¸à¸¡à¸² " + (.spawn_amount * .special_round_multiplier) + " à¸•à¸±à¸§! à¹à¸¥à¸°à¸¡à¸µ HP à¸™à¹‰à¸­à¸¢à¸¥à¸‡à¸„à¸£à¸¶à¹ˆà¸‡à¸™à¸¶à¸‡ à¹‚à¸”à¸¢à¸£à¸²à¸‡à¸§à¸±à¸¥à¸ˆà¸° x" + .special_round_multiplier + "!!",bc_all;
+		announce "4 Keys ÃÍº¹Õéà»ç¹ÃÍº¾ÔàÈÉ Boss ¨ĞÍÍ¡ÁÒ " + (.spawn_amount * .special_round_multiplier) + " µÑÇ! áÅĞÁÕ HP ¹éÍÂÅ§¤ÃÖè§¹Ö§ â´ÂÃÒ§ÇÑÅ¨Ğ x" + .special_round_multiplier + "!!",bc_all;
 	}
 	
 	.@spawn_amount = .spawn_amount;
@@ -122,7 +121,7 @@ OnInit:
 	.reward_min_per_drop2 = 0;
 	.reward_max_per_drop2 = 1;
 	
-	waitingroom "à¸«à¹‰à¸­à¸‡ 4 Keys",0;
+	waitingroom "ËéÍ§ 4 Keys",0;
 	
 	callsub L_Spawn;
 	

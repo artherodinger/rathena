@@ -1,6 +1,6 @@
 -	script	storage	-1,{
 	if(getcharid(2) > 0)
-	menu "คลังปกติ",-,"คลัง Guild",L_GuildStorage;
+	menu "��ѧ����",-,"��ѧ Guild",L_GuildStorage;
 	openstorage;
 	end;
 	
@@ -9,9 +9,9 @@
 	end;
 	
 OnInit:
-	waitingroom "คลังเก็บของ",0;
+	waitingroom "��ѧ�红ͧ",0;
 	end;
 }
 
-prontera,147,174,5	duplicate(storage)	คลังเก็บของ	10005
-prontera,113,262,5	duplicate(storage)	คลังเก็บของ#2	10005
+prontera,147,174,5	duplicate(storage)	��ѧ�红ͧ	10005
+prontera,113,262,5	duplicate(storage)	��ѧ�红ͧ#2	10005

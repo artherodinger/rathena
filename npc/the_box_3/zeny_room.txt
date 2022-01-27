@@ -14,23 +14,23 @@ tra_fild	mapflag	nobranch
 tra_fild	mapflag	notomb
 
 prontera,163,208,1	script	Boss Zeny	10007,{
-	mes "เน เธ•เนเธญเธเธเธฒเธฃ ^FF2929" + F_InsertComma(.req_item_amount) + " " + getitemname(.req_item_id) + "^000000 เนเธเธเธฒเธฃเน€เธเนเธฒเธซเนเธญเธ";
+	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_item_amount) + " " + getitemname(.req_item_id) + "^000000 ในการเข้าห้อง";
 	mes "---";
-	mes "เนเธ—เธฉเธ เธฒเธขเนเธเธซเนเธญเธ";
-	mes "เน ^FF2929เน€เธเนเธเธซเนเธญเธ PvP^000000";
-	mes "เน ^FF2929เธซเธฒเธเธญเธญเธเธเธฒเธเน€เธเธกเธเธฐเธเธฅเธฑเธเธชเธนเนเน€เธกเธทเธญเธเธซเธฅเธฑเธ^000000";
-	mes "เน ^FF2929Damage เธเธฐเน€เธซเธฅเธทเธญ 5%^000000";
-	mes "เน ^FF2929Flee เธเธฐเน€เธซเธฅเธทเธญ 1%^000000";
-	mes "เน ^FF2929Perfect Dodge เธเธฐเน€เธซเธฅเธทเธญ 1%^000000";
-	mes "เน ^FF2929Monster เธเธฐเนเธเธกเธ•เธตเนเธฃเธเธเธถเนเธ 20 เน€เธ—เนเธฒ^000000";
+	mes "โทษภายในห้อง";
+	mes "๐ ^FF2929เป็นห้อง PvP^000000";
+	mes "๐ ^FF2929หากออกจากเกมจะกลับสู่เมืองหลัก^000000";
+	mes "๐ ^FF2929Damage จะเหลือ 5%^000000";
+	mes "๐ ^FF2929Flee จะเหลือ 1%^000000";
+	mes "๐ ^FF2929Perfect Dodge จะเหลือ 1%^000000";
+	mes "๐ ^FF2929Monster จะโจมตีแรงขึ้น 20 เท่า^000000";
 	mes "---";
-	mes "เธฃเธฒเธเธงเธฑเธฅ";
-	mes "เน ^3629FF" + F_InsertComma(.reward_min_zeny) + "~" + F_InsertComma(.reward_max_zeny) + "z^000000";
+	mes "รางวัล";
+	mes "๐ ^3629FF" + F_InsertComma(.reward_min_zeny) + "~" + F_InsertComma(.reward_max_zeny) + "z^000000";
 	next;
-	menu "เน€เธเนเธฒ",-;
+	menu "เข้า",-;
 	// Check Item
 	if (countitem(.req_item_id) < .req_item_amount){
-		mes getitemname(.req_item_id) + " เนเธกเนเน€เธเธตเธขเธเธเธญ";
+		mes getitemname(.req_item_id) + " ไม่เพียงพอ";
 		close;
 	}
 	zeny_room_combo = 0;
@@ -38,7 +38,7 @@ prontera,163,208,1	script	Boss Zeny	10007,{
 	setpcblock PCBLOCK_ALL,true;
 	setpcblock PCBLOCK_MOVE,false;
 	addtimer 2000,strnpcinfo(3) + "::OnWarp";
-	announce strcharinfo(0) + " เน€เธเนเธฒเธซเนเธญเธ Boss (Zeny)",bc_all;
+	announce strcharinfo(0) + " เข้าห้อง Boss (Zeny)",bc_all;
 	warp .map_name$,0,0;
 	end;
 	
@@ -81,9 +81,9 @@ OnBossDead:
 	zeny_room_combo++;
 	
 	if(Zeny < .max_zeny)
-	message strcharinfo(0),"เนเธ”เนเธฃเธฑเธ " + F_InsertComma(.@reward_zeny) + "z (เธเนเธฒเนเธเนเธฅเนเธง " + F_InsertComma(zeny_room_combo) + " เธ•เธฑเธง)";
+	message strcharinfo(0),"ได้รับ " + F_InsertComma(.@reward_zeny) + "z (ฆ่าไปแล้ว " + F_InsertComma(zeny_room_combo) + " ตัว)";
 	else
-	message strcharinfo(0),"เธเนเธฒเนเธเนเธฅเนเธง " + F_InsertComma(zeny_room_combo) + " เธ•เธฑเธง";
+	message strcharinfo(0),"ฆ่าไปแล้ว " + F_InsertComma(zeny_room_combo) + " ตัว";
 	end;
 	
 	L_Spawn:
@@ -105,7 +105,7 @@ OnInit:
 	
 	.spawn_amount = 10;
 	
-	waitingroom "เธซเนเธญเธ Boss (Zeny)",0;
+	waitingroom "ห้อง Boss (Zeny)",0;
 	
 	callsub L_Spawn;
 	
