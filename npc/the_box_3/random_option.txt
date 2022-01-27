@@ -10,7 +10,8 @@ prontera,120,263,3	script	Random Option	10127,{
 	,"ดูรายการ Option ID Set 1",L_DisplayOptionSet1
 	,"ดูรายการ Option ID Set 2",L_DisplayOptionSet2
 	,"ดูรายการ Option ID Set 3",L_DisplayOptionSet3
-	,"กำหนด Option ที่อยากได้ (^FF2929ใช้เงินมหาศาล^000000)",L_LockingOptionSetup;
+	,"กำหนด Option ที่อยากได้ (^FF2929ใช้เงินมหาศาล^000000)",L_LockingOptionSetup
+	,"นำ Option เคลือบธาตุออกทุกอุปกรณ์ที่สวมใส่อยู่",L_ClearElementOption;
 	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.price) + "z^000000 " + (locking_option ? "ต่อรอบ" : "");
 	mes "^3F28FF๐ รับ Random Option 5 แถว^000000";
 	mes "^3F28FF๐ สุ่มค่าที่ได้รับ 1~5 ต่อแถว^000000";
@@ -361,6 +362,28 @@ prontera,120,263,3	script	Random Option	10127,{
 	dispbottom "252 - MRES";
 	dispbottom "253 - H.PLUS";
 	dispbottom "254 - C.RATE";
+	end;
+
+	L_ClearElementOption:
+	setarray .@indices[0], EQI_HEAD_TOP, EQI_HEAD_MID, EQI_HEAD_LOW, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_COSTUME_HEAD_TOP, EQI_COSTUME_HEAD_MID, EQI_COSTUME_HEAD_LOW, EQI_SHADOW_ARMOR, EQI_SHADOW_WEAPON, EQI_SHADOW_SHIELD, EQI_COSTUME_GARMENT, EQI_SHADOW_SHOES, EQI_SHADOW_ACC_L, EQI_SHADOW_ACC_R;
+	
+	freeloop(1);
+	
+	for(.@i = 0; .@i < getarraysize(.@indices); .@i++){
+		// Check is equipped
+		if(getequipisequiped(.@indices[.@i])){
+			for(.@j = 0; .@j < 5; .@j++){
+				// Get random option id
+				.@option_id = getequiprandomoption(.@indices[.@i],.@j,ROA_ID);
+				if((.@option_id >= 76 && .@option_id <= 85)
+						|| (.@option_id >= 175 && .@option_id <= 184))
+				setrandomoption(.@indices[.@i],.@j,1,1,0);
+			}
+		}
+	}
+	
+	freeloop(0);
+	
 	end;
 
 	L_LockingOptionSetup:
