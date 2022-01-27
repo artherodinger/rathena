@@ -48,12 +48,14 @@ OnWarp:
 	
 OnCleanUp:
 	killmonsterall .map_name$;
-	$exp_room_killed = 0;
 	callsub L_Spawn;
 	end;
 	
 OnBossDead:
-	$exp_room_killed--;
+	if(getmapunits(BL_MOB,.map_name$) <= 0){
+		killmonsterall .map_name$;
+		callsub L_Spawn;
+	}
 
 	// Unexpected error
 	if(!playerattached())
@@ -82,16 +84,9 @@ OnBossDead:
 	message strcharinfo(0),"ได้รับ " + F_InsertComma(.@reward_zeny) + "z (ฆ่าไปแล้ว " + F_InsertComma(zeny_room_combo) + " ตัว)";
 	else
 	message strcharinfo(0),"ฆ่าไปแล้ว " + F_InsertComma(zeny_room_combo) + " ตัว";
-
-	if($exp_room_killed <= 0){
-		killmonsterall .map_name$;
-		$exp_room_killed = 0;
-		callsub L_Spawn;
-	}
 	end;
 	
 	L_Spawn:
-	$exp_room_killed = .spawn_amount;
 	for(.@i = 0; .@i < .spawn_amount; .@i++)
 	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 	return;

@@ -54,12 +54,14 @@ OnWarp:
 	
 OnCleanUp:
 	killmonsterall .map_name$;
-	$high_lv_equip_room_killed = 0;
 	callsub L_Spawn;
 	end;
 	
 OnBossDead:
-	$high_lv_equip_room_killed--;
+	if(getmapunits(BL_MOB,.map_name$) <= 0){
+		killmonsterall .map_name$;
+		callsub L_Spawn;
+	}
 
 	// Unexpected error
 	if(!playerattached())
@@ -91,15 +93,9 @@ OnBossDead:
 	
 	getitem .@item_id,1;
 	
-	if($high_lv_equip_room_killed <= 0){
-		killmonsterall .map_name$;
-		$high_lv_equip_room_killed = 0;
-		callsub L_Spawn;
-	}
 	end;
 	
 	L_Spawn:
-	$high_lv_equip_room_killed = .spawn_amount;
 	for(.@i = 0; .@i < .spawn_amount; .@i++)
 	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 	return;

@@ -51,7 +51,13 @@ OnWarp:
 	end;
 	
 OnBossDead:
-	$world_boss_room_killed--;
+	if(getmapunits(BL_MOB,.map_name$) <= 0){
+		announce "4 Keys ทั้งหมดถูกกำจัดแล้ว! 4 Keys กลุ่มใหม่จะปรากฎภายใน 60 วินาที",bc_map;
+		
+OnCleanUp:
+		killmonsterall .map_name$;
+		initnpctimer;
+	}
 
 	// Unexpected error
 	if(!playerattached())
@@ -66,14 +72,6 @@ OnBossDead:
 		getitem .reward_item_id2,rand(.reward_min_per_drop2,.reward_max_per_drop2);
 	}
 	
-	if($world_boss_room_killed <= 0){
-		announce "4 Keys ทั้งหมดถูกกำจัดแล้ว! 4 Keys กลุ่มใหม่จะปรากฎภายใน 60 วินาที",bc_map;
-		
-OnCleanUp:
-		killmonsterall .map_name$;
-		$world_boss_room_killed = 0;
-		initnpctimer;
-	}
 	end;
 	
 OnTimer60000:
@@ -93,8 +91,6 @@ OnTimer60000:
 	.@spawn_amount = .spawn_amount;
 	if($world_boss_room_special_round)
 	.@spawn_amount *= .special_round_multiplier;
-	
-	$world_boss_room_killed = .@spawn_amount;
 	
 	for(.@i = 0; .@i < .@spawn_amount; .@i++){
 		monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
