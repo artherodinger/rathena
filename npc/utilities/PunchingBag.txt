@@ -18,7 +18,7 @@ prontera,223,77,0	script	PunchingBag#0	844,{
 OnMyMobDead:
 OnInit:
 	getunitdata(getnpcid(0), .@d);
-	monster strnpcinfo(4),.@d[UNPC_X],.@d[UNPC_Y],"°√– Õ∫∑√“¬",2411,1,strnpcinfo(0)+"::OnMyMobDead";
+	monster strnpcinfo(4),.@d[UNPC_X],.@d[UNPC_Y],"‡∏Å‡∏£‡∏∞‡∏™‡∏≠‡∏ö‡∏ó‡∏£‡∏≤‡∏¢",2411,1,strnpcinfo(0)+"::OnMyMobDead";
 	.@dupid = atoi(strnpcinfo(2));
 	.gid[.@dupid] = $@mobid[0];
 	.mhp[.@dupid] = strmobinfo(4,2411);
@@ -32,7 +32,7 @@ OnTimer5000:
 		getunitdata(.gid[.@dupid],.@d);
 		.@diff = (.mhp[.@dupid] - .@d[UMOB_HP]);
 		if(.@diff > 0){
-			npctalk "°√– Õ∫∑√“¬: ‚¥π " + (.@diff/5) + " Damage ¿“¬„π 5 «‘π“∑’∑’Ë·≈È«";
+			npctalk "‡∏Å‡∏£‡∏∞‡∏™‡∏≠‡∏ö‡∏ó‡∏£‡∏≤‡∏¢: ‡πÇ‡∏î‡∏ô " + (.@diff/5) + " Damage ‡∏†‡∏≤‡∏¢‡πÉ‡∏ô 5 ‡∏ß‡∏¥‡∏ô‡∏≤‡∏ó‡∏µ‡∏ó‡∏µ‡πà‡πÅ‡∏•‡πâ‡∏ß";
 			setunitdata .gid[.@dupid],UMOB_HP,.mhp[.@dupid];
 		}
 	}

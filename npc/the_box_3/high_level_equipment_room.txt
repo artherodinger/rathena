@@ -14,28 +14,28 @@ lasa_sea	mapflag	nobranch
 lasa_sea	mapflag	notomb
 
 prontera,148,208,8	script	Boss Equipment	10007,{
-	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 \nและ ^FF2929" + F_InsertComma(.req_item_amount) + " " + getitemname(.req_item_id) + "^000000 ในการเข้าห้อง";
+	mes "เน เธ•เนเธญเธเธเธฒเธฃ ^FF2929" + F_InsertComma(.req_zeny) + "z^000000 \nเนเธฅเธฐ ^FF2929" + F_InsertComma(.req_item_amount) + " " + getitemname(.req_item_id) + "^000000 เนเธเธเธฒเธฃเน€เธเนเธฒเธซเนเธญเธ";
 	mes "---";
-	mes "โทษภายในห้อง";
-	mes "๐ ^FF2929เป็นห้อง GvG^000000";
-	mes "๐ ^FF2929ไม่สามารถกด Ctrl+โจมตี ได้ (ต้องคลิกเม้าส์ค้างไว้แทน)^000000";
-	mes "๐ ^FF2929หากออกจากเกมจะกลับสู่เมืองหลัก^000000";
-	mes "๐ ^FF2929Damage จะเหลือ 10%^000000";
-	mes "๐ ^FF2929Flee จะเหลือ 10%^000000";
-	mes "๐ ^FF2929Monster จะโจมตีแรงขึ้น 10 เท่า^000000";
+	mes "เนเธ—เธฉเธ เธฒเธขเนเธเธซเนเธญเธ";
+	mes "เน ^FF2929เน€เธเนเธเธซเนเธญเธ GvG^000000";
+	mes "เน ^FF2929เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธ” Ctrl+เนเธเธกเธ•เธต เนเธ”เน (เธ•เนเธญเธเธเธฅเธดเธเน€เธกเนเธฒเธชเนเธเนเธฒเธเนเธงเนเนเธ—เธ)^000000";
+	mes "เน ^FF2929เธซเธฒเธเธญเธญเธเธเธฒเธเน€เธเธกเธเธฐเธเธฅเธฑเธเธชเธนเนเน€เธกเธทเธญเธเธซเธฅเธฑเธ^000000";
+	mes "เน ^FF2929Damage เธเธฐเน€เธซเธฅเธทเธญ 10%^000000";
+	mes "เน ^FF2929Flee เธเธฐเน€เธซเธฅเธทเธญ 10%^000000";
+	mes "เน ^FF2929Monster เธเธฐเนเธเธกเธ•เธตเนเธฃเธเธเธถเนเธ 10 เน€เธ—เนเธฒ^000000";
 	mes "---";
-	mes "รางวัล";
-	mes "๐ ^3629FFเมื่อกำจัด Boss จะได้รับ Equipment ที่ต้องใส่ตอน Level 99 ขึ้นไป^000000";
+	mes "เธฃเธฒเธเธงเธฑเธฅ";
+	mes "เน ^3629FFเน€เธกเธทเนเธญเธเธณเธเธฑเธ” Boss เธเธฐเนเธ”เนเธฃเธฑเธ Equipment เธ—เธตเนเธ•เนเธญเธเนเธชเนเธ•เธญเธ Level 99 เธเธถเนเธเนเธ^000000";
 	next;
-	menu "เข้า",-;
+	menu "เน€เธเนเธฒ",-;
 	// Check Zeny
 	if (Zeny < .req_zeny){
-		mes "Zeny ไม่เพียงพอ";
+		mes "Zeny เนเธกเนเน€เธเธตเธขเธเธเธญ";
 		close;
 	}
 	// Check Item
 	if (countitem(.req_item_id) < .req_item_amount){
-		mes getitemname(.req_item_id) + " ไม่เพียงพอ";
+		mes getitemname(.req_item_id) + " เนเธกเนเน€เธเธตเธขเธเธเธญ";
 		close;
 	}
 	Zeny -= .req_zeny;
@@ -44,7 +44,7 @@ prontera,148,208,8	script	Boss Equipment	10007,{
 	setpcblock PCBLOCK_ALL,true;
 	setpcblock PCBLOCK_MOVE,false;
 	addtimer 2000,strnpcinfo(3) + "::OnWarp";
-	announce strcharinfo(0) + " เข้าห้อง Boss (Equipment)",bc_all;
+	announce strcharinfo(0) + " เน€เธเนเธฒเธซเนเธญเธ Boss (Equipment)",bc_all;
 	warp .map_name$,0,0;
 	end;
 	
@@ -87,7 +87,7 @@ OnBossDead:
 	
 	freeloop(0);
 	
-	announce strcharinfo(0) + " ได้รับ " + getitemname(.@item_id),bc_map;
+	announce strcharinfo(0) + " เนเธ”เนเธฃเธฑเธ " + getitemname(.@item_id),bc_map;
 	
 	getitem .@item_id,1;
 	
@@ -113,7 +113,7 @@ OnInit:
 	
 	.spawn_amount = 20;
 	
-	waitingroom "ห้อง Boss (Equipment)",0;
+	waitingroom "เธซเนเธญเธ Boss (Equipment)",0;
 	
 	callsub L_Spawn;
 	

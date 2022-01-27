@@ -1,11 +1,11 @@
-prontera,142,180,7	script	·µËßµ—«	894,{
-	menu "µ—¥º¡, ¬ÈÕ¡ ’º¡, ¬ÈÕ¡ ’‡ ◊ÈÕ",-,"‡ª≈’Ë¬π™ÿ¥ Class 3",L_Class3Suit,"‡ª≈’Ë¬π Password",L_ChangePassword;
+prontera,142,180,7	script	‡πÅ‡∏ï‡πà‡∏á‡∏ï‡∏±‡∏ß	894,{
+	menu "‡∏ï‡∏±‡∏î‡∏ú‡∏°, ‡∏¢‡πâ‡∏≠‡∏°‡∏™‡∏µ‡∏ú‡∏°, ‡∏¢‡πâ‡∏≠‡∏°‡∏™‡∏µ‡πÄ‡∏™‡∏∑‡πâ‡∏≠",-,"‡πÄ‡∏õ‡∏•‡∏µ‡πà‡∏¢‡∏ô‡∏ä‡∏∏‡∏î Class 3",L_Class3Suit,"‡πÄ‡∏õ‡∏•‡∏µ‡πà‡∏¢‡∏ô Password",L_ChangePassword;
 	//openstylist;
 	//end;
 	
 	setarray .@Styles[1],getbattleflag("max_cloth_color"),getbattleflag("max_hair_style"),getbattleflag("max_hair_color");
 	setarray .@Look[1],LOOK_CLOTHES_COLOR,LOOK_HAIR,LOOK_HAIR_COLOR;
-	.@s = select(" ~  ’‡ ◊ÈÕ: ~ ∑√ßº¡: ~  ’º¡");
+	.@s = select(" ~ ‡∏™‡∏µ‡πÄ‡∏™‡∏∑‡πâ‡∏≠: ~ ‡∏ó‡∏£‡∏á‡∏ú‡∏°: ~ ‡∏™‡∏µ‡∏ú‡∏°");
 	.@Revert = getlook(.@Look[.@s]);
 	if(.@s==2)
 	.@Style = 1;
@@ -13,8 +13,8 @@ prontera,142,180,7	script	·µËßµ—«	894,{
 	.@Style = 0;
 	while(1) {
 		setlook .@Look[.@s], .@Style;
-		message strcharinfo(0)," ‰µ≈Ï∑’Ë #"+.@Style+"";
-		.@menu$ = " ~ µËÕ‰ª: ~ °ËÕπÀπÈ“ : ~ ¢È“¡‰ª∑’Ë...: ~ °≈—∫ ŸË·∫∫‡¥‘¡";
+		message strcharinfo(0),"‡∏™‡πÑ‡∏ï‡∏•‡πå‡∏ó‡∏µ‡πà #"+.@Style+"";
+		.@menu$ = " ~ ‡∏ï‡πà‡∏≠‡πÑ‡∏õ: ~ ‡∏Å‡πà‡∏≠‡∏ô‡∏´‡∏ô‡πâ‡∏≤ : ~ ‡∏Ç‡πâ‡∏≤‡∏°‡πÑ‡∏õ‡∏ó‡∏µ‡πà...: ~ ‡∏Å‡∏•‡∏±‡∏ö‡∏™‡∏π‡πà‡πÅ‡∏ö‡∏ö‡πÄ‡∏î‡∏¥‡∏°";
 		switch(select(.@menu$)) {
 		case 1:
 			.@Style = ((.@Style != .@Styles[.@s]) ? .@Style+1 : 0);
@@ -25,7 +25,7 @@ prontera,142,180,7	script	·µËßµ—«	894,{
 			.@Style = (((.@s==2&&.@Style != 1) || (.@s!=2&&.@Style != 0)) ? .@Style-1 : .@Styles[.@s]);
 			break;
 		case 3:
-			message strcharinfo(0),"‡≈◊Õ° ‰µ≈Ï√–À«Ë“ß 0 - "+.@Styles[.@s]+"";
+			message strcharinfo(0),"‡πÄ‡∏•‡∏∑‡∏≠‡∏Å‡∏™‡πÑ‡∏ï‡∏•‡πå‡∏£‡∏∞‡∏´‡∏ß‡πà‡∏≤‡∏á 0 - "+.@Styles[.@s]+"";
 			input .@Style,0,.@Styles[.@s];
 			if (!.@Style)
 			.@Style = rand(0,.@Styles[.@s]);
@@ -44,7 +44,7 @@ prontera,142,180,7	script	·µËßµ—«	894,{
 			|| (Class == 4240)
 			|| (eaclass()&EAJL_FOURTH))
 	end;
-	menu "·∫∫∑’Ë 1",-,"·∫∫∑’Ë 2",L_1;
+	menu "‡πÅ‡∏ö‡∏ö‡∏ó‡∏µ‡πà 1",-,"‡πÅ‡∏ö‡∏ö‡∏ó‡∏µ‡πà 2",L_1;
 	atcommand "@bodystyle 0";
 	end;
 	
@@ -53,25 +53,25 @@ prontera,142,180,7	script	·µËßµ—«	894,{
 	end;
 
 	L_ChangePassword:
-	mes "‚ª√¥√–∫ÿ ID ∑’ËµÈÕß°“√‡ª≈’Ë¬π Password";
+	mes "‡πÇ‡∏õ‡∏£‡∏î‡∏£‡∏∞‡∏ö‡∏∏ ID ‡∏ó‡∏µ‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏õ‡∏•‡∏µ‡πà‡∏¢‡∏ô Password";
 	input .@id$;
 	next;
-	mes "‚ª√¥√–∫ÿ Password ª—®®ÿ∫—π¢Õß ID\n^FF2929" + .@id$ + "^000000";
+	mes "‡πÇ‡∏õ‡∏£‡∏î‡∏£‡∏∞‡∏ö‡∏∏ Password ‡∏õ‡∏±‡∏à‡∏à‡∏∏‡∏ö‡∏±‡∏ô‡∏Ç‡∏≠‡∏á ID\n^FF2929" + .@id$ + "^000000";
 	input .@password$;
 	next;
 	query_sql ("SELECT `account_id` FROM `login` WHERE `userid`='" + .@id$ + "' AND `user_pass`='" + .@password$ + "'",.@sum);
 	if(.@sum <= 0){
-		mes "ID À√◊Õ Password ‰¡Ë∂Ÿ°µÈÕß";
+		mes "ID ‡∏´‡∏£‡∏∑‡∏≠ Password ‡πÑ‡∏°‡πà‡∏ñ‡∏π‡∏Å‡∏ï‡πâ‡∏≠‡∏á";
 		close;
 	}
-	mes "‚ª√¥√–∫ÿ Password „À¡Ë";
+	mes "‡πÇ‡∏õ‡∏£‡∏î‡∏£‡∏∞‡∏ö‡∏∏ Password ‡πÉ‡∏´‡∏°‡πà";
 	input .@new_password$;
 	next;
 	query_sql "UPDATE `login` SET `user_pass` = '" + .@new_password$ + "' WHERE `userid` = '" + .@id$ + "'";	
-	mes "‡√’¬∫√ÈÕ¬·≈È« ‚ª√¥≈Õß‡¢È“ ID ¥—ß°≈Ë“«„À¡ËÕ’°∑’";
+	mes "‡πÄ‡∏£‡∏µ‡∏¢‡∏ö‡∏£‡πâ‡∏≠‡∏¢‡πÅ‡∏•‡πâ‡∏ß ‡πÇ‡∏õ‡∏£‡∏î‡∏•‡∏≠‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ ID ‡∏î‡∏±‡∏á‡∏Å‡∏•‡πà‡∏≤‡∏ß‡πÉ‡∏´‡∏°‡πà‡∏≠‡∏µ‡∏Å‡∏ó‡∏µ";
 	close;
 	
 OnInit:
-	waitingroom "·µËßµ—«",0;
+	waitingroom "‡πÅ‡∏ï‡πà‡∏á‡∏ï‡∏±‡∏ß",0;
 	end;
 }

@@ -1,16 +1,16 @@
-prontera,106,260,5	script	���� x Drop	10365,{
-	mes "� ^FF2929������ǵ�ͧ��������^000000";
+prontera,106,260,5	script	ซื้อ x Drop	10365,{
+	mes "๐ ^FF2929ตายแล้วต้องซื้อใหม่^000000";
 	mes "---";
-	mes "�Ѩ�غѹ Drop x^3629FF" + drop_multiplier;
-	mes "�ô�кبӹǹ 1~10";
+	mes "ปัจจุบัน Drop x^3629FF" + drop_multiplier;
+	mes "โปรดระบุจำนวน 1~10";
 	next;
 	input .@i;
 	if(.@i <= drop_multiplier){
-		mes "�ӹǹ����кع��¡���������ҡѺ�Ѩ�غѹ";
+		mes "จำนวนที่ระบุน้อยกว่าหรือเท่ากับปัจจุบัน";
 		close;
 	}
 	else if(.@i < .min || .@i > .max){
-		mes "�ӹǹ�Դ��Ҵ";
+		mes "จำนวนผิดพลาด";
 		close;
 	}
 	else{
@@ -20,18 +20,18 @@ prontera,106,260,5	script	���� x Drop	10365,{
 		.@price = 1000000000;
 		
 		mes "x" + .@i;
-		mes "�Ҥ�: " + F_InsertComma(.@price) + "z";
+		mes "ราคา: " + F_InsertComma(.@price) + "z";
 		next;
-		menu "����",-;
+		menu "จ่าย",-;
 		
 		if(Zeny < .@price){
-			mes "��ͧ��� " + F_InsertComma(.@price) + "z";
+			mes "ต้องการ " + F_InsertComma(.@price) + "z";
 			close;
 		}
 		else{
 			Zeny -= .@price;
 			drop_multiplier = .@i;
-			mes "�Ѩ�غѹ Drop x^3629FF" + drop_multiplier;
+			mes "ปัจจุบัน Drop x^3629FF" + drop_multiplier;
 			F_DropMultiplier();
 			close;
 		}
@@ -51,6 +51,6 @@ OnInit:
 	.base_price_9 = 8000000;
 	.base_price_10 = 10000000;
 
-	waitingroom "���� x Drop",0;
+	waitingroom "ซื้อ x Drop",0;
 	end;
 }

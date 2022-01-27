@@ -16,7 +16,7 @@
 //= 2.0 Added 4th class [Lemongrass]
 //============================================================
 
-prontera,153,193,6	script	‡ª≈’Ë¬πÕ“™’æ	10435,{
+prontera,153,193,6	script	‡πÄ‡∏õ‡∏•‡∏µ‡πà‡∏¢‡∏ô‡∏≠‡∏≤‡∏ä‡∏µ‡∏û	10435,{
 	function Get_Job_Equip;
 	// Checks if the Player has the required level.
 	// closes if not, returns if yes
@@ -24,15 +24,15 @@ prontera,153,193,6	script	‡ª≈’Ë¬πÕ“™’æ	10435,{
 		if (BaseLevel < getarg(0) || JobLevel < getarg(1)) {
 			.@blvl = getarg(0) - BaseLevel;
 			.@jlvl = getarg(1) - JobLevel;
-			mes "µÈÕß°“√ Level:";
+			mes "‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£ Level:";
 			mes ((getarg(0)>1)? 
 			"^bb0000"+getarg(0)+"^000000 (^bb0000Base^000000) / ":"")+"^00bb00"+
 			getarg(1)+"^000000 (^00bb00Job^000000)";
-			mes "µÈÕß°“√ " +
+			mes "‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£ " +
 			((.@blvl > 0) ? "^bb0000"+.@blvl+"^000000 Level " + 
-			((.@jlvl > 0) ? "·≈– " : "") : "") +
+			((.@jlvl > 0) ? "‡πÅ‡∏•‡∏∞ " : "") : "") +
 			((.@jlvl > 0) ? "^00bb00"+.@jlvl+"^000000 Job Level " : "") +
-			"‡æ◊ËÕ¥”‡π‘π°“√µËÕ";
+			"‡πÄ‡∏û‡∏∑‡πà‡∏≠‡∏î‡∏≥‡πÄ‡∏ô‡∏¥‡∏ô‡∏Å‡∏≤‡∏£‡∏ï‡πà‡∏≠";
 			close;
 		}
 		return;
@@ -108,19 +108,19 @@ prontera,153,193,6	script	‡ª≈’Ë¬πÕ“™’æ	10435,{
 		// would make this NPC bigger just to handle with
 		// those special cases.
 		if (checkfalcon() || checkcart() || checkriding() || ismounting()) {
-			mes "‚ª√¥∂Õ¥ " +
+			mes "‡πÇ‡∏õ‡∏£‡∏î‡∏ñ‡∏≠‡∏î " +
 			((checkfalcon()) ? "Falcon" : "") +
 			((checkcart()) ? "Cart" : "") +
 			((checkriding()) ? "Peco" : "") +
-			((ismounting()) ? "æ“Àπ–" : "") +
-			" °ËÕπ°“√¥”‡π‘π°“√";
+			((ismounting()) ? "‡∏û‡∏≤‡∏´‡∏ô‡∏∞" : "") +
+			" ‡∏Å‡πà‡∏≠‡∏ô‡∏Å‡∏≤‡∏£‡∏î‡∏≥‡πÄ‡∏ô‡∏¥‡∏ô‡∏Å‡∏≤‡∏£";
 			close;
 		}
 		return;
 	}
 	function	Check_SkillPoints	{
 		if (.SkillPointCheck && SkillPoint) {
-			mes "‚ª√¥„™È Skill Points „ÀÈÀ¡¥°ËÕπ°“√¥”‡π‘π°“√";
+			mes "‡πÇ‡∏õ‡∏£‡∏î‡πÉ‡∏ä‡πâ Skill Points ‡πÉ‡∏´‡πâ‡∏´‡∏°‡∏î‡∏Å‡πà‡∏≠‡∏ô‡∏Å‡∏≤‡∏£‡∏î‡∏≥‡πÄ‡∏ô‡∏¥‡∏ô‡∏Å‡∏≤‡∏£";
 			close;
 		}
 		return;
@@ -235,7 +235,7 @@ prontera,153,193,6	script	‡ª≈’Ë¬πÕ“™’æ	10435,{
 			Job_Options(.@job_opt, Job_Baby_Summoner);
 			break;
 		default:
-			mes "æ∫¢ÈÕº‘¥æ≈“¥";
+			mes "‡∏û‡∏ö‡∏Ç‡πâ‡∏≠‡∏ú‡∏¥‡∏î‡∏û‡∏•‡∏≤‡∏î";
 			close;
 		}
 	} else if( Is_First_Cls(.@eac) || 				// First Class
@@ -276,7 +276,7 @@ prontera,153,193,6	script	‡ª≈’Ë¬πÕ“™’æ	10435,{
 		while(true) {
 			.@opt_cnt =  getarraysize(getarg(0));
 			if( .@opt_cnt <= 0 ) {
-				mes "‰¡Ë¡’Õ“™’æ∑’Ë Ÿß°«Ë“π’È·≈È«";
+				mes "‡πÑ‡∏°‡πà‡∏°‡∏µ‡∏≠‡∏≤‡∏ä‡∏µ‡∏û‡∏ó‡∏µ‡πà‡∏™‡∏π‡∏á‡∏Å‡∏ß‡πà‡∏≤‡∏ô‡∏µ‡πâ‡πÅ‡∏•‡πâ‡∏ß";
 				close;
 			}
 
@@ -284,7 +284,7 @@ prontera,153,193,6	script	‡ª≈’Ë¬πÕ“™’æ	10435,{
 			if (.@opt_cnt > 1) {
 				// Multiple job classes given. Select one and save it to .@class
 				// After that confirm .@class
-				mes "‡≈◊Õ°Õ“™’æ";
+				mes "‡πÄ‡∏•‡∏∑‡∏≠‡∏Å‡∏≠‡∏≤‡∏ä‡∏µ‡∏û";
 				.@menu$ = "";
 				for (.@i = 0; .@i < .@opt_cnt; .@i++) {
 					if( getelementofarray(getarg(0), .@i) == Job_Novice_High)
@@ -293,7 +293,7 @@ prontera,153,193,6	script	‡ª≈’Ë¬πÕ“™’æ	10435,{
 					.@jobname$ = jobname(getelementofarray(getarg(0), .@i));
 					.@menu$ = .@menu$ + " ~ " + .@jobname$ + ":";
 				}
-				.@menu$ = .@menu$+" ~ ^777777¬°‡≈‘°^000000";
+				.@menu$ = .@menu$+" ~ ^777777‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å^000000";
 				.@selected = select(.@menu$) - 1;
 				if( .@selected < 0 || .@selected >= .@opt_cnt )
 				close;
@@ -307,8 +307,8 @@ prontera,153,193,6	script	‡ª≈’Ë¬πÕ“™’æ	10435,{
 				// Super Baby can both be selected in one of the first class
 				// changes. That's why the Level Requirement is after and not before
 				// the selection.
-				mes "µÈÕß°“√ " + .SNovice +
-				" Level ‡æ◊ËÕ‡ª≈’Ë¬π‡ªÁπ " + jobname(.@class);
+				mes "‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£ " + .SNovice +
+				" Level ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏õ‡∏•‡∏µ‡πà‡∏¢‡∏ô‡πÄ‡∏õ‡πá‡∏ô " + jobname(.@class);
 				return;
 			}
 			// Confirm the Class
@@ -326,7 +326,7 @@ prontera,153,193,6	script	‡ª≈’Ë¬πÕ“™’æ	10435,{
 		.@to_cls = getarg(0);
 		next;
 		mes .NPCName$;
-		mes "§ÿ≥‡ªÁπ " + jobname(.@to_cls) + " ·≈È«!";
+		mes "‡∏Ñ‡∏∏‡∏ì‡πÄ‡∏õ‡πá‡∏ô " + jobname(.@to_cls) + " ‡πÅ‡∏•‡πâ‡∏ß!";
 		if (.@to_cls == Job_Novice_High && .LastJob)
 		lastJob = Class; // Saves the lastJob for rebirth
 		jobchange .@to_cls;
@@ -353,16 +353,16 @@ prontera,153,193,6	script	‡ª≈’Ë¬πÕ“™’æ	10435,{
 		.@class = getarg(0, -1);
 		.@back = getarg(1, false);
 		if( .@class < 0 || eaclass(.@class) == -1 ) {
-			mes "æ∫¢ÈÕº‘¥æ≈“¥: ‰¡Ëæ∫Õ“™’æ";
+			mes "‡∏û‡∏ö‡∏Ç‡πâ‡∏≠‡∏ú‡∏¥‡∏î‡∏û‡∏•‡∏≤‡∏î: ‡πÑ‡∏°‡πà‡∏û‡∏ö‡∏≠‡∏≤‡∏ä‡∏µ‡∏û";
 			close;
 		}
-		mes "µÈÕß°“√‡ª≈’Ë¬π‡ªÁπ ^0055FF"+jobname(.@class)+"^000000?";
-		.@job_option$ = " ~ ‡ª≈’Ë¬π‡ªÁπ ^0055FF"+jobname(.@class)+"^000000";
+		mes "‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏õ‡∏•‡∏µ‡πà‡∏¢‡∏ô‡πÄ‡∏õ‡πá‡∏ô ^0055FF"+jobname(.@class)+"^000000?";
+		.@job_option$ = " ~ ‡πÄ‡∏õ‡∏•‡∏µ‡πà‡∏¢‡∏ô‡πÄ‡∏õ‡πá‡∏ô ^0055FF"+jobname(.@class)+"^000000";
 		if( .@class == Job_Novice_High)
 		.@job_option$ = " ~ ^0055FFRebirth^000000";
 		
 		if (select(.@job_option$+": ~ ^777777" + 
-					((.@back) ?"°≈—∫" : "¬°‡≈‘°") + "^000000") == 1) {
+					((.@back) ?"‡∏Å‡∏•‡∏±‡∏ö" : "‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å") + "^000000") == 1) {
 			Job_Change(.@class);
 		}
 		if (!.@back)
@@ -478,10 +478,10 @@ prontera,153,193,6	script	‡ª≈’Ë¬πÕ“™’æ	10435,{
 	}
 
 OnInit:
-	waitingroom "‡ª≈’Ë¬πÕ“™’æ",0;
+	waitingroom "‡πÄ‡∏õ‡∏•‡∏µ‡πà‡∏¢‡∏ô‡∏≠‡∏≤‡∏ä‡∏µ‡∏û",0;
 	
 	// Initialisation, do not edit these
-	.NPCName$ = "[‡ª≈’Ë¬πÕ“™’æ]";
+	.NPCName$ = "[‡πÄ‡∏õ‡∏•‡∏µ‡πà‡∏¢‡∏ô‡∏≠‡∏≤‡∏ä‡∏µ‡∏û]";
 	
 	// Settings
 	.FourthClass = true;				// Enable fourth classes?

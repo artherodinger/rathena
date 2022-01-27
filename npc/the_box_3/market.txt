@@ -41,18 +41,18 @@ function	script	F_EnchantmentMarketContain	{
 	return false;
 }
 
-prontera,108,230,5	script	«‘∏’„™È°≈ËÕß	837,{
-	mes " „™È ^3629FF" + getitemname(.item_id) + "^000000";
-	mes " √“¬°“√ Item ®–^3629FF‡ª≈’Ë¬π∑ÿ° Ê 10 π“∑’";
-	menu "¥Ÿ¢Õß„π°≈ËÕß THE BOX",L_THE_BOX,
-	"¥Ÿ¢Õß„π°≈ËÕß THE BOX WEAPON",L_THE_BOX_WEAPON,
-	"¥Ÿ¢Õß„π°≈ËÕß THE BOX EQUIPMENT",L_THE_BOX_EQUIPMENT,
-	"¥Ÿ¢Õß„π°≈ËÕß THE BOX COSTUME",L_THE_BOX_COSTUME,
-	"¥Ÿ¢Õß„π°≈ËÕß THE BOX CARD",L_THE_BOX_CARD,
-	"¥Ÿ¢Õß„π°≈ËÕß THE BOX ENCHANTMENT",L_THE_BOX_ENCHANTMENT,
-	"‡ª‘¥°≈ËÕß∑’‡¥’¬«À¡¥µ—« [" + (is_manual_tap_the_box ? "^FF2929ª‘¥Õ¬ŸË^000000" : "^3629FF‡ª‘¥Õ¬ŸË^000000") + "]",-;
+prontera,108,230,5	script	‡∏ß‡∏¥‡∏ò‡∏µ‡πÉ‡∏ä‡πâ‡∏Å‡∏•‡πà‡∏≠‡∏á	837,{
+	mes "‡πê ‡πÉ‡∏ä‡πâ ^3629FF" + getitemname(.item_id) + "^000000";
+	mes "‡πê ‡∏£‡∏≤‡∏¢‡∏Å‡∏≤‡∏£ Item ‡∏à‡∏∞^3629FF‡πÄ‡∏õ‡∏•‡∏µ‡πà‡∏¢‡∏ô‡∏ó‡∏∏‡∏Å ‡πÜ 10 ‡∏ô‡∏≤‡∏ó‡∏µ";
+	menu "‡∏î‡∏π‡∏Ç‡∏≠‡∏á‡πÉ‡∏ô‡∏Å‡∏•‡πà‡∏≠‡∏á THE BOX",L_THE_BOX,
+	"‡∏î‡∏π‡∏Ç‡∏≠‡∏á‡πÉ‡∏ô‡∏Å‡∏•‡πà‡∏≠‡∏á THE BOX WEAPON",L_THE_BOX_WEAPON,
+	"‡∏î‡∏π‡∏Ç‡∏≠‡∏á‡πÉ‡∏ô‡∏Å‡∏•‡πà‡∏≠‡∏á THE BOX EQUIPMENT",L_THE_BOX_EQUIPMENT,
+	"‡∏î‡∏π‡∏Ç‡∏≠‡∏á‡πÉ‡∏ô‡∏Å‡∏•‡πà‡∏≠‡∏á THE BOX COSTUME",L_THE_BOX_COSTUME,
+	"‡∏î‡∏π‡∏Ç‡∏≠‡∏á‡πÉ‡∏ô‡∏Å‡∏•‡πà‡∏≠‡∏á THE BOX CARD",L_THE_BOX_CARD,
+	"‡∏î‡∏π‡∏Ç‡∏≠‡∏á‡πÉ‡∏ô‡∏Å‡∏•‡πà‡∏≠‡∏á THE BOX ENCHANTMENT",L_THE_BOX_ENCHANTMENT,
+	"‡πÄ‡∏õ‡∏¥‡∏î‡∏Å‡∏•‡πà‡∏≠‡∏á‡∏ó‡∏µ‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏´‡∏°‡∏î‡∏ï‡∏±‡∏ß [" + (is_manual_tap_the_box ? "^FF2929‡∏õ‡∏¥‡∏î‡∏≠‡∏¢‡∏π‡πà^000000" : "^3629FF‡πÄ‡∏õ‡∏¥‡∏î‡∏≠‡∏¢‡∏π‡πà^000000") + "]",-;
 	is_manual_tap_the_box = !is_manual_tap_the_box;
-	message strcharinfo(0),"‡ª‘¥°≈ËÕß∑’‡¥’¬«À¡¥µ—« [" + (is_manual_tap_the_box ? "ª‘¥" : "‡ª‘¥") + "]";
+	message strcharinfo(0),"‡πÄ‡∏õ‡∏¥‡∏î‡∏Å‡∏•‡πà‡∏≠‡∏á‡∏ó‡∏µ‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏´‡∏°‡∏î‡∏ï‡∏±‡∏ß [" + (is_manual_tap_the_box ? "‡∏õ‡∏¥‡∏î" : "‡πÄ‡∏õ‡∏¥‡∏î") + "]";
 	end;
 	
 OnBuyItem:
@@ -254,7 +254,7 @@ OnInit:
 }
 
 prontera,108,236,5	script	THE BOX	10249,{
-	menu "‡√‘Ë¡ ÿË¡",-;
+	menu "‡πÄ‡∏£‡∏¥‡πà‡∏°‡∏™‡∏∏‡πà‡∏°",-;
 	// THE BOX KEY (Quest)
 	if(countitem(.item_id_quest) >= .amount){
 		freeloop(1);
@@ -264,7 +264,7 @@ prontera,108,236,5	script	THE BOX	10249,{
 			.@reward_item_id = $market[rand(0,(getarraysize($market) - 1))];
 			// Check weight
 			if(!checkweight(6825,1)){
-				message strcharinfo(0),"πÈ”Àπ—°‡µÁ¡ (µÈÕß«Ë“ßÕ¬Ë“ßπÈÕ¬ 1000 πÈ”Àπ—°)";
+				message strcharinfo(0),"‡∏ô‡πâ‡∏≥‡∏´‡∏ô‡∏±‡∏Å‡πÄ‡∏ï‡πá‡∏° (‡∏ï‡πâ‡∏≠‡∏á‡∏ß‡πà‡∏≤‡∏á‡∏≠‡∏¢‡πà‡∏≤‡∏á‡∏ô‡πâ‡∏≠‡∏¢ 1000 ‡∏ô‡πâ‡∏≥‡∏´‡∏ô‡∏±‡∏Å)";
 				freeloop(0);
 				end;
 			}
@@ -282,7 +282,7 @@ prontera,108,236,5	script	THE BOX	10249,{
 	}
 	// THE BOX KEY
 	else if(countitem(.item_id) < .amount)
-	message strcharinfo(0),"§ÿ≥‰¡Ë¡’ " + .amount + " " + getitemname(.item_id);
+	message strcharinfo(0),"‡∏Ñ‡∏∏‡∏ì‡πÑ‡∏°‡πà‡∏°‡∏µ " + .amount + " " + getitemname(.item_id);
 	else{
 		freeloop(1);
 		
@@ -291,7 +291,7 @@ prontera,108,236,5	script	THE BOX	10249,{
 			.@reward_item_id = $market[rand(0,(getarraysize($market) - 1))];
 			// Check weight
 			if(!checkweight(6825,1)){
-				message strcharinfo(0),"πÈ”Àπ—°‡µÁ¡ (µÈÕß«Ë“ßÕ¬Ë“ßπÈÕ¬ 1000 πÈ”Àπ—°)";
+				message strcharinfo(0),"‡∏ô‡πâ‡∏≥‡∏´‡∏ô‡∏±‡∏Å‡πÄ‡∏ï‡πá‡∏° (‡∏ï‡πâ‡∏≠‡∏á‡∏ß‡πà‡∏≤‡∏á‡∏≠‡∏¢‡πà‡∏≤‡∏á‡∏ô‡πâ‡∏≠‡∏¢ 1000 ‡∏ô‡πâ‡∏≥‡∏´‡∏ô‡∏±‡∏Å)";
 				freeloop(0);
 				end;
 			}
@@ -312,14 +312,14 @@ OnInit:
 	.item_id = 40017;
 	.item_id_quest = 40018;
 	.amount = 1;
-	waitingroom "("+ .amount +" ¥Õ°)" + strnpcinfo(0),0;
+	waitingroom "("+ .amount +" ‡∏î‡∏≠‡∏Å)" + strnpcinfo(0),0;
 	end;
 }
 
 prontera,99,239,5	script	THE BOX WEAPON	10249,{
-	menu "‡√‘Ë¡ ÿË¡",-;
+	menu "‡πÄ‡∏£‡∏¥‡πà‡∏°‡∏™‡∏∏‡πà‡∏°",-;
 	if(countitem(.item_id) < .amount)
-	message strcharinfo(0),"§ÿ≥‰¡Ë¡’ " + .amount + " " + getitemname(.item_id);
+	message strcharinfo(0),"‡∏Ñ‡∏∏‡∏ì‡πÑ‡∏°‡πà‡∏°‡∏µ " + .amount + " " + getitemname(.item_id);
 	else{
 		freeloop(1);
 		
@@ -328,7 +328,7 @@ prontera,99,239,5	script	THE BOX WEAPON	10249,{
 			.@reward_item_id = $weapon_market[rand(0,(getarraysize($weapon_market) - 1))];
 			// Check weight
 			if(!checkweight(6825,1)){
-				message strcharinfo(0),"πÈ”Àπ—°‡µÁ¡ (µÈÕß«Ë“ßÕ¬Ë“ßπÈÕ¬ 1000 πÈ”Àπ—°)";
+				message strcharinfo(0),"‡∏ô‡πâ‡∏≥‡∏´‡∏ô‡∏±‡∏Å‡πÄ‡∏ï‡πá‡∏° (‡∏ï‡πâ‡∏≠‡∏á‡∏ß‡πà‡∏≤‡∏á‡∏≠‡∏¢‡πà‡∏≤‡∏á‡∏ô‡πâ‡∏≠‡∏¢ 1000 ‡∏ô‡πâ‡∏≥‡∏´‡∏ô‡∏±‡∏Å)";
 				freeloop(0);
 				end;
 			}
@@ -347,14 +347,14 @@ prontera,99,239,5	script	THE BOX WEAPON	10249,{
 OnInit:
 	.item_id = 40017;
 	.amount = 9;
-	waitingroom "("+ .amount +" ¥Õ°)" + strnpcinfo(0),0;
+	waitingroom "("+ .amount +" ‡∏î‡∏≠‡∏Å)" + strnpcinfo(0),0;
 	end;
 }
 
 prontera,103,241,5	script	THE BOX EQUIPMENT	10249,{
-	menu "‡√‘Ë¡ ÿË¡",-;
+	menu "‡πÄ‡∏£‡∏¥‡πà‡∏°‡∏™‡∏∏‡πà‡∏°",-;
 	if(countitem(.item_id) < .amount)
-	message strcharinfo(0),"§ÿ≥‰¡Ë¡’ " + .amount + " " + getitemname(.item_id);
+	message strcharinfo(0),"‡∏Ñ‡∏∏‡∏ì‡πÑ‡∏°‡πà‡∏°‡∏µ " + .amount + " " + getitemname(.item_id);
 	else{
 		freeloop(1);
 		
@@ -363,7 +363,7 @@ prontera,103,241,5	script	THE BOX EQUIPMENT	10249,{
 			.@reward_item_id = $equipment_market[rand(0,(getarraysize($equipment_market) - 1))];
 			// Check weight
 			if(!checkweight(6825,1)){
-				message strcharinfo(0),"πÈ”Àπ—°‡µÁ¡ (µÈÕß«Ë“ßÕ¬Ë“ßπÈÕ¬ 1000 πÈ”Àπ—°)";
+				message strcharinfo(0),"‡∏ô‡πâ‡∏≥‡∏´‡∏ô‡∏±‡∏Å‡πÄ‡∏ï‡πá‡∏° (‡∏ï‡πâ‡∏≠‡∏á‡∏ß‡πà‡∏≤‡∏á‡∏≠‡∏¢‡πà‡∏≤‡∏á‡∏ô‡πâ‡∏≠‡∏¢ 1000 ‡∏ô‡πâ‡∏≥‡∏´‡∏ô‡∏±‡∏Å)";
 				freeloop(0);
 				end;
 			}
@@ -382,14 +382,14 @@ prontera,103,241,5	script	THE BOX EQUIPMENT	10249,{
 OnInit:
 	.item_id = 40017;
 	.amount = 9;
-	waitingroom "("+ .amount +" ¥Õ°)" + strnpcinfo(0),0;
+	waitingroom "("+ .amount +" ‡∏î‡∏≠‡∏Å)" + strnpcinfo(0),0;
 	end;
 }
 
 prontera,108,243,5	script	THE BOX COSTUME	10249,{
-	menu "‡√‘Ë¡ ÿË¡",-;
+	menu "‡πÄ‡∏£‡∏¥‡πà‡∏°‡∏™‡∏∏‡πà‡∏°",-;
 	if(countitem(.item_id) < .amount)
-	message strcharinfo(0),"§ÿ≥‰¡Ë¡’ " + .amount + " " + getitemname(.item_id);
+	message strcharinfo(0),"‡∏Ñ‡∏∏‡∏ì‡πÑ‡∏°‡πà‡∏°‡∏µ " + .amount + " " + getitemname(.item_id);
 	else{
 		freeloop(1);
 		
@@ -398,7 +398,7 @@ prontera,108,243,5	script	THE BOX COSTUME	10249,{
 			.@reward_item_id = $costume_market[rand(0,(getarraysize($costume_market) - 1))];
 			// Check weight
 			if(!checkweight(6825,1)){
-				message strcharinfo(0),"πÈ”Àπ—°‡µÁ¡ (µÈÕß«Ë“ßÕ¬Ë“ßπÈÕ¬ 1000 πÈ”Àπ—°)";
+				message strcharinfo(0),"‡∏ô‡πâ‡∏≥‡∏´‡∏ô‡∏±‡∏Å‡πÄ‡∏ï‡πá‡∏° (‡∏ï‡πâ‡∏≠‡∏á‡∏ß‡πà‡∏≤‡∏á‡∏≠‡∏¢‡πà‡∏≤‡∏á‡∏ô‡πâ‡∏≠‡∏¢ 1000 ‡∏ô‡πâ‡∏≥‡∏´‡∏ô‡∏±‡∏Å)";
 				freeloop(0);
 				end;
 			}
@@ -417,14 +417,14 @@ prontera,108,243,5	script	THE BOX COSTUME	10249,{
 OnInit:
 	.item_id = 40017;
 	.amount = 7;
-	waitingroom "("+ .amount +" ¥Õ°)" + strnpcinfo(0),0;
+	waitingroom "("+ .amount +" ‡∏î‡∏≠‡∏Å)" + strnpcinfo(0),0;
 	end;
 }
 
 prontera,113,241,5	script	THE BOX CARD	10249,{
-	menu "‡√‘Ë¡ ÿË¡",-;
+	menu "‡πÄ‡∏£‡∏¥‡πà‡∏°‡∏™‡∏∏‡πà‡∏°",-;
 	if(countitem(.item_id) < .amount)
-	message strcharinfo(0),"§ÿ≥‰¡Ë¡’ " + .amount + " " + getitemname(.item_id);
+	message strcharinfo(0),"‡∏Ñ‡∏∏‡∏ì‡πÑ‡∏°‡πà‡∏°‡∏µ " + .amount + " " + getitemname(.item_id);
 	else{
 		freeloop(1);
 		
@@ -433,7 +433,7 @@ prontera,113,241,5	script	THE BOX CARD	10249,{
 			.@reward_item_id = $card_market[rand(0,(getarraysize($card_market) - 1))];
 			// Check weight
 			if(!checkweight(6825,1)){
-				message strcharinfo(0),"πÈ”Àπ—°‡µÁ¡ (µÈÕß«Ë“ßÕ¬Ë“ßπÈÕ¬ 1000 πÈ”Àπ—°)";
+				message strcharinfo(0),"‡∏ô‡πâ‡∏≥‡∏´‡∏ô‡∏±‡∏Å‡πÄ‡∏ï‡πá‡∏° (‡∏ï‡πâ‡∏≠‡∏á‡∏ß‡πà‡∏≤‡∏á‡∏≠‡∏¢‡πà‡∏≤‡∏á‡∏ô‡πâ‡∏≠‡∏¢ 1000 ‡∏ô‡πâ‡∏≥‡∏´‡∏ô‡∏±‡∏Å)";
 				freeloop(0);
 				end;
 			}
@@ -452,14 +452,14 @@ prontera,113,241,5	script	THE BOX CARD	10249,{
 OnInit:
 	.item_id = 40017;
 	.amount = 30;
-	waitingroom "("+ .amount +" ¥Õ°)" + strnpcinfo(0),0;
+	waitingroom "("+ .amount +" ‡∏î‡∏≠‡∏Å)" + strnpcinfo(0),0;
 	end;
 }
 
 prontera,117,239,5	script	THE BOX ENCHANTMENT	10249,{
-	menu "‡√‘Ë¡ ÿË¡",-;
+	menu "‡πÄ‡∏£‡∏¥‡πà‡∏°‡∏™‡∏∏‡πà‡∏°",-;
 	if(countitem(.item_id) < .amount)
-	message strcharinfo(0),"§ÿ≥‰¡Ë¡’ " + .amount + " " + getitemname(.item_id);
+	message strcharinfo(0),"‡∏Ñ‡∏∏‡∏ì‡πÑ‡∏°‡πà‡∏°‡∏µ " + .amount + " " + getitemname(.item_id);
 	else{
 		freeloop(1);
 		
@@ -468,7 +468,7 @@ prontera,117,239,5	script	THE BOX ENCHANTMENT	10249,{
 			.@reward_item_id = $enchantment_market[rand(0,(getarraysize($enchantment_market) - 1))];
 			// Check weight
 			if(!checkweight(6825,1)){
-				message strcharinfo(0),"πÈ”Àπ—°‡µÁ¡ (µÈÕß«Ë“ßÕ¬Ë“ßπÈÕ¬ 1000 πÈ”Àπ—°)";
+				message strcharinfo(0),"‡∏ô‡πâ‡∏≥‡∏´‡∏ô‡∏±‡∏Å‡πÄ‡∏ï‡πá‡∏° (‡∏ï‡πâ‡∏≠‡∏á‡∏ß‡πà‡∏≤‡∏á‡∏≠‡∏¢‡πà‡∏≤‡∏á‡∏ô‡πâ‡∏≠‡∏¢ 1000 ‡∏ô‡πâ‡∏≥‡∏´‡∏ô‡∏±‡∏Å)";
 				freeloop(0);
 				end;
 			}
@@ -487,7 +487,7 @@ prontera,117,239,5	script	THE BOX ENCHANTMENT	10249,{
 OnInit:
 	.item_id = 40017;
 	.amount = 50;
-	waitingroom "("+ .amount +" ¥Õ°)" + strnpcinfo(0),0;
+	waitingroom "("+ .amount +" ‡∏î‡∏≠‡∏Å)" + strnpcinfo(0),0;
 	end;
 }
 

@@ -1,5 +1,5 @@
-prontera,95,254,5	script	∂Õ¥ Card	643,{
-	mes " µÈÕß°“√ ^FF2929" + F_InsertComma(.price) + "z^000000";
+prontera,95,254,5	script	‡∏ñ‡∏≠‡∏î Card	643,{
+	mes "‡πê ‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£ ^FF2929" + F_InsertComma(.price) + "z^000000";
 	next;
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_HEAD_MID, EQI_HEAD_LOW, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_COSTUME_HEAD_TOP, EQI_COSTUME_HEAD_MID, EQI_COSTUME_HEAD_LOW, EQI_SHADOW_ARMOR, EQI_SHADOW_WEAPON, EQI_SHADOW_SHIELD, EQI_COSTUME_GARMENT, EQI_SHADOW_SHOES, EQI_SHADOW_ACC_L, EQI_SHADOW_ACC_R;
 	
@@ -12,14 +12,14 @@ prontera,95,254,5	script	∂Õ¥ Card	643,{
 	}
 	
 	if (.@equipped == 0) {
-		mes "‡®È“‰¡Ë‰¥È «¡„ Ë Õÿª°√≥Ï «¡„ Ë„¥ Ê ‡≈¬";
+		mes "‡πÄ‡∏à‡πâ‡∏≤‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡∏™‡∏ß‡∏°‡πÉ‡∏™‡πà ‡∏≠‡∏∏‡∏õ‡∏Å‡∏£‡∏ì‡πå‡∏™‡∏ß‡∏°‡πÉ‡∏™‡πà‡πÉ‡∏î ‡πÜ ‡πÄ‡∏•‡∏¢";
 		close;
 	}
 	
 	.@part = .@indices[select(.@menu$)];
 
 	if(!getequipisequiped(.@part)) {
-		mes "‡®È“‡≈◊Õ°™ËÕß∑’Ë ‰¡Ë‰¥È «¡„ ËÕ–‰√Õ¬ŸË‡≈¬";
+		mes "‡πÄ‡∏à‡πâ‡∏≤‡πÄ‡∏•‡∏∑‡∏≠‡∏Å‡∏ä‡πà‡∏≠‡∏á‡∏ó‡∏µ‡πà ‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡∏™‡∏ß‡∏°‡πÉ‡∏™‡πà‡∏≠‡∏∞‡πÑ‡∏£‡∏≠‡∏¢‡∏π‡πà‡πÄ‡∏•‡∏¢";
 		close;
 	}
 	
@@ -45,18 +45,18 @@ prontera,95,254,5	script	∂Õ¥ Card	643,{
 	// Slot check
 	.@itemSlotCount = getitemslots(.@selectedItemId);
 	if(.@itemSlotCount <= 0){
-		mes "Õÿª°√≥Ï «¡„ Ë¥—ß°≈Ë“« ‰¡Ë “¡“√∂∂Õ¥ Card ‰¥È";
+		mes "‡∏≠‡∏∏‡∏õ‡∏Å‡∏£‡∏ì‡πå‡∏™‡∏ß‡∏°‡πÉ‡∏™‡πà‡∏î‡∏±‡∏á‡∏Å‡∏•‡πà‡∏≤‡∏ß ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏ñ‡∏≠‡∏î Card ‡πÑ‡∏î‡πâ";
 		close;
 	}
 
 	// Zeny check
 	if(Zeny < .price) {
-		mes "Zeny ‰¡Ë‡æ’¬ßæÕ";
+		mes "Zeny ‡πÑ‡∏°‡πà‡πÄ‡∏û‡∏µ‡∏¢‡∏á‡∏û‡∏≠";
 		close;
 	}
 	
 	if (callfunc("F_IsEquipIDHack",.@part,.@selectedItemId)){
-		mes "‡À¡◊Õπ«Ë“‡®È“ ®– ≈—∫Õÿª°√≥Ï √–À«Ë“ß∑’Ë¢È“ °”≈—ß¥”‡π‘π°“√Õ¬ŸËπ–!";
+		mes "‡πÄ‡∏´‡∏°‡∏∑‡∏≠‡∏ô‡∏ß‡πà‡∏≤‡πÄ‡∏à‡πâ‡∏≤ ‡∏à‡∏∞‡∏™‡∏•‡∏±‡∏ö‡∏≠‡∏∏‡∏õ‡∏Å‡∏£‡∏ì‡πå ‡∏£‡∏∞‡∏´‡∏ß‡πà‡∏≤‡∏á‡∏ó‡∏µ‡πà‡∏Ç‡πâ‡∏≤ ‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏î‡∏≥‡πÄ‡∏ô‡∏¥‡∏ô‡∏Å‡∏≤‡∏£‡∏≠‡∏¢‡∏π‡πà‡∏ô‡∏∞!";
 		close;
 	}
 	
@@ -94,11 +94,11 @@ prontera,95,254,5	script	∂Õ¥ Card	643,{
 	else
 	getitem2 .@selectedItemId,1,1,.@refineCount,0,.@cardSlot1,.@cardSlot2,.@cardSlot3,.@cardSlot4;
 	
-	mes "‡√’¬∫√ÈÕ¬·≈È«!";
+	mes "‡πÄ‡∏£‡∏µ‡∏¢‡∏ö‡∏£‡πâ‡∏≠‡∏¢‡πÅ‡∏•‡πâ‡∏ß!";
 	close;
 
 OnInit:
 	.price = 1000000;
-	waitingroom "∂Õ¥ Card",0;
+	waitingroom "‡∏ñ‡∏≠‡∏î Card",0;
 	end;
 }

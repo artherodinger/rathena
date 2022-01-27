@@ -1,19 +1,19 @@
-prontera,132,262,5	script	เช็คว่ามี Item ไหม	566,{
-	mes "โปรดระบุเลข Item ID เพื่อเช็ค";
+prontera,132,262,5	script	เน€เธเนเธเธงเนเธฒเธกเธต Item เนเธซเธก	566,{
+	mes "เนเธเธฃเธ”เธฃเธฐเธเธธเน€เธฅเธ Item ID เน€เธเธทเนเธญเน€เธเนเธ";
 	input .@i;
 	atcommand "@ii " + .@i;
 	end;
 	
 OnInit:
-	waitingroom "เช็คว่ามี Item ไหม",0;
+	waitingroom "เน€เธเนเธเธงเนเธฒเธกเธต Item เนเธซเธก",0;
 	end;
 }
 
-prontera,139,262,3	script	ดู Item ทั้งหมด	566,{
-	mes "โปรดระบุเลข 1~" + .max_page + " เพื่อดู";
+prontera,139,262,3	script	เธ”เธน Item เธ—เธฑเนเธเธซเธกเธ”	566,{
+	mes "เนเธเธฃเธ”เธฃเธฐเธเธธเน€เธฅเธ 1~" + .max_page + " เน€เธเธทเนเธญเธ”เธน";
 	input .@i;
 	if(.@i <= 0 || .@i > .max_page){
-		mes "ยกเลิกเรียบร้อยแล้ว";
+		mes "เธขเธเน€เธฅเธดเธเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง";
 		close;
 	}
 	close2;
@@ -26,7 +26,7 @@ OnBuyItem:
 	
 OnInit:
 	.max_page = 179;
-	waitingroom "ดู Item ทั้งหมด",0;
+	waitingroom "เธ”เธน Item เธ—เธฑเนเธเธซเธกเธ”",0;
 	end;
 }
 

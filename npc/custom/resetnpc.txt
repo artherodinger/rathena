@@ -16,12 +16,12 @@ prontera,169,180,2	script	Reset	10010,{
 	setarray .@Reset,	500000,	500000,	900000,	0;
 	mes "Reset Stats: "+ callfunc("F_InsertComma",.@Reset[1]) +"z";
 	mes "Reset Skills: "+ callfunc("F_InsertComma",.@Reset[0]) +"z";
-	mes "Reset ·Ñé§¤Ùè: "+ callfunc("F_InsertComma",.@Reset[2]) +"z";
+	mes "Reset à¸—à¸±à¹‰à¸‡à¸„à¸¹à¹ˆ: "+ callfunc("F_InsertComma",.@Reset[2]) +"z";
 	next;
-	set .@i,(select("^FF3355Reset Skills:Reset Stats:Reset ·Ñé§¤Ùè^000000:Â¡àÅÔ¡"));
+	set .@i,(select("^FF3355Reset Skills:Reset Stats:Reset à¸—à¸±à¹‰à¸‡à¸„à¸¹à¹ˆ^000000:à¸¢à¸à¹€à¸¥à¸´à¸"));
 	if(.@i > 3) close;
 	if (Zeny < .@Reset[.@i-1]) {
-		mes "Zeny äÁèà¾ÕÂ§¾Í";
+		mes "Zeny à¹„à¸¡à¹ˆà¹€à¸žà¸µà¸¢à¸‡à¸žà¸­";
 		close;
 	}
 	Zeny -= .@Reset[.@i-1];
@@ -30,7 +30,7 @@ prontera,169,180,2	script	Reset	10010,{
 		ResetSkill;
 	}
 	if(.@i&2) ResetStatus;
-	mes "àÃÕÂºÃéÍÂáÅéÇ!";
+	mes "à¹€à¸£à¸µà¸¢à¸šà¸£à¹‰à¸­à¸¢à¹à¸¥à¹‰à¸§!";
 	close;
 	
 OnInit:

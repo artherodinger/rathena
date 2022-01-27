@@ -23,18 +23,18 @@
 	//	Main Menu:
 	// --------------------------------------------------
 
-	menu	"«“√Ïª≈Ë“ ÿ¥ ^777777["+lastwarp$+"]^000000",-,
-	" ~ ‡¡◊Õß",Towns,
-	" ~ æ◊Èπ∑’Ë",Fields,
-	" ~ ¥—π‡®’È¬π",Dungeons,
-	//" ~ ª√“ “∑ Guild",Castles,
-	" ~ ¥—π‡®’È¬π Guild",Guild_Dungeons
-	//" ~ ¥—π‡®’È¬π‡æ‘Ë¡‡µ‘¡",Instances
+	menu	"‡∏ß‡∏≤‡∏£‡πå‡∏õ‡∏•‡πà‡∏≤‡∏™‡∏∏‡∏î ^777777["+lastwarp$+"]^000000",-,
+	" ~ ‡πÄ‡∏°‡∏∑‡∏≠‡∏á",Towns,
+	" ~ ‡∏û‡∏∑‡πâ‡∏ô‡∏ó‡∏µ‡πà",Fields,
+	" ~ ‡∏î‡∏±‡∏ô‡πÄ‡∏à‡∏µ‡πâ‡∏¢‡∏ô",Dungeons,
+	//" ~ ‡∏õ‡∏£‡∏≤‡∏™‡∏≤‡∏ó Guild",Castles,
+	" ~ ‡∏î‡∏±‡∏ô‡πÄ‡∏à‡∏µ‡πâ‡∏¢‡∏ô Guild",Guild_Dungeons
+	//" ~ ‡∏î‡∏±‡∏ô‡πÄ‡∏à‡∏µ‡πâ‡∏¢‡∏ô‡πÄ‡∏û‡∏¥‡πà‡∏°‡πÄ‡∏ï‡∏¥‡∏°",Instances
 	//" ~ Special Areas",Special
 	;
 
 	if (lastwarp$ == "")
-	message strcharinfo(0),"§ÿ≥¬—ß‰¡Ë‡§¬«“√Ïª‰ª∑’Ë‰Àπ¡“°ËÕπ";
+	message strcharinfo(0),"‡∏Ñ‡∏∏‡∏ì‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡πÄ‡∏Ñ‡∏¢‡∏ß‡∏≤‡∏£‡πå‡∏õ‡πÑ‡∏õ‡∏ó‡∏µ‡πà‡πÑ‡∏´‡∏ô‡∏°‡∏≤‡∏Å‡πà‡∏≠‡∏ô";
 	else
 	warp lastwarp$,lastwarpx,lastwarpy;
 	end;
@@ -101,7 +101,7 @@
 			set .@map$, getarg(0)+((.@i<10)?"0":"")+.@i;
 		}
 		if (.@warp_block & (1<<.@select)) {
-			message strcharinfo(0),"Map ¥—ß°≈Ë“«‰¡Ë‡ª‘¥„π√–∫∫ "+((checkre(0))?"":"Pre-")+"Renewal";
+			message strcharinfo(0),"Map ‡∏î‡∏±‡∏á‡∏Å‡∏•‡πà‡∏≤‡∏ß‡πÑ‡∏°‡πà‡πÄ‡∏õ‡∏¥‡∏î‡πÉ‡∏ô‡∏£‡∏∞‡∏ö‡∏ö "+((checkre(0))?"":"Pre-")+"Renewal";
 			end;
 		}
 		set .@x, @c[.@i*2];
@@ -117,7 +117,7 @@
 				for (set .@i,1; .@i<getargcount(); set .@i,.@i+1)
 				set @warp_block, @warp_block | (1<<getarg(.@i));
 			} else {
-				message strcharinfo(0),"Map ¥—ß°≈Ë“«‰¡Ë‡ª‘¥„π√–∫∫ "+((checkre(0))?"":"Pre-")+"Renewal";
+				message strcharinfo(0),"Map ‡∏î‡∏±‡∏á‡∏Å‡∏•‡πà‡∏≤‡∏ß‡πÑ‡∏°‡πà‡πÄ‡∏õ‡∏¥‡∏î‡πÉ‡∏ô‡∏£‡∏∞‡∏ö‡∏ö "+((checkre(0))?"":"Pre-")+"Renewal";
 				end;
 			}
 		}
@@ -540,59 +540,59 @@ OnInit:
 	.Satan_Morocc = true;	//	false will enable moc_fild 4,5,6,8,9,10,14,15 while disable moc_fild 20,21,22 Default is true.
 	.OnlyFirstFld = false;	//	true will teleport to the first level of the Fields  Default is false.
 	.OnlyFirstDun = false;	//	true will teleport to the first level of the Dungeons  Default is false.
-	waitingroom "«“√Ïª",0;
+	waitingroom "‡∏ß‡∏≤‡∏£‡πå‡∏õ",0;
 	end;
 }
 
 // --------------------------------------------------
 //	Duplicates:
 // --------------------------------------------------
-alb2trea,57,70,6	duplicate(Warper)	«“√Ïª#tre	10007
-alberta,28,240,4	duplicate(Warper)	«“√Ïª#alb	10007
-aldebaran,145,118,4	duplicate(Warper)	«“√Ïª#alde	10007
-amatsu,203,87,4	duplicate(Warper)	«“√Ïª#ama	10007
-ayothaya,209,169,6	duplicate(Warper)	«“√Ïª#ayo	10007
-comodo,194,158,4	duplicate(Warper)	«“√Ïª#com	10007
-einbech,59,38,6	duplicate(Warper)	«“√Ïª#einbe	10007
-einbroch,69,202,4	duplicate(Warper)	«“√Ïª#einbr	10007
-gef_fild10,71,339,4	duplicate(Warper)	«“√Ïª#orc	10007
-geffen,124,72,4	duplicate(Warper)	«“√Ïª#gef	10007
-glast_01,372,308,4	duplicate(Warper)	«“√Ïª#glh	10007
-gonryun,162,122,4	duplicate(Warper)	«“√Ïª#gon	10007
-hugel,101,151,4	duplicate(Warper)	«“√Ïª#hug	10007
-izlu2dun,110,92,4	duplicate(Warper)	«“√Ïª#izd	10007
-izlude,134,150,4	duplicate(Warper)	«“√Ïª#izl	10007	//Pre-RE: (132,120)
-jawaii,253,138,4	duplicate(Warper)	«“√Ïª#jaw	10007
-lighthalzen,162,102,4	duplicate(Warper)	«“√Ïª#lhz	10007
-louyang,208,103,6	duplicate(Warper)	«“√Ïª#lou	10007
-manuk,274,146,6	duplicate(Warper)	«“√Ïª#man	10007
-mid_camp,216,288,4	duplicate(Warper)	«“√Ïª#mid	10007
-mjolnir_02,85,364,4	duplicate(Warper)	«“√Ïª#mjo	10007
-moc_ruins,64,164,4	duplicate(Warper)	«“√Ïª#moc	10007
-morocc,159,97,4	duplicate(Warper)	«“√Ïª#mor	10007
-moscovia,229,191,4	duplicate(Warper)	«“√Ïª#mos	10007
-nameless_n,259,213,4	duplicate(Warper)	«“√Ïª#nam	10007
-niflheim,205,179,4	duplicate(Warper)	«“√Ïª#nif	10007
-pay_arche,42,134,4	duplicate(Warper)	«“√Ïª#arc	10007
-payon,182,108,4	duplicate(Warper)	«“√Ïª#pay	10007
-prontera,163,200,4	duplicate(Warper)	«“√Ïª#prt	10007
-prt_fild05,279,223,6	duplicate(Warper)	«“√Ïª#cul	10007
-rachel,135,116,4	duplicate(Warper)	«“√Ïª#rac	10007
-splendide,205,153,4	duplicate(Warper)	«“√Ïª#spl	10007
-thor_camp,249,76,4	duplicate(Warper)	«“√Ïª#thor	10007
-umbala,106,150,3	duplicate(Warper)	«“√Ïª#umb	10007
-veins,214,123,4	duplicate(Warper)	«“√Ïª#ve	10007
-xmas,150,136,6	duplicate(Warper)	«“√Ïª#xmas	10007
-yuno,162,47,4	duplicate(Warper)	«“√Ïª#yuno	10007
+alb2trea,57,70,6	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#tre	10007
+alberta,28,240,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#alb	10007
+aldebaran,145,118,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#alde	10007
+amatsu,203,87,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#ama	10007
+ayothaya,209,169,6	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#ayo	10007
+comodo,194,158,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#com	10007
+einbech,59,38,6	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#einbe	10007
+einbroch,69,202,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#einbr	10007
+gef_fild10,71,339,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#orc	10007
+geffen,124,72,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#gef	10007
+glast_01,372,308,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#glh	10007
+gonryun,162,122,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#gon	10007
+hugel,101,151,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#hug	10007
+izlu2dun,110,92,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#izd	10007
+izlude,134,150,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#izl	10007	//Pre-RE: (132,120)
+jawaii,253,138,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#jaw	10007
+lighthalzen,162,102,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#lhz	10007
+louyang,208,103,6	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#lou	10007
+manuk,274,146,6	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#man	10007
+mid_camp,216,288,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#mid	10007
+mjolnir_02,85,364,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#mjo	10007
+moc_ruins,64,164,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#moc	10007
+morocc,159,97,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#mor	10007
+moscovia,229,191,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#mos	10007
+nameless_n,259,213,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#nam	10007
+niflheim,205,179,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#nif	10007
+pay_arche,42,134,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#arc	10007
+payon,182,108,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#pay	10007
+prontera,163,200,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#prt	10007
+prt_fild05,279,223,6	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#cul	10007
+rachel,135,116,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#rac	10007
+splendide,205,153,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#spl	10007
+thor_camp,249,76,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#thor	10007
+umbala,106,150,3	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#umb	10007
+veins,214,123,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#ve	10007
+xmas,150,136,6	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#xmas	10007
+yuno,162,47,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#yuno	10007
 
 // --------------------------------------------------
 //	Duplicates (Renewal):
 // --------------------------------------------------
-brasilis,201,222,4	duplicate(Warper)	«“√Ïª#bra	10007
-dewata,204,186,6	duplicate(Warper)	«“√Ïª#dew	10007
-dicastes01,194,194,6	duplicate(Warper)	«“√Ïª#dic	10007
-ecl_in01,51,60,4	duplicate(Warper)	«“√Ïª#ecl	10007
-lasagna,196,187,4	duplicate(Warper)	«“√Ïª#las	10007
-malangdo,134,117,6	duplicate(Warper)	«“√Ïª#mal	10007
-malaya,231,204,4	duplicate(Warper)	«“√Ïª#ma	10007
-mora,57,152,4	duplicate(Warper)	«“√Ïª#mora	10007
+brasilis,201,222,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#bra	10007
+dewata,204,186,6	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#dew	10007
+dicastes01,194,194,6	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#dic	10007
+ecl_in01,51,60,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#ecl	10007
+lasagna,196,187,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#las	10007
+malangdo,134,117,6	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#mal	10007
+malaya,231,204,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#ma	10007
+mora,57,152,4	duplicate(Warper)	‡∏ß‡∏≤‡∏£‡πå‡∏õ#mora	10007

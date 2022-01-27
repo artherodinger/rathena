@@ -38,22 +38,22 @@ prontera,155,200,8	script	Self Challenge	10007,{
 	if(self_test_cooldown && !.@is_force_no_cooldown){
 		.@time_left = (self_test_cooldown - gettimetick(2));
 		if(.@time_left > 0){
-			mes "‚ª√¥√Õ " + F_InsertComma(.@time_left) + " «‘π“∑’";
+			mes "‡πÇ‡∏õ‡∏£‡∏î‡∏£‡∏≠ " + F_InsertComma(.@time_left) + " ‡∏ß‡∏¥‡∏ô‡∏≤‡∏ó‡∏µ";
 			close;
 		}
 	}
-	mes " Monster ®–ÕÕ°¡“ª√–¡“≥ " + .monster_min_amount + "~" + .monster_max_amount + " µ—«";
-	mes " ¡’‡«≈“‡≈ËπµËÕ√Õ∫ " + F_InsertComma(.play_timer) + " «‘π“∑’";
-	mes " À≈—ß‡¢È“®–µÈÕß√Õ " + F_InsertComma(.enter_delay) + " «‘π“∑’";
+	mes "‡πê Monster ‡∏à‡∏∞‡∏≠‡∏≠‡∏Å‡∏°‡∏≤‡∏õ‡∏£‡∏∞‡∏°‡∏≤‡∏ì " + .monster_min_amount + "~" + .monster_max_amount + " ‡∏ï‡∏±‡∏ß";
+	mes "‡πê ‡∏°‡∏µ‡πÄ‡∏ß‡∏•‡∏≤‡πÄ‡∏•‡πà‡∏ô‡∏ï‡πà‡∏≠‡∏£‡∏≠‡∏ö " + F_InsertComma(.play_timer) + " ‡∏ß‡∏¥‡∏ô‡∏≤‡∏ó‡∏µ";
+	mes "‡πê ‡∏´‡∏•‡∏±‡∏á‡πÄ‡∏Ç‡πâ‡∏≤‡∏à‡∏∞‡∏ï‡πâ‡∏≠‡∏á‡∏£‡∏≠ " + F_InsertComma(.enter_delay) + " ‡∏ß‡∏¥‡∏ô‡∏≤‡∏ó‡∏µ";
 	mes "---";
-	mes "√“ß«—≈";
-	mes " ^3629FF" + F_InsertComma(.monster_min_amount * (NextBaseExp / .reward_exp_max_divider)) + "~" + F_InsertComma(.monster_max_amount *(NextBaseExp / .reward_exp_min_divider)) + " EXP (‡æ‘Ë¡ EXP ‰¥Èª°µ‘)^000000";
-	mes " ^3629FF" + F_InsertComma(.monster_min_amount * (NextJobExp / .reward_exp_max_divider)) + "~" + F_InsertComma(.monster_max_amount *(NextJobExp / .reward_exp_min_divider)) + " Job EXP (‡æ‘Ë¡ EXP ‰¥Èª°µ‘)^000000";
-	mes " ^3629FF" + F_InsertComma(.monster_min_amount * .reward_item_min_amount) + "~" + F_InsertComma(.monster_max_amount * .reward_item_max_amount) + " THE BOX KEY^000000";
-	mes " ^3629FF" + F_InsertComma(.monster_min_amount * .reward_zeny_min_amount) + "~" + F_InsertComma(.monster_max_amount * .reward_zeny_max_amount) + " Zeny^000000";
-	mes " ^3629FF‰¡Ë¡’‚∑…°“√µ“¬„¥ Ê µ“¬√—« Ê ‰¥È‡≈¬^000000";
+	mes "‡∏£‡∏≤‡∏á‡∏ß‡∏±‡∏•";
+	mes "‡πê ^3629FF" + F_InsertComma(.monster_min_amount * (NextBaseExp / .reward_exp_max_divider)) + "~" + F_InsertComma(.monster_max_amount *(NextBaseExp / .reward_exp_min_divider)) + " EXP (‡πÄ‡∏û‡∏¥‡πà‡∏° EXP ‡πÑ‡∏î‡πâ‡∏õ‡∏Å‡∏ï‡∏¥)^000000";
+	mes "‡πê ^3629FF" + F_InsertComma(.monster_min_amount * (NextJobExp / .reward_exp_max_divider)) + "~" + F_InsertComma(.monster_max_amount *(NextJobExp / .reward_exp_min_divider)) + " Job EXP (‡πÄ‡∏û‡∏¥‡πà‡∏° EXP ‡πÑ‡∏î‡πâ‡∏õ‡∏Å‡∏ï‡∏¥)^000000";
+	mes "‡πê ^3629FF" + F_InsertComma(.monster_min_amount * .reward_item_min_amount) + "~" + F_InsertComma(.monster_max_amount * .reward_item_max_amount) + " THE BOX KEY^000000";
+	mes "‡πê ^3629FF" + F_InsertComma(.monster_min_amount * .reward_zeny_min_amount) + "~" + F_InsertComma(.monster_max_amount * .reward_zeny_max_amount) + " Zeny^000000";
+	mes "‡πê ^3629FF‡πÑ‡∏°‡πà‡∏°‡∏µ‡πÇ‡∏ó‡∏©‡∏Å‡∏≤‡∏£‡∏ï‡∏≤‡∏¢‡πÉ‡∏î ‡πÜ ‡∏ï‡∏≤‡∏¢‡∏£‡∏±‡∏ß ‡πÜ ‡πÑ‡∏î‡πâ‡πÄ‡∏•‡∏¢^000000";
 	next;
-	menu "‡¢È“",-;
+	menu "‡πÄ‡∏Ç‡πâ‡∏≤",-;
 	
 	// Reset temporary variables
 	@self_test_map = 0;
@@ -119,7 +119,7 @@ prontera,155,200,8	script	Self Challenge	10007,{
 		}
 	}
 	
-	message strcharinfo(0),"ÀÈÕß‡µÁ¡ ‚ª√¥√Õ —°§√ŸË";
+	message strcharinfo(0),"‡∏´‡πâ‡∏≠‡∏á‡πÄ‡∏ï‡πá‡∏° ‡πÇ‡∏õ‡∏£‡∏î‡∏£‡∏≠‡∏™‡∏±‡∏Å‡∏Ñ‡∏£‡∏π‡πà";
 	
 	end;
 	
@@ -203,7 +203,7 @@ OnFailed:
 	
 	sleep2 100;
 	
-	message strcharinfo(0),"À¡¥‡«≈“!";
+	message strcharinfo(0),"‡∏´‡∏°‡∏î‡πÄ‡∏ß‡∏•‡∏≤!";
 	
 	end;
 
@@ -224,7 +224,7 @@ OnMonsterDead:
 	// Get Zeny
 	.@reward_zeny = rand(.reward_zeny_min_amount,.reward_zeny_max_amount);
 	Zeny += .@reward_zeny;
-	message strcharinfo(0),"‰¥È√—∫ " + F_InsertComma(.@reward_zeny) + "z";
+	message strcharinfo(0),"‡πÑ‡∏î‡πâ‡∏£‡∏±‡∏ö " + F_InsertComma(.@reward_zeny) + "z";
 	
 	self_test_kill_count--;
 	
@@ -235,7 +235,7 @@ OnMonsterDead:
 		
 		sleep2 100;
 
-		message strcharinfo(0),"§ÿ≥°”®—¥ Monster §√∫·≈È«!";
+		message strcharinfo(0),"‡∏Ñ‡∏∏‡∏ì‡∏Å‡∏≥‡∏à‡∏±‡∏î Monster ‡∏Ñ‡∏£‡∏ö‡πÅ‡∏•‡πâ‡∏ß!";
 	}
 	
 	end;
@@ -307,7 +307,7 @@ OnInit:
 	.reward_exp_max_divider = 3500;
 	.enter_delay = 600;
 	
-	waitingroom "‡°Á∫ Level, " + getitemname(.reward_item_id) + ", Zeny",0;
+	waitingroom "‡πÄ‡∏Å‡πá‡∏ö Level, " + getitemname(.reward_item_id) + ", Zeny",0;
 	
 	// Move out left over players inside rooms
 	mapwarp .map_1_name$,"prontera",156,191;
