@@ -50,15 +50,18 @@ OnWarp:
 	setpcblock PCBLOCK_ALL,false;
 	end;
 	
-OnBossDead:
-	if(getmapunits(BL_MOB,.map_name$) <= 0){
-		announce "4 Keys à¸—à¸±à¹‰à¸‡à¸«à¸¡à¸”à¸–à¸¹à¸à¸à¸³à¸ˆà¸±à¸”à¹à¸¥à¹‰à¸§! 4 Keys à¸à¸¥à¸¸à¹ˆà¸¡à¹ƒà¸«à¸¡à¹ˆà¸ˆà¸°à¸›à¸£à¸²à¸à¸Žà¸ à¸²à¸¢à¹ƒà¸™ 60 à¸§à¸´à¸™à¸²à¸—à¸µ",bc_map;
-		
 OnCleanUp:
-		killmonsterall .map_name$;
-		initnpctimer;
-	}
-
+	killmonsterall .map_name$;
+	callsub L_Spawn;
+	end;
+	
+OnBossDead:
+	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
+	
+	setunitdata $@mobid[0],UMOB_MAXHP,.max_hp;
+	
+	setunitdata $@mobid[0],UMOB_MODE,(0x0000001 | 0x0000004 | 0x0000010 | 0x0000080 | 0x0000800 | 0x0080000 | 0x0200000 | 0x2000000 | 0x4000000);
+	
 	// Unexpected error
 	if(!playerattached())
 	end;
@@ -73,30 +76,10 @@ OnCleanUp:
 	}
 	end;
 	
-OnTimer60000:
-	stopnpctimer;
-	callsub L_Spawn;
-	end;
-	
 	L_Spawn:
-	$world_boss_room_special_round = 0;
-	
-	if(rand(0,100) <= .special_round_chance){
-		$world_boss_room_special_round = 1;
-		
-		announce "4 Keys ÃÍº¹Õéà»ç¹ÃÍº¾ÔàÈÉ Boss ¨ÐÍÍ¡ÁÒ " + (.spawn_amount * .special_round_multiplier) + " µÑÇ! áÅÐÁÕ HP ¹éÍÂÅ§¤ÃÖè§¹Ö§ â´ÂÃÒ§ÇÑÅ¨Ð x" + .special_round_multiplier + "!!",bc_all;
-	}
-	
-	.@spawn_amount = .spawn_amount;
-	if($world_boss_room_special_round)
-	.@spawn_amount *= .special_round_multiplier;
-	
-	for(.@i = 0; .@i < .@spawn_amount; .@i++){
+	for(.@i = 0; .@i < .spawn_amount; .@i++){
 		monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 		
-		if($world_boss_room_special_round)
-		setunitdata $@mobid[0],UMOB_MAXHP,.max_hp / 2;
-		else
 		setunitdata $@mobid[0],UMOB_MAXHP,.max_hp;
 		
 		setunitdata $@mobid[0],UMOB_MODE,(0x0000001 | 0x0000004 | 0x0000010 | 0x0000080 | 0x0000800 | 0x0080000 | 0x0200000 | 0x2000000 | 0x4000000);
@@ -107,9 +90,6 @@ OnInit:
 	.map_name$ = "vis_h04";
 	.spawn_amount = 4;
 	.max_hp = 500000000;
-	
-	.special_round_chance = 3;
-	.special_round_multiplier = 2;
 	
 	.req_zeny = 400000;
 	

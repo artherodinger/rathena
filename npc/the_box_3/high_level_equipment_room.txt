@@ -58,10 +58,7 @@ OnCleanUp:
 	end;
 	
 OnBossDead:
-	if(getmapunits(BL_MOB,.map_name$) <= 0){
-		killmonsterall .map_name$;
-		callsub L_Spawn;
-	}
+	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 
 	// Unexpected error
 	if(!playerattached())
